@@ -1,0 +1,44 @@
+{
+  "creative_tab.capsule_tab": "Resource Capsules's Capsule",
+  "creative_tab.catalyst_tab": "Resource Capsules's Catalyst",
+  "creative_tab.misc_tab": "Resource Capsules's Miscellaneous Things",
+
+  "item.resource_capsules.bio_catalyst": "Bio Catalyst",
+  "item.resource_capsules.bio_capsule": "Bio Capsule",
+
+  "item.resource_capsules.end_catalyst": "End Catalyst",
+  "item.resource_capsules.end_capsule": "End Capsule",
+  "item.resource_capsules.end_advanced_capsule": "End Advanced Capsule",
+
+  "item.resource_capsules.nether_catalyst": "Nether Catalyst",
+  "item.resource_capsules.nether_capsule": "Nether Capsule",
+  "item.resource_capsules.nether_advanced_capsule": "Nether Advanced Capsule",
+
+  "item.resource_capsules.overworld_catalyst": "Overworld Catalyst",
+  "item.resource_capsules.overworld_capsule": "Overworld Capsule",
+
+  "item.resource_capsules.tier_1_mini_catalyst": "Tier 1 Mini Catalyst",
+  "item.resource_capsules.tier_2_mini_catalyst": "Tier 2 Mini Catalyst",
+  "item.resource_capsules.tier_3_mini_catalyst": "Tier 3 Mini Catalyst",
+
+  "item.resource_capsules.tier_1_medium_catalyst": "Tier 1 Medium Catalyst",
+  "item.resource_capsules.tier_2_medium_catalyst": "Tier 2 Medium Catalyst",
+  "item.resource_capsules.tier_3_medium_catalyst": "Tier 3 Medium Catalyst",
+
+  "item.resource_capsules.tier_1_large_catalyst": "Tier 1 Large Catalyst",
+  "item.resource_capsules.tier_2_large_catalyst": "Tier 2 Large Catalyst",
+  "item.resource_capsules.tier_3_large_catalyst": "Tier 3 Large Catalyst",
+
+  "item.resource_capsules.tier_1_mini_capsule": "Tier 1 Mini capsule",
+  "item.resource_capsules.tier_2_mini_capsule": "Tier 2 Mini capsule",
+  "item.resource_capsules.tier_3_mini_capsule": "Tier 3 Mini capsule",
+
+  "item.resource_capsules.tier_1_medium_capsule": "Tier 1 Medium capsule",
+  "item.resource_capsules.tier_2_medium_capsule": "Tier 2 Medium capsule",
+  "item.resource_capsules.tier_3_medium_capsule": "Tier 3 Medium capsule",
+
+  "item.resource_capsules.tier_1_large_capsule": "Tier 1 Large capsule",
+  "item.resource_capsules.tier_2_large_capsule": "Tier 2 Large capsule",
+  "item.resource_capsules.tier_3_large_capsule": "Tier 3 Large capsule"
+
+}

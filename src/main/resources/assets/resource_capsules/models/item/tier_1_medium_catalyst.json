@@ -1,7 +1,6 @@
 {
-	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "kubejs:item/tier_1_catalyst"
+		"1": "resource_capsules:item/tier_1_large_catalyst"
 	},
 	"elements": [
 		{
