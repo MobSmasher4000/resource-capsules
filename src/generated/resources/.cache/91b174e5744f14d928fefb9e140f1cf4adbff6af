@@ -1,1 +1,4 @@
-// 1.20.1	2025-10-10T20:03:30.3513342	Block States: resource_capsules
+// 1.20.1	2025-10-20T14:43:00.9890161	Block States: resource_capsules
+0823bb4339d9e44f1881f7f44610b2863262f0a9 assets/resource_capsules/blockstates/resource_gen_tier_1.json
+0da0ed3786b87b0cc2389ab457d8c7538088e605 assets/resource_capsules/models/block/resource_gen_tier_1.json
+30c26bb3855206f3cb367dc0777c43960755a9f1 assets/resource_capsules/models/item/resource_gen_tier_1.json

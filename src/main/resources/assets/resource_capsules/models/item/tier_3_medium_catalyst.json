@@ -1,0 +1,55 @@
+{
+	"textures": {
+		"1": "resource_capsules:item/tier_3_large_catalyst"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [4, 4, 1],
+			"faces": {
+				"north": {"uv": [0.5, 0, 16, 15.5], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [4, 4, 1],
+			"to": [0, 0, 0],
+			"faces": {
+				"south": {"uv": [0.5, 15.5, 16, 0], "texture": "#1"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [3.75, 4.75, 5],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"thirdperson_lefthand": {
+			"translation": [-6, 8, 8.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [-180, 0, 0],
+			"translation": [0, 0.75, -0.25],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-180, 0, 0],
+			"translation": [-6, 1.25, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"ground": {
+			"translation": [0, 1, 0],
+			"scale": [0.6, 0.6, 0]
+		},
+		"gui": {
+			"rotation": [180, 0, 0],
+			"translation": [12.5, -11.75, -20],
+			"scale": [2, 2, 2]
+		},
+		"fixed": {
+			"translation": [11.75, 12.25, 15.75],
+			"scale": [2, 2, 2]
+		}
+	}
+}

@@ -2,6 +2,7 @@ package org.mob.resource_capsules;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -15,7 +16,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.mob.resource_capsules.block.ModBlocks;
+import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.item.ModItems;
+import org.mob.resource_capsules.recipe.ModRecipes;
+import org.mob.resource_capsules.screen.ModMenuTypes;
+import org.mob.resource_capsules.screen.screen.ResourceGenTierScreen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -36,6 +41,9 @@ public class ResourceCapsules {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModRecipes.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         ModCreativeModTabs.register(modEventBus);
 
@@ -74,8 +82,7 @@ public class ResourceCapsules {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_MENU.get(), ResourceGenTierScreen::new);
         }
     }
 }

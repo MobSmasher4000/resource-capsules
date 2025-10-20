@@ -32,6 +32,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.OVERWORLD_CATALYST);
         simpleItem(ModItems.OVERWORLD_CAPSULE);
 
+//        simpleItem(ModItems.TIER_1_MINI_CATALYST);
+//        simpleItem(ModItems.TIER_1_MINI_CAPSULE);
 //        simpleItem(ModItems.TIER_1_MEDIUM_CATALYST);
         simpleItem(ModItems.TIER_1_MEDIUM_CAPSULE);
         simpleItem(ModItems.TIER_1_LARGE_CATALYST);
@@ -40,16 +42,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.TIER_2_MINI_CATALYST);
 //        simpleItem(ModItems.TIER_2_MINI_CAPSULE);
         simpleItem(ModItems.TIER_2_MEDIUM_CATALYST);
-//        simpleItem(ModItems.TIER_2_MEDIUM_CAPSULE);
+        simpleItem(ModItems.TIER_2_MEDIUM_CAPSULE);
         simpleItem(ModItems.TIER_2_LARGE_CATALYST);
-//        simpleItem(ModItems.TIER_2_LARGE_CAPSULE);
+        simpleItem(ModItems.TIER_2_LARGE_CAPSULE);
 
-        simpleItem(ModItems.TIER_3_MINI_CATALYST);
+//        simpleItem(ModItems.TIER_3_MINI_CATALYST);
 //        simpleItem(ModItems.TIER_3_MINI_CAPSULE);
-        simpleItem(ModItems.TIER_3_MEDIUM_CATALYST);
+//        simpleItem(ModItems.TIER_3_MEDIUM_CATALYST);
 //        simpleItem(ModItems.TIER_3_MEDIUM_CAPSULE);
         simpleItem(ModItems.TIER_3_LARGE_CATALYST);
-//        simpleItem(ModItems.TIER_3_LARGE_CAPSULE);
+        simpleItem(ModItems.TIER_3_LARGE_CAPSULE);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.item.ModItems;
 
 public class ModCreativeModTabs {
@@ -73,7 +74,7 @@ public class ModCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BIO_CATALYST.get()))
                     .title(Component.translatable("creative_tab.misc_tab"))
                     .displayItems((pParameters, pOutput) -> {
-//                        pOutput.accept(ModItems.SOULLESS_EGG.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_1.get());
 
                     })
                     .build());

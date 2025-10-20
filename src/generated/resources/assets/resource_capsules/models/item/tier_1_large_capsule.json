@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "resource_capsules:item/tier_1_mini_catalyst"
+    "layer0": "resource_capsules:item/tier_1_large_capsule"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "resource_capsules:item/soulless_egg"
+    "layer0": "resource_capsules:item/tier_3_large_capsule"
   }
 }
