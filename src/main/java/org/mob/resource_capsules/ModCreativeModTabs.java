@@ -71,10 +71,12 @@ public class ModCreativeModTabs {
                     .build());
 
     public static final RegistryObject<CreativeModeTab> MISC_TAB = CREATIVE_MODE_TABS.register("misc_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BIO_CATALYST.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RESOURCE_GEN_TIER_1.get()))
                     .title(Component.translatable("creative_tab.misc_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_1.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_2.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
 
                     })
                     .build());

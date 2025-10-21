@@ -16,13 +16,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
+import org.mob.resource_capsules.recipe.ResourceGenTier2Recipe;
+import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
+public class ResourceGenTier3RecipeBuilder implements RecipeBuilder {
     private Ingredient ingredient;
     private ItemStack output;
     private int count = 1;
@@ -30,36 +31,36 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
     @Nullable
     private String group;
 
-    private ResourceGenTier1RecipeBuilder() {}
+    private ResourceGenTier3RecipeBuilder() {}
 
-    public static ResourceGenTier1RecipeBuilder resourceGenTier1Recipe() {
-        return new ResourceGenTier1RecipeBuilder();
+    public static ResourceGenTier3RecipeBuilder resourceGenTier3Recipe() {
+        return new ResourceGenTier3RecipeBuilder();
     }
 
-    public ResourceGenTier1RecipeBuilder addIngredient(Ingredient ingredient) {
+    public ResourceGenTier3RecipeBuilder addIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
         return this;
     }
 
-    public ResourceGenTier1RecipeBuilder addOutput(ItemStack output) {
+    public ResourceGenTier3RecipeBuilder addOutput(ItemStack output) {
         this.output = output;
         this.count = output.getCount();
         return this;
     }
 
-    public ResourceGenTier1RecipeBuilder count(int count) {
+    public ResourceGenTier3RecipeBuilder count(int count) {
         this.count = count;
         return this;
     }
 
     @Override
-    public ResourceGenTier1RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+    public ResourceGenTier3RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
     @Override
-    public ResourceGenTier1RecipeBuilder group(@Nullable String group) {
+    public ResourceGenTier3RecipeBuilder group(@Nullable String group) {
         this.group = group;
         return this;
     }
@@ -87,13 +88,13 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
 
         ResourceLocation recipeId = new ResourceLocation(
                 id.getNamespace(),
-                "resource_gen_tier_1/" + id.getPath()
+                "resource_gen_tier_3/" + id.getPath()
         );
 
         // 👇 And same for advancements (to avoid conflicts)
         ResourceLocation advancementId = new ResourceLocation(
                 id.getNamespace(),
-                "recipes/resource_gen_tier_1/" + id.getPath()
+                "recipes/resource_gen_tier_3/" + id.getPath()
         );
 
 
@@ -152,7 +153,7 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
 
         @Override
         public net.minecraft.world.item.crafting.RecipeSerializer<?> getType() {
-            return ResourceGenTier1Recipe.Serializer.INSTANCE;
+            return ResourceGenTier3Recipe.Serializer.INSTANCE;
         }
 
         @Nullable

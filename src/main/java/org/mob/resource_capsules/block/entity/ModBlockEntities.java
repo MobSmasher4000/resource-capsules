@@ -17,6 +17,15 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ResourceGenTier1BlockEntity::new,
                             ModBlocks.RESOURCE_GEN_TIER_1.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ResourceGenTier2BlockEntity>> RESOURCE_GEN_TIER_2_BE =
+            BLOCK_ENTITIES.register("resource_gen_tier_2_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenTier2BlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_TIER_2.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ResourceGenTier3BlockEntity>> RESOURCE_GEN_TIER_3_BE =
+            BLOCK_ENTITIES.register("resource_gen_tier_3_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenTier3BlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_TIER_3.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

@@ -2,10 +2,12 @@ package org.mob.resource_capsules.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
+import org.mob.resource_capsules.block.ModBlocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,6 +18,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.RESOURCE_GEN_TIER_1.get())
+                .add(ModBlocks.RESOURCE_GEN_TIER_2.get())
+                .add(ModBlocks.RESOURCE_GEN_TIER_3.get())
+        ;
     }
 }

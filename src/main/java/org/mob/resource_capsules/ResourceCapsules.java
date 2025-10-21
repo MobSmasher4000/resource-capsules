@@ -1,7 +1,6 @@
 package org.mob.resource_capsules;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,7 +19,9 @@ import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.item.ModItems;
 import org.mob.resource_capsules.recipe.ModRecipes;
 import org.mob.resource_capsules.screen.ModMenuTypes;
-import org.mob.resource_capsules.screen.screen.ResourceGenTierScreen;
+import org.mob.resource_capsules.screen.screen.ResourceGenTier1Screen;
+import org.mob.resource_capsules.screen.screen.ResourceGenTier2Screen;
+import org.mob.resource_capsules.screen.screen.ResourceGenTier3Screen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -82,7 +83,9 @@ public class ResourceCapsules {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Some client setup code
-            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_MENU.get(), ResourceGenTierScreen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_1_MENU.get(), ResourceGenTier1Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), ResourceGenTier2Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
         }
     }
 }

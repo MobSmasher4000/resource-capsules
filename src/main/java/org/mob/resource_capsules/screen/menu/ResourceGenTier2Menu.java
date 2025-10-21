@@ -8,26 +8,26 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
+import org.mob.mob_lib.inventory.slot.OutputSlot;
 import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
+import org.mob.resource_capsules.block.entity.ResourceGenTier2BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
-import org.mob.mob_lib.inventory.slot.OutputSlot;
 
-public class ResourceGenTierMenu extends AbstractContainerMenu {
-    public final ResourceGenTier1BlockEntity blockEntity;
+public class ResourceGenTier2Menu extends AbstractContainerMenu {
+    public final ResourceGenTier2BlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public ResourceGenTierMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+    public ResourceGenTier2Menu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public ResourceGenTierMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.RESOURCE_GEN_TIER_MENU.get(), pContainerId);
+    public ResourceGenTier2Menu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), pContainerId);
         checkContainerSize(inv, 2);
-        blockEntity = ((ResourceGenTier1BlockEntity) entity);
+        blockEntity = ((ResourceGenTier2BlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
@@ -107,7 +107,7 @@ public class ResourceGenTierMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.RESOURCE_GEN_TIER_1.get());
+                pPlayer, ModBlocks.RESOURCE_GEN_TIER_2.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

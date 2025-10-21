@@ -19,6 +19,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         customBlockStates(ModBlocks.RESOURCE_GEN_TIER_1.get());
+        customBlockStates(ModBlocks.RESOURCE_GEN_TIER_2.get());
+        customBlockStates(ModBlocks.RESOURCE_GEN_TIER_3.get());
     }
 
     private void customBlockStates(Block block) {
@@ -39,7 +41,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 sideTex,   // south
                 sideTex,   // east
                 sideTex    // west
-        );
+        ).texture("particle",sideTex);
 
         horizontalBlock(block, model);
         simpleBlockItem(block, model);

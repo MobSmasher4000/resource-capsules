@@ -23,12 +23,13 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
+import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
 import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
+import org.mob.resource_capsules.screen.menu.ResourceGenTier3Menu;
 
 import java.util.Optional;
 
-public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProvider {
+public class ResourceGenTier3BlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(2);
 
     private static final int INPUT_SLOT = 0;
@@ -41,14 +42,14 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     private int maxProgress = 100;
 
 
-    public ResourceGenTier1BlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.RESOURCE_GEN_TIER_1_BE.get(), pPos, pBlockState);
+    public ResourceGenTier3BlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.RESOURCE_GEN_TIER_3_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> ResourceGenTier1BlockEntity.this.progress;
-                    case 1 -> ResourceGenTier1BlockEntity.this.maxProgress;
+                    case 0 -> ResourceGenTier3BlockEntity.this.progress;
+                    case 1 -> ResourceGenTier3BlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -56,8 +57,8 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> ResourceGenTier1BlockEntity.this.progress = pValue;
-                    case 1 -> ResourceGenTier1BlockEntity.this.maxProgress = pValue;
+                    case 0 -> ResourceGenTier3BlockEntity.this.progress = pValue;
+                    case 1 -> ResourceGenTier3BlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -99,18 +100,18 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.resource_capsules.resource_gen_tier_1");
+        return Component.translatable("block.resource_capsules.resource_gen_tier_3");
     }
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new ResourceGenTier1Menu(pContainerId, pPlayerInventory, this, this.data);
+        return new ResourceGenTier3Menu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("resource_gen_tier_1.progress", progress);
+        pTag.putInt("resource_gen_tier_3.progress", progress);
 
         super.saveAdditional(pTag);
     }
@@ -119,7 +120,7 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("resource_gen_tier_1.progress");
+        progress = pTag.getInt("resource_gen_tier_3.progress");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -141,7 +142,7 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     }
 
     private void craftItem() {
-        Optional<ResourceGenTier1Recipe> recipe = getCurrentRecipe();
+        Optional<ResourceGenTier3Recipe> recipe = getCurrentRecipe();
         ItemStack result = recipe.get().getResultItem(null);
 
         this.itemHandler.extractItem(INPUT_SLOT, 1, true);
@@ -151,7 +152,7 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     }
 
     private boolean hasRecipe() {
-        Optional<ResourceGenTier1Recipe> recipe = getCurrentRecipe();
+        Optional<ResourceGenTier3Recipe> recipe = getCurrentRecipe();
 
         if(recipe.isEmpty()) {
             return false;
@@ -161,13 +162,13 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
         return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
-    private Optional<ResourceGenTier1Recipe> getCurrentRecipe() {
+    private Optional<ResourceGenTier3Recipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
         for(int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(ResourceGenTier1Recipe.Type.INSTANCE, inventory, level);
+        return this.level.getRecipeManager().getRecipeFor(ResourceGenTier3Recipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
