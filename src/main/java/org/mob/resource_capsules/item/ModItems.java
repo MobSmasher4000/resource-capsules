@@ -27,10 +27,22 @@ public class ModItems {
 
 //    end
     public static final RegistryObject<Item> END_CATALYST = ITEMS.register("end_catalyst",
-        () -> new Item(new Item.Properties()));
+        () -> new Item(new Item.Properties()){
+            @Override
+            public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                pTooltipComponents.add(Component.translatable("tooltip.resource_capsules.end_catalyst"));
+                super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+            }
+        });
 
     public static final RegistryObject<Item> END_ADVANCED_CATALYST = ITEMS.register("end_advanced_catalyst",
-        () -> new Item(new Item.Properties()));
+        () -> new Item(new Item.Properties()){
+            @Override
+            public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                pTooltipComponents.add(Component.translatable("tooltip.resource_capsules.end_catalyst"));
+                super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+            }
+        });
 
     public static final RegistryObject<Item> END_CAPSULE = ITEMS.register("end_capsule",
         () -> new Item(new Item.Properties()));
@@ -40,10 +52,22 @@ public class ModItems {
 
 //    nether
     public static final RegistryObject<Item> NETHER_CATALYST = ITEMS.register("nether_catalyst",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                    pTooltipComponents.add(Component.translatable("tooltip.resource_capsules.nether_catalyst"));
+                    super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                }
+            });
 
     public static final RegistryObject<Item> NETHER_ADVANCED_CATALYST = ITEMS.register("nether_advanced_catalyst",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                    pTooltipComponents.add(Component.translatable("tooltip.resource_capsules.nether_catalyst"));
+                    super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                }
+            });
 
     public static final RegistryObject<Item> NETHER_CAPSULE = ITEMS.register("nether_capsule",
             () -> new Item(new Item.Properties()));
@@ -53,7 +77,13 @@ public class ModItems {
 
 //    overworld
     public static final RegistryObject<Item> OVERWORLD_CATALYST = ITEMS.register("overworld_catalyst",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()){
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                    pTooltipComponents.add(Component.translatable("tooltip.resource_capsules.overworld_catalyst"));
+                    super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                }
+            });
 
     public static final RegistryObject<Item> OVERWORLD_CAPSULE = ITEMS.register("overworld_capsule",
             () -> new Item(new Item.Properties()));

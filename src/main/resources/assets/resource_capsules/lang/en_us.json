@@ -7,14 +7,19 @@
   "item.resource_capsules.bio_capsule": "Bio Capsule",
 
   "item.resource_capsules.end_catalyst": "End Catalyst",
+  "item.resource_capsules.end_advanced_catalyst": "End Advanced Catalyst",
+  "tooltip.resource_capsules.end_catalyst": "Only works in End Dimension",
   "item.resource_capsules.end_capsule": "End Capsule",
   "item.resource_capsules.end_advanced_capsule": "End Advanced Capsule",
 
   "item.resource_capsules.nether_catalyst": "Nether Catalyst",
+  "item.resource_capsules.nether_advanced_catalyst": "Nether Advanced Catalyst",
+  "tooltip.resource_capsules.nether_catalyst": "Only works in the Nether dimension",
   "item.resource_capsules.nether_capsule": "Nether Capsule",
   "item.resource_capsules.nether_advanced_capsule": "Nether Advanced Capsule",
 
   "item.resource_capsules.overworld_catalyst": "Overworld Catalyst",
+  "tooltip.resource_capsules.overworld_catalyst": "Only works in Overworld Dimension",
   "item.resource_capsules.overworld_capsule": "Overworld Capsule",
 
   "item.resource_capsules.tier_1_mini_catalyst": "Tier 1 Mini Catalyst",
@@ -46,6 +51,7 @@
   "block.resource_capsules.resource_gen_tier_3": "Resource Generator Tier 3",
   "block.resource_capsules.dimensional_resource_gen": "Dimensional Resource Generator",
   "block.resource_capsules.tier_9001": "Tier 9001 Gen",
-  "tooltip.resource_capsules.tier_9001": "Ultimate duper"
+  "tooltip.resource_capsules.tier_9001": "Ultimate duper",
+  "block.resource_capsules.encapsulating_transmutator":"Encapsulating Transmutator"
 
 }

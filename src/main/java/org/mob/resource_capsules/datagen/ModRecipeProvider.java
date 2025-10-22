@@ -36,11 +36,11 @@ public class ModRecipeProvider extends RecipeProvider {
         resourceGenTier3Recipe(consumer, ModItems.TIER_3_MEDIUM_CATALYST.get(), ModItems.TIER_3_MEDIUM_CAPSULE.get());
         resourceGenTier3Recipe(consumer, ModItems.TIER_3_LARGE_CATALYST.get(), ModItems.TIER_3_LARGE_CAPSULE.get());
 
-        dimensionalResourceGenRecipe(consumer, ModItems.OVERWORLD_CATALYST.get(), ModItems.OVERWORLD_CAPSULE.get());
-        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_CATALYST.get(), ModItems.NETHER_CAPSULE.get());
-        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_ADVANCED_CATALYST.get(), ModItems.NETHER_ADVANCED_CAPSULE.get());
-        dimensionalResourceGenRecipe(consumer, ModItems.END_CATALYST.get(), ModItems.END_CAPSULE.get());
-        dimensionalResourceGenRecipe(consumer, ModItems.END_ADVANCED_CATALYST.get(), ModItems.END_ADVANCED_CAPSULE.get());
+        dimensionalResourceGenRecipe(consumer, ModItems.OVERWORLD_CATALYST.get(), ModItems.OVERWORLD_CAPSULE.get(), "minecraft:overworld");
+        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_CATALYST.get(), ModItems.NETHER_CAPSULE.get(), "minecraft:the_nether");
+        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_ADVANCED_CATALYST.get(), ModItems.NETHER_ADVANCED_CAPSULE.get(), "minecraft:the_nether");
+        dimensionalResourceGenRecipe(consumer, ModItems.END_CATALYST.get(), ModItems.END_CAPSULE.get(), "minecraft:the_end");
+        dimensionalResourceGenRecipe(consumer, ModItems.END_ADVANCED_CATALYST.get(), ModItems.END_ADVANCED_CAPSULE.get(), "minecraft:the_end");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.NETHER_ADVANCED_CATALYST.get())
                 .requires(ModItems.NETHER_CATALYST.get())
@@ -81,10 +81,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(consumer);
     }
 
-    private void dimensionalResourceGenRecipe(Consumer<FinishedRecipe> consumer, Item input, Item output) {
+    private void dimensionalResourceGenRecipe(Consumer<FinishedRecipe> consumer, Item input, Item output, String dimension) {
         DimensionalResourceGenRecipeBuilder.dimensionalResourceGenRecipe()
                 .addIngredient(Ingredient.of(input))
                 .addOutput(new ItemStack(output))
+                .dimension(dimension)
                 .unlockedBy("has_" + input.toString().replace("minecraft:", ""), has(input))
                 .save(consumer);
     }

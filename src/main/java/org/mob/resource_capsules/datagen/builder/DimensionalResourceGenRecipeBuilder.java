@@ -17,7 +17,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.recipe.DimensionalResourceGenRecipe;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,6 +29,7 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
     private final Map<String, CriterionTriggerInstance> criteria = new LinkedHashMap<>();
     @Nullable
     private String group;
+    private String dimension; // Must be typed
 
     private DimensionalResourceGenRecipeBuilder() {}
 
@@ -53,6 +53,12 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
+    /** Set the dimension explicitly as a string */
+    public DimensionalResourceGenRecipeBuilder dimension(String dimensionId) {
+        this.dimension = dimensionId;
+        return this;
+    }
+
     @Override
     public DimensionalResourceGenRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
         this.criteria.put(name, criterion);
@@ -72,12 +78,9 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        if (ingredient == null) {
-            throw new IllegalStateException("Missing ingredient for " + id);
-        }
-        if (output == null || output.isEmpty()) {
-            throw new IllegalStateException("Missing output for " + id);
-        }
+        if (ingredient == null) throw new IllegalStateException("Missing ingredient for " + id);
+        if (output == null || output.isEmpty()) throw new IllegalStateException("Missing output for " + id);
+        if (dimension == null || dimension.isEmpty()) throw new IllegalStateException("Dimension must be specified for " + id);
 
         Advancement.Builder advancement = Advancement.Builder.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
@@ -91,12 +94,10 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
                 "dimensional_resource_gen/" + id.getPath()
         );
 
-        // 👇 And same for advancements (to avoid conflicts)
         ResourceLocation advancementId = new ResourceLocation(
                 id.getNamespace(),
                 "recipes/dimensional_resource_gen/" + id.getPath()
         );
-
 
         consumer.accept(new Result(
                 recipeId,
@@ -104,37 +105,37 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
                 this.output,
                 this.count,
                 this.group == null ? "" : this.group,
+                this.dimension,
                 advancement,
                 advancementId
         ));
     }
 
-    // Inner record class for saving the actual JSON
     public static class Result implements FinishedRecipe {
         private final ResourceLocation id;
         private final Ingredient ingredient;
         private final ItemStack output;
         private final int count;
         private final String group;
+        private final String dimension;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
         public Result(ResourceLocation id, Ingredient ingredient, ItemStack output, Integer count, String group,
-                      Advancement.Builder advancement, ResourceLocation advancementId) {
+                      String dimension, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.id = id;
             this.ingredient = ingredient;
             this.output = output;
             this.count = count;
             this.group = group;
+            this.dimension = dimension;
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
 
         @Override
         public void serializeRecipeData(JsonObject json) {
-            if (!group.isEmpty()) {
-                json.addProperty("group", group);
-            }
+            if (!group.isEmpty()) json.addProperty("group", group);
 
             JsonArray ingredientsArray = new JsonArray();
             ingredientsArray.add(ingredient.toJson());
@@ -144,6 +145,9 @@ public class DimensionalResourceGenRecipeBuilder implements RecipeBuilder {
             resultObj.addProperty("item", ForgeRegistries.ITEMS.getKey(output.getItem()).toString());
             resultObj.addProperty("count", count);
             json.add("result", resultObj);
+
+            // Single string for dimension
+            json.addProperty("dimension", dimension);
         }
 
         @Override

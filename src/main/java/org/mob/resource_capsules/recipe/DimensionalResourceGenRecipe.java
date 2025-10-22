@@ -19,20 +19,25 @@ public class DimensionalResourceGenRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
     private final ItemStack output;
     private final ResourceLocation id;
+    private final String allowedDimension; // single string
 
-    public DimensionalResourceGenRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id) {
+    public DimensionalResourceGenRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id, String allowedDimension) {
         this.inputItems = inputItems;
         this.output = output;
         this.id = id;
+        this.allowedDimension = allowedDimension;
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        if(pLevel.isClientSide()) {
+    public boolean matches(SimpleContainer container, Level level) {
+        if (level.isClientSide()) return false;
+
+        // Dimension check
+        if (allowedDimension != null && !level.dimension().location().toString().equals(allowedDimension)) {
             return false;
         }
 
-        return inputItems.get(0).test(pContainer.getItem(0));
+        return inputItems.get(0).test(container.getItem(0));
     }
 
     @Override
@@ -41,17 +46,17 @@ public class DimensionalResourceGenRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
         return output.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return output.copy();
     }
 
@@ -70,6 +75,10 @@ public class DimensionalResourceGenRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
+    public String getAllowedDimension() {
+        return allowedDimension;
+    }
+
     public static class Type implements RecipeType<DimensionalResourceGenRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "dimensional_resource_gen";
@@ -80,40 +89,43 @@ public class DimensionalResourceGenRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(ResourceCapsules.MOD_ID, "dimensional_resource_gen");
 
         @Override
-        public DimensionalResourceGenRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "result"));
+        public DimensionalResourceGenRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
-
-            for(int i = 0; i < inputs.size(); i++) {
+            JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
+            NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
+            for (int i = 0; i < ingredients.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new DimensionalResourceGenRecipe(inputs, output, pRecipeId);
+            String dimension = GsonHelper.getAsString(json, "dimension");
+
+            return new DimensionalResourceGenRecipe(inputs, output, recipeId, dimension);
         }
 
         @Override
-        public @Nullable DimensionalResourceGenRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
-
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(pBuffer));
+        public @Nullable DimensionalResourceGenRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+            int size = buf.readInt();
+            NonNullList<Ingredient> inputs = NonNullList.withSize(size, Ingredient.EMPTY);
+            for (int i = 0; i < size; i++) {
+                inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
-            ItemStack output = pBuffer.readItem();
-            return new DimensionalResourceGenRecipe(inputs, output, pRecipeId);
+            ItemStack output = buf.readItem();
+            String dimension = buf.readUtf();
+
+            return new DimensionalResourceGenRecipe(inputs, output, id, dimension);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf pBuffer, DimensionalResourceGenRecipe pRecipe) {
-            pBuffer.writeInt(pRecipe.inputItems.size());
-
-            for (Ingredient ingredient : pRecipe.getIngredients()) {
-                ingredient.toNetwork(pBuffer);
+        public void toNetwork(FriendlyByteBuf buf, DimensionalResourceGenRecipe recipe) {
+            buf.writeInt(recipe.inputItems.size());
+            for (Ingredient ingredient : recipe.inputItems) {
+                ingredient.toNetwork(buf);
             }
 
-            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
+            buf.writeItem(recipe.output);
+            buf.writeUtf(recipe.allowedDimension);
         }
     }
 }
