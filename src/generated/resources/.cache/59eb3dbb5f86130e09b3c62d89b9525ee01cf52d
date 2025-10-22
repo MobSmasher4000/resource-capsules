@@ -1,4 +1,5 @@
-// 1.20.1	2025-10-22T12:20:54.6573196	Loot Tables
+// 1.20.1	2025-10-22T12:57:21.4458892	Loot Tables
+3fae1b5702e24347bf1279d8874311bcc5e2e2b3 data/resource_capsules/loot_tables/blocks/dimensional_resource_gen.json
 6ad96736303784ae6479965194cd8ef78e5e5241 data/resource_capsules/loot_tables/blocks/resource_gen_tier_1.json
 09cbded769ad5bd9e6fda255bc8b3476c032602b data/resource_capsules/loot_tables/blocks/resource_gen_tier_2.json
 765b7f47f7de5577ffeda489f3f5942c5417486b data/resource_capsules/loot_tables/blocks/resource_gen_tier_3.json

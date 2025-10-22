@@ -9,10 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.mob.resource_capsules.ResourceCapsules;
-import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
-import org.mob.resource_capsules.screen.menu.ResourceGenTier2Menu;
-import org.mob.resource_capsules.screen.menu.ResourceGenTier3Menu;
-import org.mob.resource_capsules.screen.menu.Tier9001Menu;
+import org.mob.resource_capsules.screen.menu.*;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
@@ -29,6 +26,9 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<Tier9001Menu>> TIER_9001_MENU =
             registerMenuType("tier_9001_menu", Tier9001Menu::new);
+
+    public static final RegistryObject<MenuType<DimensionalResourceGenMenu>> DIMENSIONAL_RESOURCE_GEN_MENU =
+            registerMenuType("dimensional_resource_gen_menu", DimensionalResourceGenMenu::new);
 
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

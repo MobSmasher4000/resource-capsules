@@ -50,8 +50,10 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.BIO_CATALYST.get());
 
                         pOutput.accept(ModItems.NETHER_CATALYST.get());
+                        pOutput.accept(ModItems.NETHER_ADVANCED_CATALYST.get());
 
                         pOutput.accept(ModItems.END_CATALYST.get());
+                        pOutput.accept(ModItems.END_ADVANCED_CATALYST.get());
 
                         pOutput.accept(ModItems.OVERWORLD_CATALYST.get());
 
@@ -78,6 +80,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_2.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
                         pOutput.accept(ModBlocks.TIER_9001.get());
+                        pOutput.accept(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
 
                     })
                     .build());

@@ -29,6 +29,9 @@ public class ModItems {
     public static final RegistryObject<Item> END_CATALYST = ITEMS.register("end_catalyst",
         () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> END_ADVANCED_CATALYST = ITEMS.register("end_advanced_catalyst",
+        () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> END_CAPSULE = ITEMS.register("end_capsule",
         () -> new Item(new Item.Properties()));
 
@@ -37,6 +40,9 @@ public class ModItems {
 
 //    nether
     public static final RegistryObject<Item> NETHER_CATALYST = ITEMS.register("nether_catalyst",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NETHER_ADVANCED_CATALYST = ITEMS.register("nether_advanced_catalyst",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> NETHER_CAPSULE = ITEMS.register("nether_capsule",

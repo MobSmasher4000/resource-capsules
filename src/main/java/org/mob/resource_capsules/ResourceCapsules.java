@@ -19,10 +19,7 @@ import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.item.ModItems;
 import org.mob.resource_capsules.recipe.ModRecipes;
 import org.mob.resource_capsules.screen.ModMenuTypes;
-import org.mob.resource_capsules.screen.screen.ResourceGenTier1Screen;
-import org.mob.resource_capsules.screen.screen.ResourceGenTier2Screen;
-import org.mob.resource_capsules.screen.screen.ResourceGenTier3Screen;
-import org.mob.resource_capsules.screen.screen.Tier9001Screen;
+import org.mob.resource_capsules.screen.screen.*;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -80,6 +77,7 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), ResourceGenTier2Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
             MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
+            MenuScreens.register(ModMenuTypes.DIMENSIONAL_RESOURCE_GEN_MENU.get(), DimensionalResourceGenScreen::new);
         }
     }
 }

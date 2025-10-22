@@ -32,6 +32,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(Tier9001BlockEntity::new,
                             ModBlocks.TIER_9001.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<DimensionalResourceGenBlockEntity>> DIMENSIONAL_RESOURCE_GEN_BE =
+            BLOCK_ENTITIES.register("dimensional_resource_gen_be", () ->
+                    BlockEntityType.Builder.of(DimensionalResourceGenBlockEntity::new,
+                            ModBlocks.DIMENSIONAL_RESOURCE_GEN.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

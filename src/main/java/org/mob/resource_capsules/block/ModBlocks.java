@@ -15,10 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
-import org.mob.resource_capsules.block.custom.ResourceGenTier1Block;
-import org.mob.resource_capsules.block.custom.ResourceGenTier2Block;
-import org.mob.resource_capsules.block.custom.ResourceGenTier3Block;
-import org.mob.resource_capsules.block.custom.Tier9001Block;
+import org.mob.resource_capsules.block.custom.*;
 import org.mob.resource_capsules.item.ModItems;
 
 import java.util.List;
@@ -45,6 +42,10 @@ public class ModBlocks {
                 super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
             }
         });
+
+//    Dimensional resource gen
+public static final RegistryObject<Block> DIMENSIONAL_RESOURCE_GEN = registerBlock("dimensional_resource_gen",
+        () -> new DimensionalResourceGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -6,6 +6,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.mob.resource_capsules.datagen.builder.DimensionalResourceGenRecipeBuilder;
 import org.mob.resource_capsules.datagen.builder.ResourceGenTier1RecipeBuilder;
 import org.mob.resource_capsules.datagen.builder.ResourceGenTier2RecipeBuilder;
 import org.mob.resource_capsules.datagen.builder.ResourceGenTier3RecipeBuilder;
@@ -32,6 +33,10 @@ public class ModRecipeProvider extends RecipeProvider {
         resourceGenTier3Recipe(consumer, ModItems.TIER_3_MEDIUM_CATALYST.get(), ModItems.TIER_3_MEDIUM_CAPSULE.get());
         resourceGenTier3Recipe(consumer, ModItems.TIER_3_LARGE_CATALYST.get(), ModItems.TIER_3_LARGE_CAPSULE.get());
 
+        dimensionalResourceGenRecipe(consumer, ModItems.OVERWORLD_CATALYST.get(), ModItems.OVERWORLD_CAPSULE.get());
+        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_CATALYST.get(), ModItems.NETHER_CAPSULE.get());
+        dimensionalResourceGenRecipe(consumer, ModItems.END_CATALYST.get(), ModItems.END_CAPSULE.get());
+
     }
 
     private void resourceGenTier1Recipe(Consumer<FinishedRecipe> consumer, Item input, Item output) {
@@ -51,6 +56,14 @@ public class ModRecipeProvider extends RecipeProvider {
 
     private void resourceGenTier3Recipe(Consumer<FinishedRecipe> consumer, Item input, Item output) {
         ResourceGenTier3RecipeBuilder.resourceGenTier3Recipe()
+                .addIngredient(Ingredient.of(input))
+                .addOutput(new ItemStack(output))
+                .unlockedBy("has_" + input.toString().replace("minecraft:", ""), has(input))
+                .save(consumer);
+    }
+
+    private void dimensionalResourceGenRecipe(Consumer<FinishedRecipe> consumer, Item input, Item output) {
+        DimensionalResourceGenRecipeBuilder.dimensionalResourceGenRecipe()
                 .addIngredient(Ingredient.of(input))
                 .addOutput(new ItemStack(output))
                 .unlockedBy("has_" + input.toString().replace("minecraft:", ""), has(input))

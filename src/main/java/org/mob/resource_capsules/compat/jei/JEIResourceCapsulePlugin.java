@@ -12,9 +12,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
+import org.mob.resource_capsules.recipe.DimensionalResourceGenRecipe;
 import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
 import org.mob.resource_capsules.recipe.ResourceGenTier2Recipe;
 import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
+import org.mob.resource_capsules.screen.screen.DimensionalResourceGenScreen;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier1Screen;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier2Screen;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier3Screen;
@@ -39,6 +41,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCategories(new ResourceGenTier3Category(
                 registration.getJeiHelpers().getGuiHelper()));
 
+        registration.addRecipeCategories(new DimensionalResourceGenCategory(
+                registration.getJeiHelpers().getGuiHelper()));
+
     }
 
     @Override
@@ -54,6 +59,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         List<ResourceGenTier3Recipe> resourceGenTier3Recipes = recipeManager.getAllRecipesFor(ResourceGenTier3Recipe.Type.INSTANCE);
         registration.addRecipes(ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE, resourceGenTier3Recipes);
 
+        List<DimensionalResourceGenRecipe> dimensionalResourceGenRecipes = recipeManager.getAllRecipesFor(DimensionalResourceGenRecipe.Type.INSTANCE);
+        registration.addRecipes(DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE, dimensionalResourceGenRecipes);
+
     }
 
     @Override
@@ -67,6 +75,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeClickArea(ResourceGenTier3Screen.class, 74, 30, 22, 20,
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(DimensionalResourceGenScreen.class, 74, 30, 22, 20,
+                DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
+
     }
 
     @Override
@@ -79,5 +90,8 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem()),
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get().asItem()),
+                DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
     }
 }
