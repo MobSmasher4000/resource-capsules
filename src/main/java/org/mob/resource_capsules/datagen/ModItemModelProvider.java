@@ -22,10 +22,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BIO_CAPSULE);
 
         simpleItem(ModItems.END_CATALYST);
+        simpleItem(ModItems.END_ADVANCED_CATALYST);
         simpleItem(ModItems.END_CAPSULE);
         simpleItem(ModItems.END_ADVANCED_CAPSULE);
 
         simpleItem(ModItems.NETHER_CATALYST);
+        simpleItem(ModItems.NETHER_ADVANCED_CATALYST);
         simpleItem(ModItems.NETHER_CAPSULE);
         simpleItem(ModItems.NETHER_ADVANCED_CAPSULE);
 

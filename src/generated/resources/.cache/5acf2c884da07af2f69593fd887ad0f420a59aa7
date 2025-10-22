@@ -1,10 +1,12 @@
-// 1.20.1	2025-10-14T16:14:51.2816638	Item Models: resource_capsules
+// 1.20.1	2025-10-22T13:41:53.8285962	Item Models: resource_capsules
 37edfe12798e54f7035c808010ad9e4354d9e21a assets/resource_capsules/models/item/bio_capsule.json
 01f115b030fbb3ae90b02e8fee070cb6e4fc6454 assets/resource_capsules/models/item/bio_catalyst.json
 6e98e44e50f32aa26db508c3d084547b5577402a assets/resource_capsules/models/item/end_advanced_capsule.json
+b440101ea0938459da2d0d3a4e6825fed15305d2 assets/resource_capsules/models/item/end_advanced_catalyst.json
 a8a2a9a6e478d9eae8be1e7cd8bde12a07881bc1 assets/resource_capsules/models/item/end_capsule.json
 a1cab46b7d646a8068e247bcb67d98eeffd8c1c3 assets/resource_capsules/models/item/end_catalyst.json
 7c7626827a533c6dcf2b55873a387508de399cd4 assets/resource_capsules/models/item/nether_advanced_capsule.json
+cab2bb3a972ec14e68b2b4749feb96ae1fdb50e1 assets/resource_capsules/models/item/nether_advanced_catalyst.json
 7220ec60b53ccd6222b150b06a392f0ad39a550b assets/resource_capsules/models/item/nether_capsule.json
 0f43dd8bf93764abdb2d4d8401909f8295ea22c7 assets/resource_capsules/models/item/nether_catalyst.json
 f58602805dbe661e436f85a40cdbbef420af5d98 assets/resource_capsules/models/item/overworld_capsule.json

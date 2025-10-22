@@ -2,9 +2,12 @@ package org.mob.resource_capsules.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.mob.resource_capsules.datagen.builder.DimensionalResourceGenRecipeBuilder;
 import org.mob.resource_capsules.datagen.builder.ResourceGenTier1RecipeBuilder;
@@ -35,7 +38,23 @@ public class ModRecipeProvider extends RecipeProvider {
 
         dimensionalResourceGenRecipe(consumer, ModItems.OVERWORLD_CATALYST.get(), ModItems.OVERWORLD_CAPSULE.get());
         dimensionalResourceGenRecipe(consumer, ModItems.NETHER_CATALYST.get(), ModItems.NETHER_CAPSULE.get());
+        dimensionalResourceGenRecipe(consumer, ModItems.NETHER_ADVANCED_CATALYST.get(), ModItems.NETHER_ADVANCED_CAPSULE.get());
         dimensionalResourceGenRecipe(consumer, ModItems.END_CATALYST.get(), ModItems.END_CAPSULE.get());
+        dimensionalResourceGenRecipe(consumer, ModItems.END_ADVANCED_CATALYST.get(), ModItems.END_ADVANCED_CAPSULE.get());
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.NETHER_ADVANCED_CATALYST.get())
+                .requires(ModItems.NETHER_CATALYST.get())
+                .requires(Items.WITHER_SKELETON_SKULL)
+                .requires(Items.SOUL_SAND)
+                .unlockedBy("has_nether_catalyst", has(ModItems.NETHER_CATALYST.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.END_ADVANCED_CATALYST.get())
+                .requires(ModItems.END_CATALYST.get())
+                .requires(Items.DRAGON_HEAD)
+                .requires(Items.DRAGON_BREATH)
+                .unlockedBy("has_end_catalyst", has(ModItems.END_CATALYST.get()))
+                .save(consumer);
 
     }
 
