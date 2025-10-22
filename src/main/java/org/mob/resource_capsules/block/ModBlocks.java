@@ -1,7 +1,11 @@
 package org.mob.resource_capsules.block;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -9,12 +13,15 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.custom.ResourceGenTier1Block;
 import org.mob.resource_capsules.block.custom.ResourceGenTier2Block;
 import org.mob.resource_capsules.block.custom.ResourceGenTier3Block;
+import org.mob.resource_capsules.block.custom.Tier9001Block;
 import org.mob.resource_capsules.item.ModItems;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -29,6 +36,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> RESOURCE_GEN_TIER_3 = registerBlock("resource_gen_tier_3",
             () -> new ResourceGenTier3Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
+//   Duper tier 9001
+    public static final RegistryObject<Block> TIER_9001 = registerBlock("tier_9001",
+        () -> new Tier9001Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()){
+            @Override
+            public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+                pTooltip.add(Component.translatable("tooltip.resource_capsules.tier_9001"));
+                super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+            }
+        });
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -4,9 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -26,21 +23,10 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
-import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
+import org.mob.resource_capsules.screen.menu.Tier9001Menu;
 
-import java.util.Optional;
-
-public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2){
-        @Override
-        protected void onContentsChanged(int slot) {
-            setChanged();
-            if(!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
-        }
-    };
+public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -49,17 +35,17 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 100;
+    private int maxProgress = 20;
 
 
-    public ResourceGenTier1BlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.RESOURCE_GEN_TIER_1_BE.get(), pPos, pBlockState);
+    public Tier9001BlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.TIER_9001_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> ResourceGenTier1BlockEntity.this.progress;
-                    case 1 -> ResourceGenTier1BlockEntity.this.maxProgress;
+                    case 0 -> Tier9001BlockEntity.this.progress;
+                    case 1 -> Tier9001BlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -67,8 +53,8 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> ResourceGenTier1BlockEntity.this.progress = pValue;
-                    case 1 -> ResourceGenTier1BlockEntity.this.maxProgress = pValue;
+                    case 0 -> Tier9001BlockEntity.this.progress = pValue;
+                    case 1 -> Tier9001BlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -77,14 +63,6 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
                 return 2;
             }
         };
-    }
-
-    public ItemStack getRenderStack() {
-        if(itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
-            return itemHandler.getStackInSlot(INPUT_SLOT);
-        } else {
-            return itemHandler.getStackInSlot(OUTPUT_SLOT);
-        }
     }
 
     @Override
@@ -118,18 +96,18 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.resource_capsules.resource_gen_tier_1");
+        return Component.translatable("block.resource_capsules.tier_9001");
     }
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new ResourceGenTier1Menu(pContainerId, pPlayerInventory, this, this.data);
+        return new Tier9001Menu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("resource_gen_tier_1.progress", progress);
+        pTag.putInt("tier_9001.progress", progress);
 
         super.saveAdditional(pTag);
     }
@@ -138,7 +116,7 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("resource_gen_tier_1.progress");
+        progress = pTag.getInt("tier_9001.progress");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -160,33 +138,21 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     }
 
     private void craftItem() {
-        Optional<ResourceGenTier1Recipe> recipe = getCurrentRecipe();
-        ItemStack result = recipe.get().getResultItem(null);
+        ItemStack result = this.itemHandler.getStackInSlot(0).copy();
 
         this.itemHandler.extractItem(INPUT_SLOT, 1, true);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+                64));
     }
 
     private boolean hasRecipe() {
-        Optional<ResourceGenTier1Recipe> recipe = getCurrentRecipe();
-
-        if(recipe.isEmpty()) {
+        if(this.itemHandler.getStackInSlot(0).isEmpty()) {
             return false;
         }
-        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+        ItemStack result = this.itemHandler.getStackInSlot(0).copy();
 
         return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
-    }
-
-    private Optional<ResourceGenTier1Recipe> getCurrentRecipe() {
-        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
-        }
-
-        return this.level.getRecipeManager().getRecipeFor(ResourceGenTier1Recipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
@@ -204,16 +170,5 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     private void increaseCraftingProgress() {
         progress++;
     }
-
-    @Nullable
-    @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
-    }
-
+    
 }

@@ -27,6 +27,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ResourceGenTier3BlockEntity::new,
                             ModBlocks.RESOURCE_GEN_TIER_3.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<Tier9001BlockEntity>> TIER_9001_BE =
+            BLOCK_ENTITIES.register("tier_9001_be", () ->
+                    BlockEntityType.Builder.of(Tier9001BlockEntity::new,
+                            ModBlocks.TIER_9001.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

@@ -22,6 +22,7 @@ import org.mob.resource_capsules.screen.ModMenuTypes;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier1Screen;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier2Screen;
 import org.mob.resource_capsules.screen.screen.ResourceGenTier3Screen;
+import org.mob.resource_capsules.screen.screen.Tier9001Screen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -52,9 +53,6 @@ public class ResourceCapsules {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -62,11 +60,6 @@ public class ResourceCapsules {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
 //        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-//        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -86,6 +79,7 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_1_MENU.get(), ResourceGenTier1Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), ResourceGenTier2Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
+            MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
         }
     }
 }

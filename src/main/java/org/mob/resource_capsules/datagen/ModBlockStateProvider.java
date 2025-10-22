@@ -21,6 +21,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         customBlockStates(ModBlocks.RESOURCE_GEN_TIER_1.get());
         customBlockStates(ModBlocks.RESOURCE_GEN_TIER_2.get());
         customBlockStates(ModBlocks.RESOURCE_GEN_TIER_3.get());
+        customBlockStates(ModBlocks.TIER_9001.get());
     }
 
     private void customBlockStates(Block block) {
