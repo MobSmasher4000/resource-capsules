@@ -11,15 +11,12 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
-import org.mob.resource_capsules.block.custom.ResourceGenTier1Block;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier1Block;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 
 public class ResourceGenTier1BlockEntityRenderer implements BlockEntityRenderer<ResourceGenTier1BlockEntity> {
     public ResourceGenTier1BlockEntityRenderer(BlockEntityRendererProvider.Context context){

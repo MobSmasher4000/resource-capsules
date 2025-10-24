@@ -15,10 +15,8 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import org.mob.resource_capsules.block.custom.ResourceGenTier1Block;
-import org.mob.resource_capsules.block.custom.ResourceGenTier3Block;
-import org.mob.resource_capsules.block.entity.ResourceGenTier2BlockEntity;
-import org.mob.resource_capsules.block.entity.ResourceGenTier3BlockEntity;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier3Block;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier3BlockEntity;
 
 public class ResourceGenTier3BlockEntityRenderer implements BlockEntityRenderer<ResourceGenTier3BlockEntity> {
     public ResourceGenTier3BlockEntityRenderer(BlockEntityRendererProvider.Context context){

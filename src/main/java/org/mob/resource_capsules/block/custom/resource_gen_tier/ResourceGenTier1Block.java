@@ -1,4 +1,4 @@
-package org.mob.resource_capsules.block.custom;
+package org.mob.resource_capsules.block.custom.resource_gen_tier;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,7 +22,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 
 public class ResourceGenTier1Block extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

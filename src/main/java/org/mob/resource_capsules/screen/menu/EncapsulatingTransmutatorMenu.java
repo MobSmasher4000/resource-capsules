@@ -10,10 +10,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import org.mob.mob_lib.inventory.slot.OutputSlot;
-import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.entity.EncapsulatingTransmutatorBlockEntity;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 
 public class EncapsulatingTransmutatorMenu extends AbstractContainerMenu {

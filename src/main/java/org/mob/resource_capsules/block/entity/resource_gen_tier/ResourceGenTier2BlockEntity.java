@@ -1,4 +1,4 @@
-package org.mob.resource_capsules.block.entity;
+package org.mob.resource_capsules.block.entity.resource_gen_tier;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,8 +26,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.recipe.ResourceGenTier2Recipe;
-import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
 import org.mob.resource_capsules.screen.menu.ResourceGenTier2Menu;
 
 import java.util.Optional;

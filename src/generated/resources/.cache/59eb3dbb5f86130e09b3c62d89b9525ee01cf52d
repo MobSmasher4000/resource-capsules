@@ -1,4 +1,5 @@
-// 1.20.1	2025-10-23T10:35:58.679082	Loot Tables
+// 1.20.1	2025-10-24T14:35:58.0339125	Loot Tables
+ab69fac009cb31c90921d3114b79ca9fee3d4c04 data/resource_capsules/loot_tables/blocks/catalytic_converter.json
 3fae1b5702e24347bf1279d8874311bcc5e2e2b3 data/resource_capsules/loot_tables/blocks/dimensional_resource_gen.json
 2421435f7094b00b0b203b42548bbfec710305a1 data/resource_capsules/loot_tables/blocks/encapsulating_transmutator.json
 6ad96736303784ae6479965194cd8ef78e5e5241 data/resource_capsules/loot_tables/blocks/resource_gen_tier_1.json

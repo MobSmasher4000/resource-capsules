@@ -40,6 +40,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCategories(new EncapsulatingTransmutatorCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new CatalyticConverterCategory(
+                registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -61,6 +64,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         List<EncapsulatingTransmutatorRecipe> encapsulatingTransmutatorRecipes = recipeManager.getAllRecipesFor(EncapsulatingTransmutatorRecipe.Type.INSTANCE);
         registration.addRecipes(EncapsulatingTransmutatorCategory.ENCAPSULATING_TRANSMUTATOR_RECIPE_TYPE, encapsulatingTransmutatorRecipes);
 
+        List<CatalyticConverterRecipe> catalyticConverterRecipes = recipeManager.getAllRecipesFor(CatalyticConverterRecipe.Type.INSTANCE);
+        registration.addRecipes(CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE, catalyticConverterRecipes);
+
     }
 
     @Override
@@ -80,6 +86,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeClickArea(EncapsulatingTransmutatorScreen.class, 90, 33, 23, 18,
                 EncapsulatingTransmutatorCategory.ENCAPSULATING_TRANSMUTATOR_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(CatalyticConverterScreen.class, 90, 33, 23, 18,
+                CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE);
+
     }
 
     @Override
@@ -98,5 +107,8 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get().asItem()),
                 EncapsulatingTransmutatorCategory.ENCAPSULATING_TRANSMUTATOR_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CATALYTIC_CONVERTER.get().asItem()),
+                CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE);
     }
 }

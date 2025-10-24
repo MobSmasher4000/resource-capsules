@@ -1,5 +1,6 @@
 package org.mob.resource_capsules.datagen;
 
+import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -54,7 +55,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(consumer);
 
 
-//      Encapsulting Transmutator
+//      Encapsulating Transmutator
         EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
                 .addIngredient(Ingredient.of(Items.FEATHER), 64)
                 .addIngredient(Ingredient.of(ModItems.BIO_CAPSULE.get()), 64)
@@ -94,6 +95,62 @@ public class ModRecipeProvider extends RecipeProvider {
                 .addOutput(new ItemStack(Items.DRAGON_HEAD))
                 .unlockedBy("has_chorus_flower", has(Items.CHORUS_FLOWER))
                 .save(consumer);
+
+//      Catalytic Converter
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_1_MINI_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.COPPER_INGOT), 64)
+                .addIngredient(Ingredient.of(Items.IRON_INGOT), 64)
+                .addIngredient(Ingredient.of(Items.BONE_MEAL), 64)
+                .addIngredient(Ingredient.of(Items.COAL), 64)
+                .addIngredient(Ingredient.of(Items.REDSTONE), 64)
+                .addOutput(new ItemStack(ModItems.TIER_1_MEDIUM_CATALYST.get()))
+                .unlockedBy("has_mini_catalyst", has(ModItems.TIER_1_MINI_CATALYST.get()))
+                .save(consumer);
+
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_2_MINI_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.LAPIS_LAZULI), 64)
+                .addIngredient(Ingredient.of(Items.GOLD_INGOT), 64)
+                .addIngredient(Ingredient.of(Items.DIAMOND), 64)
+                .addOutput(new ItemStack(ModItems.TIER_2_MEDIUM_CATALYST.get()))
+                .unlockedBy("has_mini_catalyst", has(ModItems.TIER_2_MINI_CATALYST.get()))
+                .save(consumer);
+
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_3_MINI_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.EMERALD), 64)
+                .addOutput(new ItemStack(ModItems.TIER_3_MEDIUM_CATALYST.get()))
+                .unlockedBy("has_mini_catalyst", has(ModItems.TIER_3_MINI_CATALYST.get()))
+                .save(consumer);
+
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_1_MEDIUM_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.COPPER_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.IRON_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.BONE_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.COAL_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.REDSTONE_BLOCK), 64)
+                .addOutput(new ItemStack(ModItems.TIER_1_LARGE_CATALYST.get()))
+                .unlockedBy("has_medium_catalyst", has(ModItems.TIER_1_MEDIUM_CATALYST.get()))
+                .save(consumer);
+
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_2_MEDIUM_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.LAPIS_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.DIAMOND_BLOCK), 64)
+                .addIngredient(Ingredient.of(Items.GOLD_BLOCK), 64)
+                .addOutput(new ItemStack(ModItems.TIER_2_LARGE_CATALYST.get()))
+                .unlockedBy("has_medium_catalyst", has(ModItems.TIER_2_MEDIUM_CATALYST.get()))
+                .save(consumer);
+
+        CatalyticConverterRecipeBuilder.catalyticConverterRecipe()
+                .addIngredient(Ingredient.of(ModItems.TIER_3_MEDIUM_CATALYST.get()), 1)
+                .addIngredient(Ingredient.of(Items.EMERALD_BLOCK), 64)
+                .addOutput(new ItemStack(ModItems.TIER_3_LARGE_CATALYST.get()))
+                .unlockedBy("has_medium_catalyst", has(ModItems.TIER_3_MEDIUM_CATALYST.get()))
+                .save(consumer);
+
 
 
     }

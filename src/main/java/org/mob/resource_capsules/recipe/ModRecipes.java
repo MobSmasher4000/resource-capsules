@@ -28,6 +28,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<EncapsulatingTransmutatorRecipe>> ENCAPSULATING_TRANSMUTATOR_SERIALIZER =
             SERIALIZERS.register("encapsulating_transmutator", () -> EncapsulatingTransmutatorRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<CatalyticConverterRecipe>> CATALYTIC_CONVERTER_SERIALIZER =
+            SERIALIZERS.register("catalytic_converter", () -> CatalyticConverterRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

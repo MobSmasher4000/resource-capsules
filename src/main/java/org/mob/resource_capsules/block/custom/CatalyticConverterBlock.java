@@ -21,13 +21,14 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
+import org.mob.resource_capsules.block.entity.CatalyticConverterBlockEntity;
+import org.mob.resource_capsules.block.entity.EncapsulatingTransmutatorBlockEntity;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
-import org.mob.resource_capsules.block.entity.ResourceGenTier3BlockEntity;
 
-public class ResourceGenTier3Block extends BaseEntityBlock {
+public class CatalyticConverterBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public ResourceGenTier3Block(Properties pProperties) {
+    public CatalyticConverterBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
@@ -52,8 +53,8 @@ public class ResourceGenTier3Block extends BaseEntityBlock {
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof ResourceGenTier3BlockEntity) {
-                ((ResourceGenTier3BlockEntity) blockEntity).drops();
+            if (blockEntity instanceof CatalyticConverterBlockEntity) {
+                ((CatalyticConverterBlockEntity) blockEntity).drops();
             }
         }
 
@@ -64,8 +65,8 @@ public class ResourceGenTier3Block extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof ResourceGenTier3BlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (ResourceGenTier3BlockEntity)entity, pPos);
+            if(entity instanceof CatalyticConverterBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (CatalyticConverterBlockEntity)entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -76,7 +77,7 @@ public class ResourceGenTier3Block extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ResourceGenTier3BlockEntity(pPos, pState);
+        return new CatalyticConverterBlockEntity(pPos, pState);
     }
 
     @Nullable
@@ -86,7 +87,7 @@ public class ResourceGenTier3Block extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.RESOURCE_GEN_TIER_3_BE.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.CATALYTIC_CONVERTER_BE.get(),
                 (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }

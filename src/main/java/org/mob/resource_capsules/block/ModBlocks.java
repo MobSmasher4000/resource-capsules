@@ -16,6 +16,9 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.custom.*;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier1Block;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier2Block;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier3Block;
 import org.mob.resource_capsules.item.ModItems;
 
 import java.util.List;
@@ -50,6 +53,10 @@ public class ModBlocks {
 //    Encapsulating Transmutator
     public static final RegistryObject<Block> ENCAPSULATING_TRANSMUTATOR = registerBlock("encapsulating_transmutator",
         () -> new EncapsulatingTransmutatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+
+//   Catalytic Converter
+    public static final RegistryObject<Block> CATALYTIC_CONVERTER = registerBlock("catalytic_converter",
+        () -> new CatalyticConverterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

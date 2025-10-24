@@ -1,0 +1,21 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "resource_capsules:tier_3_mini_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:emerald"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "resource_capsules:tier_3_medium_catalyst"
+  }
+}

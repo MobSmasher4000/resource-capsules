@@ -61,3 +61,17 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "mob_lib"
+mandatory = true
+versionRange = "[1.20.1-forge-1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "alltheores"
+mandatory = false
+versionRange = "[2.2.4,)"
+ordering = "AFTER"
+side = "BOTH"

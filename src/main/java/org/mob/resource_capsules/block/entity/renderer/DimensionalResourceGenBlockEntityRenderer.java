@@ -16,9 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import org.mob.resource_capsules.block.custom.DimensionalResourceGenBlock;
-import org.mob.resource_capsules.block.custom.ResourceGenTier1Block;
 import org.mob.resource_capsules.block.entity.DimensionalResourceGenBlockEntity;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
 
 public class DimensionalResourceGenBlockEntityRenderer implements BlockEntityRenderer<DimensionalResourceGenBlockEntity> {
     public DimensionalResourceGenBlockEntityRenderer(BlockEntityRendererProvider.Context context){

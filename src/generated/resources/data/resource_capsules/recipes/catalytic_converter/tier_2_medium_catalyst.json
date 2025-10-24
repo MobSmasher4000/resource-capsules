@@ -1,0 +1,33 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "resource_capsules:tier_2_mini_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:gold_ingot"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:diamond"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "resource_capsules:tier_2_medium_catalyst"
+  }
+}

@@ -11,8 +11,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.mob.mob_lib.inventory.slot.OutputSlot;
 import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
-import org.mob.resource_capsules.block.entity.ResourceGenTier2BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier2BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 
 public class ResourceGenTier2Menu extends AbstractContainerMenu {

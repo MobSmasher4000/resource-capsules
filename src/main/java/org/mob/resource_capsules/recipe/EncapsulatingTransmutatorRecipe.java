@@ -74,12 +74,6 @@ public class EncapsulatingTransmutatorRecipe implements Recipe<SimpleContainer> 
         return inputs;
     }
 
-    public NonNullList<Ingredient> getJEIIngredients() {
-        NonNullList<Ingredient> list = NonNullList.create();
-        list.addAll(inputs); // only the Ingredient part
-        return list;
-    }
-
     public List<Integer> getInputCounts() {
         return inputCounts;
     }

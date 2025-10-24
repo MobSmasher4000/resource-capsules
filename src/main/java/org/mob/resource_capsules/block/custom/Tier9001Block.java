@@ -22,7 +22,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
-import org.mob.resource_capsules.block.entity.ResourceGenTier3BlockEntity;
 import org.mob.resource_capsules.block.entity.Tier9001BlockEntity;
 
 public class Tier9001Block extends BaseEntityBlock {

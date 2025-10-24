@@ -7,6 +7,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier2BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier3BlockEntity;
 
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
@@ -41,6 +44,11 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("encapsulating_transmutator_be", () ->
                     BlockEntityType.Builder.of(EncapsulatingTransmutatorBlockEntity::new,
                             ModBlocks.ENCAPSULATING_TRANSMUTATOR.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<CatalyticConverterBlockEntity>> CATALYTIC_CONVERTER_BE =
+            BLOCK_ENTITIES.register("catalytic_converter_be", () ->
+                    BlockEntityType.Builder.of(CatalyticConverterBlockEntity::new,
+                            ModBlocks.CATALYTIC_CONVERTER.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

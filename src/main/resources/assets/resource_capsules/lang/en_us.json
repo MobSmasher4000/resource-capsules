@@ -52,6 +52,9 @@
   "block.resource_capsules.dimensional_resource_gen": "Dimensional Resource Generator",
   "block.resource_capsules.tier_9001": "Tier 9001 Gen",
   "tooltip.resource_capsules.tier_9001": "Ultimate duper",
-  "block.resource_capsules.encapsulating_transmutator":"Encapsulating Transmutator"
+  "block.resource_capsules.encapsulating_transmutator":"Encapsulating Transmutator",
+
+  "block.resource_capsules.catalytic_converter":"Catalytic Convertor",
+  "tooltip.resource_capsules.catalytic_converter":"Convert mini to medium to large catalysts"
 
 }

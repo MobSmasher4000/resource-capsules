@@ -11,7 +11,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.mob.mob_lib.inventory.slot.OutputSlot;
 import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.block.entity.Tier9001BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 

@@ -25,6 +25,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         customBlockStatesWithoutTopSlot(ModBlocks.TIER_9001.get());
         customBlockStatesWithoutTopSlot(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
+        customBlockStatesWithoutTopSlot(ModBlocks.CATALYTIC_CONVERTER.get());
     }
 
     private void customBlockStatesWithTopSlot(Block block) {

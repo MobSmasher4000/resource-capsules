@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 import org.mob.mob_lib.inventory.slot.OutputSlot;
 

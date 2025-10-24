@@ -23,7 +23,6 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.block.entity.EncapsulatingTransmutatorBlockEntity;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
-import org.mob.resource_capsules.block.entity.ResourceGenTier1BlockEntity;
 
 public class EncapsulatingTransmutatorBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

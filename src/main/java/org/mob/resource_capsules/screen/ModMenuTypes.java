@@ -33,6 +33,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<EncapsulatingTransmutatorMenu>> ENCAPSULATING_TRANSMUTATOR_MENU =
             registerMenuType("encapsulating_transmutator_menu", EncapsulatingTransmutatorMenu::new);
 
+    public static final RegistryObject<MenuType<CatalyticConverterMenu>> CATALYTIC_CONVERTER_MENU =
+            registerMenuType("catalytic_converter_menu", CatalyticConverterMenu::new);
+
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
