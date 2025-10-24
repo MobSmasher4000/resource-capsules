@@ -30,6 +30,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<DimensionalResourceGenMenu>> DIMENSIONAL_RESOURCE_GEN_MENU =
             registerMenuType("dimensional_resource_gen_menu", DimensionalResourceGenMenu::new);
 
+    public static final RegistryObject<MenuType<EncapsulatingTransmutatorMenu>> ENCAPSULATING_TRANSMUTATOR_MENU =
+            registerMenuType("encapsulating_transmutator_menu", EncapsulatingTransmutatorMenu::new);
+
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

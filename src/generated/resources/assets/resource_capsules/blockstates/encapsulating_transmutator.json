@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "resource_capsules:block/encapsulating_transmutator",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "resource_capsules:block/encapsulating_transmutator"
+    },
+    "facing=south": {
+      "model": "resource_capsules:block/encapsulating_transmutator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "resource_capsules:block/encapsulating_transmutator",
+      "y": 270
+    }
+  }
+}

@@ -25,6 +25,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.RESOURCE_GEN_TIER_3.get())
                 .add(ModBlocks.TIER_9001.get())
                 .add(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get())
+                .add(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get())
         ;
     }
 }

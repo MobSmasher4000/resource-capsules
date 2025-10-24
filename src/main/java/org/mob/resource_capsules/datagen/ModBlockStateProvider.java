@@ -18,14 +18,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        customBlockStates(ModBlocks.RESOURCE_GEN_TIER_1.get());
-        customBlockStates(ModBlocks.RESOURCE_GEN_TIER_2.get());
-        customBlockStates(ModBlocks.RESOURCE_GEN_TIER_3.get());
-        customBlockStates(ModBlocks.TIER_9001.get());
-        customBlockStates(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
+        customBlockStatesWithTopSlot(ModBlocks.RESOURCE_GEN_TIER_1.get());
+        customBlockStatesWithTopSlot(ModBlocks.RESOURCE_GEN_TIER_2.get());
+        customBlockStatesWithTopSlot(ModBlocks.RESOURCE_GEN_TIER_3.get());
+        customBlockStatesWithTopSlot(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
+
+        customBlockStatesWithoutTopSlot(ModBlocks.TIER_9001.get());
+        customBlockStatesWithoutTopSlot(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
     }
 
-    private void customBlockStates(Block block) {
+    private void customBlockStatesWithTopSlot(Block block) {
         String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
 
         // Block-specific front texture
@@ -34,6 +36,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // Shared textures for other faces
         ResourceLocation sideTex = modLoc("block/side");
         ResourceLocation topTex = modLoc("block/top_with_slot");
+        ResourceLocation bottomTex = modLoc("block/bottom");
+
+        ModelFile model = models().cube(name,
+                bottomTex, // down
+                topTex,    // up
+                frontTex,  // north (front)
+                sideTex,   // south
+                sideTex,   // east
+                sideTex    // west
+        ).texture("particle",sideTex);
+
+        horizontalBlock(block, model);
+        simpleBlockItem(block, model);
+    }
+
+    private void customBlockStatesWithoutTopSlot(Block block) {
+        String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
+
+        // Block-specific front texture
+        ResourceLocation frontTex = modLoc("block/" + name);
+
+        // Shared textures for other faces
+        ResourceLocation sideTex = modLoc("block/side");
+        ResourceLocation topTex = modLoc("block/top");
         ResourceLocation bottomTex = modLoc("block/bottom");
 
         ModelFile model = models().cube(name,

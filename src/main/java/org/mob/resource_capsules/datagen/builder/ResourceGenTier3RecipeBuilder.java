@@ -91,7 +91,6 @@ public class ResourceGenTier3RecipeBuilder implements RecipeBuilder {
                 "resource_gen_tier_3/" + id.getPath()
         );
 
-        // 👇 And same for advancements (to avoid conflicts)
         ResourceLocation advancementId = new ResourceLocation(
                 id.getNamespace(),
                 "recipes/resource_gen_tier_3/" + id.getPath()

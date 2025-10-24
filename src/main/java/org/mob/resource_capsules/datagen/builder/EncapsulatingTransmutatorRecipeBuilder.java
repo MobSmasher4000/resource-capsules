@@ -16,50 +16,59 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
+import org.mob.resource_capsules.recipe.EncapsulatingTransmutatorRecipe;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
-    private Ingredient ingredient;
+public class EncapsulatingTransmutatorRecipeBuilder implements RecipeBuilder {
+    private final List<Ingredient> ingredients = new ArrayList<>();
+    private final List<Integer> inputCounts = new ArrayList<>();
     private ItemStack output;
-    private int count = 1;
+    private int outputCount = 1;
     private final Map<String, CriterionTriggerInstance> criteria = new LinkedHashMap<>();
     @Nullable
     private String group;
 
-    private ResourceGenTier1RecipeBuilder() {}
+    private EncapsulatingTransmutatorRecipeBuilder() {}
 
-    public static ResourceGenTier1RecipeBuilder resourceGenTier1Recipe() {
-        return new ResourceGenTier1RecipeBuilder();
+    public static EncapsulatingTransmutatorRecipeBuilder encapsulatingTransmutatorRecipe() {
+        return new EncapsulatingTransmutatorRecipeBuilder();
     }
 
-    public ResourceGenTier1RecipeBuilder addIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
+    // Add ingredient with specific count
+    public EncapsulatingTransmutatorRecipeBuilder addIngredient(Ingredient ingredient, int count) {
+        if (this.ingredients.size() >= 9) {
+            throw new IllegalStateException("Cannot have more than 9 ingredients!");
+        }
+        this.ingredients.add(ingredient);
+        this.inputCounts.add(count);
         return this;
     }
 
-    public ResourceGenTier1RecipeBuilder addOutput(ItemStack output) {
+    // Add output item
+    public EncapsulatingTransmutatorRecipeBuilder addOutput(ItemStack output) {
         this.output = output;
-        this.count = output.getCount();
+        this.outputCount = output.getCount();
         return this;
     }
 
-    public ResourceGenTier1RecipeBuilder count(int count) {
-        this.count = count;
+    public EncapsulatingTransmutatorRecipeBuilder outputCount(int count) {
+        this.outputCount = count;
         return this;
     }
 
     @Override
-    public ResourceGenTier1RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+    public EncapsulatingTransmutatorRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
     @Override
-    public ResourceGenTier1RecipeBuilder group(@Nullable String group) {
+    public EncapsulatingTransmutatorRecipeBuilder group(@Nullable String group) {
         this.group = group;
         return this;
     }
@@ -71,8 +80,8 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        if (ingredient == null) {
-            throw new IllegalStateException("Missing ingredient for " + id);
+        if (ingredients.isEmpty()) {
+            throw new IllegalStateException("Missing ingredients for " + id);
         }
         if (output == null || output.isEmpty()) {
             throw new IllegalStateException("Missing output for " + id);
@@ -87,42 +96,49 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
 
         ResourceLocation recipeId = new ResourceLocation(
                 id.getNamespace(),
-                "resource_gen_tier_1/" + id.getPath()
+                "encapsulating_transmutator/" + id.getPath()
         );
 
         ResourceLocation advancementId = new ResourceLocation(
                 id.getNamespace(),
-                "recipes/resource_gen_tier_1/" + id.getPath()
+                "recipes/encapsulating_transmutator/" + id.getPath()
         );
-
 
         consumer.accept(new Result(
                 recipeId,
-                this.ingredient,
+                this.ingredients,
+                this.inputCounts,
                 this.output,
-                this.count,
+                this.outputCount,
                 this.group == null ? "" : this.group,
                 advancement,
                 advancementId
         ));
     }
 
-    // Inner record class for saving the actual JSON
     public static class Result implements FinishedRecipe {
         private final ResourceLocation id;
-        private final Ingredient ingredient;
+        private final List<Ingredient> ingredients;
+        private final List<Integer> inputCounts;
         private final ItemStack output;
-        private final int count;
+        private final int outputCount;
         private final String group;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation id, Ingredient ingredient, ItemStack output, Integer count, String group,
-                      Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation id,
+                      List<Ingredient> ingredients,
+                      List<Integer> inputCounts,
+                      ItemStack output,
+                      int outputCount,
+                      String group,
+                      Advancement.Builder advancement,
+                      ResourceLocation advancementId) {
             this.id = id;
-            this.ingredient = ingredient;
+            this.ingredients = ingredients;
+            this.inputCounts = inputCounts;
             this.output = output;
-            this.count = count;
+            this.outputCount = outputCount;
             this.group = group;
             this.advancement = advancement;
             this.advancementId = advancementId;
@@ -135,12 +151,17 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
             }
 
             JsonArray ingredientsArray = new JsonArray();
-            ingredientsArray.add(ingredient.toJson());
+            for (int i = 0; i < ingredients.size(); i++) {
+                JsonObject entry = new JsonObject();
+                entry.add("ingredient", ingredients.get(i).toJson());
+                entry.addProperty("count", inputCounts.get(i));
+                ingredientsArray.add(entry);
+            }
             json.add("ingredients", ingredientsArray);
 
             JsonObject resultObj = new JsonObject();
             resultObj.addProperty("item", ForgeRegistries.ITEMS.getKey(output.getItem()).toString());
-            resultObj.addProperty("count", count);
+            resultObj.addProperty("count", outputCount);
             json.add("result", resultObj);
         }
 
@@ -151,7 +172,7 @@ public class ResourceGenTier1RecipeBuilder implements RecipeBuilder {
 
         @Override
         public net.minecraft.world.item.crafting.RecipeSerializer<?> getType() {
-            return ResourceGenTier1Recipe.Serializer.INSTANCE;
+            return EncapsulatingTransmutatorRecipe.Serializer.INSTANCE;
         }
 
         @Nullable

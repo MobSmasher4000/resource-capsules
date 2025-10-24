@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:nether_star"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wither_skull": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wither_skeleton_skull"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wither_skull"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:nether_star"
+    ]
+  },
+  "sends_telemetry_event": true
+}

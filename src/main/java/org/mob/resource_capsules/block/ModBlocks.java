@@ -44,8 +44,12 @@ public class ModBlocks {
         });
 
 //    Dimensional resource gen
-public static final RegistryObject<Block> DIMENSIONAL_RESOURCE_GEN = registerBlock("dimensional_resource_gen",
+    public static final RegistryObject<Block> DIMENSIONAL_RESOURCE_GEN = registerBlock("dimensional_resource_gen",
         () -> new DimensionalResourceGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+
+//    Encapsulating Transmutator
+    public static final RegistryObject<Block> ENCAPSULATING_TRANSMUTATOR = registerBlock("encapsulating_transmutator",
+        () -> new EncapsulatingTransmutatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

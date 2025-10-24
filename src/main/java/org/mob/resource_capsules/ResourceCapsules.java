@@ -78,6 +78,7 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
             MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
             MenuScreens.register(ModMenuTypes.DIMENSIONAL_RESOURCE_GEN_MENU.get(), DimensionalResourceGenScreen::new);
+            MenuScreens.register(ModMenuTypes.ENCAPSULATING_TRANSMUTATOR_MENU.get(), EncapsulatingTransmutatorScreen::new);
         }
     }
 }

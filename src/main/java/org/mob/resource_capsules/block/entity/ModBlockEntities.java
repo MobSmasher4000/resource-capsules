@@ -37,6 +37,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(DimensionalResourceGenBlockEntity::new,
                             ModBlocks.DIMENSIONAL_RESOURCE_GEN.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<EncapsulatingTransmutatorBlockEntity>> ENCAPSULATING_TRANSMUTATOR_BE =
+            BLOCK_ENTITIES.register("encapsulating_transmutator_be", () ->
+                    BlockEntityType.Builder.of(EncapsulatingTransmutatorBlockEntity::new,
+                            ModBlocks.ENCAPSULATING_TRANSMUTATOR.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

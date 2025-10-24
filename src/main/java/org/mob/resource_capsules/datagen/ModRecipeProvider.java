@@ -9,10 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.mob.resource_capsules.datagen.builder.DimensionalResourceGenRecipeBuilder;
-import org.mob.resource_capsules.datagen.builder.ResourceGenTier1RecipeBuilder;
-import org.mob.resource_capsules.datagen.builder.ResourceGenTier2RecipeBuilder;
-import org.mob.resource_capsules.datagen.builder.ResourceGenTier3RecipeBuilder;
+import org.mob.resource_capsules.datagen.builder.*;
 import org.mob.resource_capsules.item.ModItems;
 
 import java.util.function.Consumer;
@@ -55,6 +52,49 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Items.DRAGON_BREATH)
                 .unlockedBy("has_end_catalyst", has(ModItems.END_CATALYST.get()))
                 .save(consumer);
+
+
+//      Encapsulting Transmutator
+        EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
+                .addIngredient(Ingredient.of(Items.FEATHER), 64)
+                .addIngredient(Ingredient.of(ModItems.BIO_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.BIO_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.BIO_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.BIO_CAPSULE.get()), 64)
+                .addOutput(new ItemStack(Items.PHANTOM_MEMBRANE))
+                .unlockedBy("has_feather", has(Items.FEATHER))
+                .save(consumer);
+
+        EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
+                .addIngredient(Ingredient.of(Items.WITHER_SKELETON_SKULL), 1)
+                .addIngredient(Ingredient.of(ModItems.NETHER_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.NETHER_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.NETHER_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.NETHER_ADVANCED_CAPSULE.get()), 64)
+                .addOutput(new ItemStack(Items.NETHER_STAR))
+                .unlockedBy("has_wither_skull", has(Items.WITHER_SKELETON_SKULL))
+                .save(consumer);
+
+        EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
+                .addIngredient(Ingredient.of(Items.GLASS_BOTTLE), 1)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addOutput(new ItemStack(Items.DRAGON_BREATH))
+                .unlockedBy("has_glass_bottle", has(Items.GLASS_BOTTLE))
+                .save(consumer);
+
+        EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
+                .addIngredient(Ingredient.of(Items.CHORUS_FLOWER), 1)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addIngredient(Ingredient.of(ModItems.END_ADVANCED_CAPSULE.get()), 64)
+                .addOutput(new ItemStack(Items.DRAGON_HEAD))
+                .unlockedBy("has_chorus_flower", has(Items.CHORUS_FLOWER))
+                .save(consumer);
+
 
     }
 

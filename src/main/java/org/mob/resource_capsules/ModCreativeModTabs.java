@@ -81,6 +81,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
                         pOutput.accept(ModBlocks.TIER_9001.get());
                         pOutput.accept(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
+                        pOutput.accept(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
 
                     })
                     .build());

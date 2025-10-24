@@ -1,0 +1,39 @@
+{
+  "type": "resource_capsules:encapsulating_transmutator",
+  "ingredients": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:chorus_flower"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "minecraft:dragon_head"
+  }
+}

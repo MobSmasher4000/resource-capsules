@@ -25,6 +25,8 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<DimensionalResourceGenRecipe>> DIMENSIONAL_RESOURCE_GEN_SERIALIZER =
             SERIALIZERS.register("dimensional_resource_gen", () -> DimensionalResourceGenRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<EncapsulatingTransmutatorRecipe>> ENCAPSULATING_TRANSMUTATOR_SERIALIZER =
+            SERIALIZERS.register("encapsulating_transmutator", () -> EncapsulatingTransmutatorRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
