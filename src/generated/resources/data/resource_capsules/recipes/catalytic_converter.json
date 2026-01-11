@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "resource_capsules:bio_resource_gen"
+    },
+    "B": {
+      "item": "resource_capsules:tier_1_mini_catalyst"
+    },
+    "C": {
+      "item": "resource_capsules:resource_gen_tier_1"
+    },
+    "D": {
+      "item": "resource_capsules:tier_2_mini_catalyst"
+    },
+    "E": {
+      "item": "resource_capsules:resource_gen_tier_2"
+    },
+    "F": {
+      "item": "resource_capsules:tier_3_mini_catalyst"
+    },
+    "G": {
+      "item": "resource_capsules:resource_gen_tier_3"
+    },
+    "H": {
+      "item": "resource_capsules:bio_catalyst"
+    },
+    "I": {
+      "item": "resource_capsules:dimensional_resource_gen"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DIF",
+    "GHE"
+  ],
+  "result": {
+    "item": "resource_capsules:catalytic_converter"
+  },
+  "show_notification": true
+}

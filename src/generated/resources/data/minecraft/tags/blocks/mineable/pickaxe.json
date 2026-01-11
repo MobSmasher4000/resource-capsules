@@ -6,6 +6,7 @@
     "resource_capsules:tier_9001",
     "resource_capsules:dimensional_resource_gen",
     "resource_capsules:encapsulating_transmutator",
-    "resource_capsules:catalytic_converter"
+    "resource_capsules:catalytic_converter",
+    "resource_capsules:bio_resource_gen"
   ]
 }

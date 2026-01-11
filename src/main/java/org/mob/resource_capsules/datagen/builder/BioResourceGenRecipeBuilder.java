@@ -1,0 +1,187 @@
+package org.mob.resource_capsules.datagen.builder;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
+import org.mob.resource_capsules.recipe.BioResouceGenRecipe;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+
+public class BioResourceGenRecipeBuilder implements RecipeBuilder {
+    private Ingredient ingredient;
+    private ItemStack output;
+    private FluidStack inputFluid = FluidStack.EMPTY; // 🔹 Added fluid input
+    private int count = 1;
+    private final Map<String, CriterionTriggerInstance> criteria = new LinkedHashMap<>();
+    @Nullable
+    private String group;
+
+    private BioResourceGenRecipeBuilder() {}
+
+    public static BioResourceGenRecipeBuilder bioResourceGenRecipe() {
+        return new BioResourceGenRecipeBuilder();
+    }
+
+    public BioResourceGenRecipeBuilder addIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
+        return this;
+    }
+
+    public BioResourceGenRecipeBuilder addOutput(ItemStack output) {
+        this.output = output;
+        this.count = output.getCount();
+        return this;
+    }
+
+    // 🔹 Add fluid input method (amount in millibuckets)
+    public BioResourceGenRecipeBuilder addFluidInput(FluidStack fluid) {
+        this.inputFluid = fluid;
+        return this;
+    }
+
+    public BioResourceGenRecipeBuilder count(int count) {
+        this.count = count;
+        return this;
+    }
+
+    @Override
+    public BioResourceGenRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+        this.criteria.put(name, criterion);
+        return this;
+    }
+
+    @Override
+    public BioResourceGenRecipeBuilder group(@Nullable String group) {
+        this.group = group;
+        return this;
+    }
+
+    @Override
+    public Item getResult() {
+        return this.output == null || this.output.isEmpty() ? Items.AIR : this.output.getItem();
+    }
+
+    @Override
+    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+        if (ingredient == null) {
+            throw new IllegalStateException("Missing ingredient for " + id);
+        }
+        if (output == null || output.isEmpty()) {
+            throw new IllegalStateException("Missing output for " + id);
+        }
+
+        Advancement.Builder advancement = Advancement.Builder.advancement()
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(RequirementsStrategy.OR);
+
+        this.criteria.forEach(advancement::addCriterion);
+
+        ResourceLocation recipeId = new ResourceLocation(
+                id.getNamespace(),
+                "bio_resource_gen/" + id.getPath()
+        );
+
+        ResourceLocation advancementId = new ResourceLocation(
+                id.getNamespace(),
+                "recipes/bio_resource_gen/" + id.getPath()
+        );
+
+        consumer.accept(new Result(
+                recipeId,
+                this.ingredient,
+                this.inputFluid, // 🔹 Pass fluid
+                this.output,
+                this.count,
+                this.group == null ? "" : this.group,
+                advancement,
+                advancementId
+        ));
+    }
+
+    // Inner record class for saving the actual JSON
+    public static class Result implements FinishedRecipe {
+        private final ResourceLocation id;
+        private final Ingredient ingredient;
+        private final FluidStack inputFluid; // 🔹 Added fluid input
+        private final ItemStack output;
+        private final int count;
+        private final String group;
+        private final Advancement.Builder advancement;
+        private final ResourceLocation advancementId;
+
+        public Result(ResourceLocation id, Ingredient ingredient, FluidStack inputFluid, ItemStack output, Integer count, String group,
+                      Advancement.Builder advancement, ResourceLocation advancementId) {
+            this.id = id;
+            this.ingredient = ingredient;
+            this.inputFluid = inputFluid;
+            this.output = output;
+            this.count = count;
+            this.group = group;
+            this.advancement = advancement;
+            this.advancementId = advancementId;
+        }
+
+        @Override
+        public void serializeRecipeData(JsonObject json) {
+            if (!group.isEmpty()) {
+                json.addProperty("group", group);
+            }
+
+            JsonArray ingredientsArray = new JsonArray();
+            ingredientsArray.add(ingredient.toJson());
+            json.add("ingredients", ingredientsArray);
+
+            // 🔹 Add fluid input if present
+            if (!inputFluid.isEmpty()) {
+                JsonObject fluidJson = new JsonObject();
+                fluidJson.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(inputFluid.getFluid()).toString());
+                fluidJson.addProperty("amount", inputFluid.getAmount());
+                json.add("fluid", fluidJson);
+            }
+
+            JsonObject resultObj = new JsonObject();
+            resultObj.addProperty("item", ForgeRegistries.ITEMS.getKey(output.getItem()).toString());
+            resultObj.addProperty("count", count);
+            json.add("result", resultObj);
+        }
+
+        @Override
+        public ResourceLocation getId() {
+            return id;
+        }
+
+        @Override
+        public net.minecraft.world.item.crafting.RecipeSerializer<?> getType() {
+            return BioResouceGenRecipe.Serializer.INSTANCE;
+        }
+
+        @Nullable
+        @Override
+        public JsonObject serializeAdvancement() {
+            return advancement.serializeToJson();
+        }
+
+        @Nullable
+        @Override
+        public ResourceLocation getAdvancementId() {
+            return advancementId;
+        }
+    }
+}

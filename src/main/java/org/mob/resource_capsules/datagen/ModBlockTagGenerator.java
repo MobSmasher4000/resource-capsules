@@ -27,6 +27,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get())
                 .add(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get())
                 .add(ModBlocks.CATALYTIC_CONVERTER.get())
+                .add(ModBlocks.BIO_RESOURCE_GEN.get())
         ;
     }
 }

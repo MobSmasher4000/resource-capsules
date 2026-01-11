@@ -1,8 +1,6 @@
 package org.mob.resource_capsules.recipe;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,6 +28,9 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<CatalyticConverterRecipe>> CATALYTIC_CONVERTER_SERIALIZER =
             SERIALIZERS.register("catalytic_converter", () -> CatalyticConverterRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<BioResouceGenRecipe>> BIO_RESOURCE_GEN_SERIALIZER =
+            SERIALIZERS.register("bio_resource_gen", () -> BioResouceGenRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

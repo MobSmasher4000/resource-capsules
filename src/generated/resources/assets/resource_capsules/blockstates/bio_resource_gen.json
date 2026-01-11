@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "resource_capsules:block/bio_resource_gen",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "resource_capsules:block/bio_resource_gen"
+    },
+    "facing=south": {
+      "model": "resource_capsules:block/bio_resource_gen",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "resource_capsules:block/bio_resource_gen",
+      "y": 270
+    }
+  }
+}

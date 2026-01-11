@@ -91,9 +91,9 @@ repositories {
         url "https://cursemaven.com"
     }
 
-    // flatDir {
-    //     dir 'libs'
-    // }
+     flatDir {
+         dir 'libs'
+     }
 }
 
 dependencies {
@@ -103,7 +103,8 @@ dependencies {
 
     implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
 
-    implementation fg.deobf("curse.maven:mob-library-1365010:${mob_lib_version}")
+    implementation fg.deobf(files('libs/mob_lib-1.20.1-forge-1.jar'))
+    implementation fg.deobf("curse.maven:mekanism-268560:6552911")
 
     implementation fg.deobf("curse.maven:ato-405593:${all_the_ores}")
 

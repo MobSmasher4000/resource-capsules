@@ -22,6 +22,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
         dropSelf(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
         dropSelf(ModBlocks.CATALYTIC_CONVERTER.get());
+        dropSelf(ModBlocks.BIO_RESOURCE_GEN.get());
     }
 
     @Override

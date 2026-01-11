@@ -43,6 +43,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCategories(new CatalyticConverterCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new BioResourceGenCategory(
+                registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -67,6 +70,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         List<CatalyticConverterRecipe> catalyticConverterRecipes = recipeManager.getAllRecipesFor(CatalyticConverterRecipe.Type.INSTANCE);
         registration.addRecipes(CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE, catalyticConverterRecipes);
 
+        List<BioResouceGenRecipe> bioResouceGenRecipes = recipeManager.getAllRecipesFor(BioResouceGenRecipe.Type.INSTANCE);
+        registration.addRecipes(BioResourceGenCategory.BIO_RESOUCE_GEN_RECIPE_TYPE, bioResouceGenRecipes);
+
     }
 
     @Override
@@ -89,6 +95,8 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeClickArea(CatalyticConverterScreen.class, 90, 33, 23, 18,
                 CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(BioResourceGenScreen.class, 105, 32, 7, 27,
+                BioResourceGenCategory.BIO_RESOUCE_GEN_RECIPE_TYPE);
     }
 
     @Override
@@ -110,5 +118,8 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CATALYTIC_CONVERTER.get().asItem()),
                 CatalyticConverterCategory.CATALYTIC_CONVERTER_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.BIO_RESOURCE_GEN.get().asItem()),
+                BioResourceGenCategory.BIO_RESOUCE_GEN_RECIPE_TYPE);
     }
 }

@@ -56,7 +56,17 @@ public class ModBlocks {
 
 //   Catalytic Converter
     public static final RegistryObject<Block> CATALYTIC_CONVERTER = registerBlock("catalytic_converter",
-        () -> new CatalyticConverterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+        () -> new CatalyticConverterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()){
+            @Override
+            public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+                pTooltip.add(Component.translatable("tooltip.resource_capsules.catalytic_converter"));
+                super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+            }
+        });
+
+//    Bio resource gen
+    public static final RegistryObject<Block> BIO_RESOURCE_GEN = registerBlock("bio_resource_gen",
+        () -> new BioResourceGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

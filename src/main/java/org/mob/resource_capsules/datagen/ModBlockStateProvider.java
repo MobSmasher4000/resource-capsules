@@ -22,6 +22,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         customBlockStatesWithTopSlot(ModBlocks.RESOURCE_GEN_TIER_2.get());
         customBlockStatesWithTopSlot(ModBlocks.RESOURCE_GEN_TIER_3.get());
         customBlockStatesWithTopSlot(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
+        customBlockStatesWithTopSlot(ModBlocks.BIO_RESOURCE_GEN.get());
 
         customBlockStatesWithoutTopSlot(ModBlocks.TIER_9001.get());
         customBlockStatesWithoutTopSlot(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());

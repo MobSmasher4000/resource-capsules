@@ -83,6 +83,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
                         pOutput.accept(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
                         pOutput.accept(ModBlocks.CATALYTIC_CONVERTER.get());
+                        pOutput.accept(ModBlocks.BIO_RESOURCE_GEN.get());
 
                     })
                     .build());

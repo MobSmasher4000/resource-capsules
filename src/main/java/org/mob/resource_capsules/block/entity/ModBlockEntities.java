@@ -50,6 +50,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(CatalyticConverterBlockEntity::new,
                             ModBlocks.CATALYTIC_CONVERTER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<BioResourceGenBlockEntity>> BIO_RESOURCE_GEN_BE =
+            BLOCK_ENTITIES.register("bio_resource_gen_be", () ->
+                    BlockEntityType.Builder.of(BioResourceGenBlockEntity::new,
+                            ModBlocks.BIO_RESOURCE_GEN.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

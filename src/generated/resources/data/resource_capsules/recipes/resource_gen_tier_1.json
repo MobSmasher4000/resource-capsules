@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "D": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "DDD",
+    "CCC"
+  ],
+  "result": {
+    "item": "resource_capsules:resource_gen_tier_1"
+  },
+  "show_notification": true
+}

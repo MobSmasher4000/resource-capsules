@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 60,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "minecraft:clay_ball"
+  },
+  "result": "resource_capsules:tier_1_mini_catalyst"
+}

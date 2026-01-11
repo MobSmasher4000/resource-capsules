@@ -22,7 +22,7 @@ import java.util.List;
 public class CatalyticConverterCategory implements IRecipeCategory<CatalyticConverterRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(ResourceCapsules.MOD_ID, "catalytic_converter");
     public static final ResourceLocation TEXTURE = new ResourceLocation(ResourceCapsules.MOD_ID,
-            "textures/gui/jei/catalytic_converter.png");
+            "textures/gui/jei/encapsulating_transmutator_gui.png");
 
     public static final RecipeType<CatalyticConverterRecipe> CATALYTIC_CONVERTER_RECIPE_TYPE =
             new RecipeType<>(UID, CatalyticConverterRecipe.class);

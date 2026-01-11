@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:bio_capsule"
+    }
+  },
+  "pattern": [
+    "DD ",
+    "  D",
+    "   "
+  ],
+  "result": {
+    "item": "minecraft:bamboo"
+  },
+  "show_notification": true
+}
