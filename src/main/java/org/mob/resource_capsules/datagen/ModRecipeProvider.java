@@ -1,5 +1,6 @@
 package org.mob.resource_capsules.datagen;
 
+import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -7,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.material.WaterFluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.mob.resource_capsules.ResourceCapsules;
@@ -226,7 +226,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('G', ModBlocks.RESOURCE_GEN_TIER_3.get())
                 .define('H', ModItems.BIO_CATALYST.get())
                 .define('I', ModBlocks.DIMENSIONAL_RESOURCE_GEN.get())
-                .unlockedBy("has_beacon", has(Items.BEACON))
+                .unlockedBy("has_dimensional", has(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get()))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ENCAPSULATING_TRANSMUTATOR.get())
@@ -297,7 +297,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         60
                 )
                 .unlockedBy("has_clay", has(Items.CLAY_BALL))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "tier_1_catalyst_mini"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "tier_1_catalyst_mini"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TIER_2_MINI_CATALYST.get())
                 .pattern("DBD")
@@ -328,7 +328,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("DDD")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "cactus_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "cactus_from_bio_capsule"));
 
         // Bamboo
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BAMBOO)
@@ -337,7 +337,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("   ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "bamboo_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "bamboo_from_bio_capsule"));
 
         // Wheat
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.WHEAT)
@@ -346,7 +346,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("  D")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "wheat_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "wheat_from_bio_capsule"));
 
         // Brown Mushroom
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BROWN_MUSHROOM)
@@ -355,7 +355,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" D ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "brown_mushroom_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "brown_mushroom_from_bio_capsule"));
 
         // Red Mushroom
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.RED_MUSHROOM)
@@ -364,7 +364,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" D ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "red_mushroom_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "red_mushroom_from_bio_capsule"));
 
         // Sugar Cane
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SUGAR_CANE)
@@ -373,7 +373,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("D D")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "sugar_cane_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "sugar_cane_from_bio_capsule"));
 
         // Potato
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.POTATO)
@@ -382,7 +382,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("   ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "potato_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "potato_from_bio_capsule"));
 
         // Carrot
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CARROT)
@@ -391,7 +391,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("   ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "carrot_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "carrot_from_bio_capsule"));
 
         // Melon
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.MELON_SLICE)
@@ -400,7 +400,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("DD ")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "melon_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "melon_from_bio_capsule"));
 
         // Pumpkin
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PUMPKIN)
@@ -409,7 +409,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" DD")
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "pumpkin_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "pumpkin_from_bio_capsule"));
 
         // Dandelion
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DANDELION)
@@ -419,7 +419,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .define('E', Items.WHITE_DYE)
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "dandelion_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "dandelion_from_bio_capsule"));
 
         // Poppy
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.POPPY)
@@ -429,16 +429,323 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('D', ModItems.BIO_CAPSULE.get())
                 .define('E', Items.WHITE_DYE)
                 .unlockedBy("has_bio_capsule", has(ModItems.BIO_CAPSULE.get()))
-                .save(consumer, new ResourceLocation(ResourceCapsules.MOD_ID, "poppy_from_bio_capsule"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "poppy_from_bio_capsule"));
 
         // Bio Capsule
         BioResourceGenRecipeBuilder.bioResourceGenRecipe()
                 .addIngredient(Ingredient.of(ModItems.BIO_CATALYST.get()))
-                .addFluidInput(new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("minecraft:water")), 1000)) // 1000mb = 1 bucket
+                .addFluidInput(new FluidStack(ForgeRegistries.FLUIDS.getValue(ResourceLocation.fromNamespaceAndPath("minecraft","water")), 1000)) // 1000mb = 1 bucket
                 .addOutput(ModItems.BIO_CAPSULE.get().getDefaultInstance())
                 .unlockedBy("has_bio_catalyst", has(ModItems.BIO_CATALYST.get()))
                 .save(consumer);
+
+        registerOverworldRecipes(consumer);
+        registerNetherRecipes(consumer);
+        registerEndRecipes(consumer);
+
+        // Tier 1 capsule recipes
+        Item[] capsules_tier1 = new Item[]{ModItems.TIER_1_MINI_CAPSULE.get(), ModItems.TIER_1_MEDIUM_CAPSULE.get(), ModItems.TIER_1_LARGE_CAPSULE.get()};
+
+        // IRON
+        registerTieredRecipe(consumer, "iron", capsules_tier1,
+                new Item[]{Items.IRON_NUGGET, Items.IRON_INGOT, Items.IRON_BLOCK},
+                new int[]{3, 1, 1}, new String[]{"CC ","  C","   "});
+
+        // COPPER (Pattern: CCC)
+        registerTieredRecipe(consumer, "copper", capsules_tier1,
+                new Item[]{BlockList.COPPER_NUGGET.get(), Items.COPPER_INGOT, Items.COPPER_BLOCK},
+                new int[]{3, 1, 1}, new String[]{"CCC","   ","   "});
+
+        // Tin
+        registerTieredRecipe(consumer, "tin", capsules_tier1,
+                new Item[]{BlockList.TIN_NUGGET.get(), BlockList.TIN_INGOT.get(), BlockList.TIN_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"C  ","C  ","C  "});
+
+        // REDSTONE
+        registerTieredRecipe(consumer, "redstone", capsules_tier1,
+                new Item[]{Items.REDSTONE, Items.REDSTONE, Items.REDSTONE_BLOCK},
+                new int[]{3, 6, 1}, new String[]{"CCC", "C C", "CCC"});
+
+        // COAL
+        registerTieredRecipe(consumer, "coal", capsules_tier1,
+                new Item[]{Items.COAL, Items.COAL, Items.COAL_BLOCK},
+                new int[]{3, 6, 1}, new String[]{"C C", " C ", "C C"});
+
+        // BONE MEAL
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 1).requires(capsules_tier1[0])
+                .unlockedBy("has_item", has(capsules_tier1[0])).save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "bone_meal_from_mini_capsule"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 3).requires(capsules_tier1[1])
+                .unlockedBy("has_item", has(capsules_tier1[1])).save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "bone_meal_from_medium_capsule"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_BLOCK, 1).requires(capsules_tier1[2])
+                .unlockedBy("has_item", has(capsules_tier1[2])).save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "bone_block_from_large_capsule"));
+
+        // Tier 2 capsule recipes
+        Item[] capsules_tier2 = new Item[]{ModItems.TIER_2_MINI_CAPSULE.get(), ModItems.TIER_2_MEDIUM_CAPSULE.get(), ModItems.TIER_2_LARGE_CAPSULE.get()};
+
+        // Gold
+        registerTieredRecipe(consumer, "gold", capsules_tier2,
+                new Item[]{Items.GOLD_NUGGET, Items.GOLD_INGOT, Items.GOLD_BLOCK},
+                new int[]{3, 1, 1}, new String[]{"CCC", "   ", "   "});
+
+        // Diamond
+        registerTieredRecipe(consumer, "diamond", capsules_tier2,
+                new Item[]{Items.DIAMOND, Items.DIAMOND, Items.DIAMOND_BLOCK},
+                new int[]{1, 3, 1}, new String[]{"CCC", "C C", "CCC"});
+
+        // Silver
+        registerTieredRecipe(consumer, "silver", capsules_tier2,
+                new Item[]{BlockList.SILVER_NUGGET.get(), BlockList.SILVER_INGOT.get(), BlockList.SILVER_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"C  ", "C  ", "C  "});
+
+        // Nickel
+        registerTieredRecipe(consumer, "nickel", capsules_tier2,
+                new Item[]{BlockList.NICKEL_NUGGET.get(), BlockList.NICKEL_INGOT.get(), BlockList.NICKEL_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"  C", "CC ", "   "});
+
+        // Lapis
+        registerTieredRecipe(consumer, "lapis", capsules_tier2,
+                new Item[]{Items.LAPIS_LAZULI, Items.LAPIS_LAZULI, Items.LAPIS_BLOCK},
+                new int[]{3, 6, 1}, new String[]{"C C", "   ", "C C"});
+
+        // Lead
+        registerTieredRecipe(consumer, "lead", capsules_tier2,
+                new Item[]{BlockList.LEAD_NUGGET.get(), BlockList.LEAD_INGOT.get(), BlockList.LEAD_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"C C", " C ", "   "});
+
+        // Tier 3 capsule recipes
+        Item[] capsules_tier3 = new Item[]{ModItems.TIER_3_MINI_CAPSULE.get(), ModItems.TIER_3_MEDIUM_CAPSULE.get(), ModItems.TIER_3_LARGE_CAPSULE.get()};
+
+        // Osmium
+        registerTieredRecipe(consumer, "osmium", capsules_tier3,
+                new Item[]{BlockList.OSMIUM_NUGGET.get(), BlockList.OSMIUM_INGOT.get(), BlockList.OSMIUM_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"CCC", "   ", "   "});
+
+        // Uranium
+        registerTieredRecipe(consumer, "uranium", capsules_tier3,
+                new Item[]{BlockList.URANIUM_NUGGET.get(), BlockList.URANIUM_INGOT.get(), BlockList.URANIUM_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"CC ", "  C", "   "});
+
+        // Emerald
+        registerTieredRecipe(consumer, "emerald", capsules_tier3,
+                new Item[]{Items.EMERALD, Items.EMERALD, Items.EMERALD_BLOCK},
+                new int[]{1, 3, 1}, new String[]{"CCC", "C C", "CCC"});
+
+        // Platinum
+        registerTieredRecipe(consumer, "platinum", capsules_tier3,
+                new Item[]{BlockList.PLATINUM_NUGGET.get(), BlockList.PLATINUM_INGOT.get(), BlockList.PLATINUM_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"C  ", "C  ", "C  "});
+
+        // Aluminum
+        registerTieredRecipe(consumer, "aluminum", capsules_tier3,
+                new Item[]{BlockList.ALUMINUM_NUGGET.get(), BlockList.ALUMINUM_INGOT.get(), BlockList.ALUMINUM_BLOCK.get().asItem()},
+                new int[]{3, 1, 1}, new String[]{"C C", " C ", "   "});
+
     }
+
+    private void registerOverworldRecipes(Consumer<FinishedRecipe> consumer) {
+        Item capsule = ModItems.OVERWORLD_CAPSULE.get();
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ARROW, 2)
+                .requires(capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "arrow_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PRISMARINE_CRYSTALS)
+                .pattern("DDD").pattern("DDD").pattern("DDD")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "prismarine_crystals_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PRISMARINE_SHARD, 2)
+                .pattern("DDD").pattern("D D").pattern("DDD")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "prismarine_shard_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SPIDER_EYE, 2)
+                .pattern("DDD").pattern(" D ").pattern("DDD")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "spider_eye_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ROTTEN_FLESH, 3)
+                .pattern("D  ").pattern(" D ").pattern("  D")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "rotten_flesh_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BONE, 2)
+                .pattern("D  ").pattern("D  ").pattern("D  ")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "bone_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GUNPOWDER, 2)
+                .pattern("D  ").pattern(" D ").pattern("D  ")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "gunpowder_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SLIME_BALL, 3)
+                .pattern("  D").pattern(" D ").pattern("D  ")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "slime_ball_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SALMON, 3)
+                .pattern("DD ").pattern("DD ").pattern("   ")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "salmon_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COD, 3)
+                .pattern("D D").pattern("   ").pattern("D D")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "cod_from_overworld_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TROPICAL_FISH, 3)
+                .pattern("D D").pattern("D D").pattern("   ")
+                .define('D', capsule)
+                .unlockedBy("has_overworld_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "tropical_fish_from_overworld_capsule"));
+    }
+
+    private void registerNetherRecipes(Consumer<FinishedRecipe> consumer) {
+        Item capsule = ModItems.NETHER_CAPSULE.get();
+        Item advCapsule = ModItems.NETHER_ADVANCED_CAPSULE.get();
+
+        // Nether Capsule
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.QUARTZ)
+                .pattern("D D").pattern(" D ").pattern("D D").define('D', capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "quartz_from_nether_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GLOWSTONE_DUST, 2)
+                .pattern("DDD").define('D', capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "glowstone_dust_from_nether_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_SAND)
+                .pattern("D  ").pattern(" D ").pattern("  D").define('D', capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "soul_sand_from_nether_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.MAGMA_CREAM)
+                .pattern("  D").pattern(" D ").pattern("D  ").define('D', capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "magma_cream_from_nether_capsule"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.NETHER_WART)
+                .requires(capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "nether_wart_from_nether_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GHAST_TEAR)
+                .pattern("DDD").pattern("   ").pattern("DDD").define('D', capsule)
+                .unlockedBy("has_nether_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "ghast_tear_from_nether_capsule"));
+
+        // Nether Advanced Capsule
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.NETHERITE_SCRAP)
+                .pattern("DDD").pattern("DDD").pattern("DDD").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "netherite_scrap_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.WITHER_SKELETON_SKULL)
+                .pattern("DDD").pattern("DED").pattern("DDD").define('D', advCapsule).define('E', Items.BONE_BLOCK)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "wither_skeleton_skull_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BLAZE_ROD)
+                .pattern("DDD").pattern(" D ").pattern("DDD").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "blaze_rod_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.QUARTZ, 2)
+                .pattern("D D").pattern(" D ").pattern("D D").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "quartz_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GLOWSTONE_DUST, 4)
+                .pattern("DDD").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "glowstone_dust_from_nether_adv_capsule"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.NETHER_WART, 2)
+                .requires(advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "nether_wart_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GHAST_TEAR, 2)
+                .pattern("DDD").pattern("   ").pattern("DDD").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "ghast_tear_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_SAND, 2)
+                .pattern("D  ").pattern(" D ").pattern("  D").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "soul_sand_from_nether_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.MAGMA_CREAM, 2)
+                .pattern("  D").pattern(" D ").pattern("D  ").define('D', advCapsule)
+                .unlockedBy("has_nether_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "magma_cream_from_nether_adv_capsule"));
+    }
+
+    private void registerEndRecipes(Consumer<FinishedRecipe> consumer) {
+        Item capsule = ModItems.END_CAPSULE.get();
+        Item advCapsule = ModItems.END_ADVANCED_CAPSULE.get();
+
+        // End Capsule
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ENDER_PEARL)
+                .pattern("DDD").pattern("D D").pattern("DDD").define('D', capsule)
+                .unlockedBy("has_end_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "ender_pearl_from_end_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SHULKER_SHELL)
+                .pattern("D D").pattern(" D ").pattern("D D").define('D', capsule)
+                .unlockedBy("has_end_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "shulker_shell_from_end_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CHORUS_FRUIT)
+                .pattern("DDD").pattern("   ").pattern("   ").define('D', capsule)
+                .unlockedBy("has_end_capsule", has(capsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "chorus_fruit_from_end_capsule"));
+
+        // End Advanced Capsule
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ENDER_PEARL, 2)
+                .pattern("DDD").pattern("D D").pattern("DDD").define('D', advCapsule)
+                .unlockedBy("has_end_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "ender_pearl_from_end_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SHULKER_SHELL, 2)
+                .pattern("D D").pattern(" D ").pattern("D D").define('D', advCapsule)
+                .unlockedBy("has_end_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "shulker_shell_from_end_adv_capsule"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CHORUS_FRUIT, 2)
+                .pattern("DDD").pattern("   ").pattern("   ").define('D', advCapsule)
+                .unlockedBy("has_end_adv_capsule", has(advCapsule))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "chorus_fruit_from_end_adv_capsule"));
+    }
+
+    private void registerTieredRecipe(Consumer<FinishedRecipe> consumer, String group, Item[] capsules, Item[] ouputs, int[] outputCounts, String[] strings) {
+        for (int i = 0; i < 3; i++) {
+            String suffix = (i == 0) ? "_mini" : (i == 1) ? "_medium" : "_large";
+            ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, group + "_from" + suffix + "_capsule");
+
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ouputs[i], outputCounts[i])
+                    .pattern(strings[0])
+                    .pattern(strings[1])
+                    .pattern(strings[2])
+                    .group(group)
+                    .define('C', capsules[i])
+                    .unlockedBy("has_item",has(capsules[i]))
+                    .save(consumer,recipeId);
+        }
+    }
+
 
     private void resourceGenTier1Recipe(Consumer<FinishedRecipe> consumer, Item input, Item output) {
         ResourceGenTier1RecipeBuilder.resourceGenTier1Recipe()

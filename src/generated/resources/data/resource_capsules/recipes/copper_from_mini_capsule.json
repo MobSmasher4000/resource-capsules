@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "copper",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_mini_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 3,
+    "item": "alltheores:copper_nugget"
+  },
+  "show_notification": true
+}

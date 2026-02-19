@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "resource_capsules:overworld_capsule"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:arrow"
+  }
+}

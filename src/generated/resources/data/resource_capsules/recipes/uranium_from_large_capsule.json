@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "uranium",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_3_large_capsule"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "  C",
+    "   "
+  ],
+  "result": {
+    "item": "alltheores:uranium_block"
+  },
+  "show_notification": true
+}

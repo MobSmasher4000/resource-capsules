@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:overworld_capsule"
+    }
+  },
+  "pattern": [
+    "D  ",
+    "D  ",
+    "D  "
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:bone"
+  },
+  "show_notification": true
+}

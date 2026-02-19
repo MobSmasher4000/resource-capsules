@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:nether_advanced_capsule"
+    }
+  },
+  "pattern": [
+    "DDD"
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:glowstone_dust"
+  },
+  "show_notification": true
+}

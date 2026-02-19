@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "osmium",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_3_mini_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 3,
+    "item": "alltheores:osmium_nugget"
+  },
+  "show_notification": true
+}

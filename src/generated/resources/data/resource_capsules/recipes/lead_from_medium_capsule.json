@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "lead",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_medium_capsule"
+    }
+  },
+  "pattern": [
+    "C C",
+    " C ",
+    "   "
+  ],
+  "result": {
+    "item": "alltheores:lead_ingot"
+  },
+  "show_notification": true
+}

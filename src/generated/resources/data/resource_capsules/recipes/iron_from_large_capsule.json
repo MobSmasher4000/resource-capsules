@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "iron",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_large_capsule"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "  C",
+    "   "
+  ],
+  "result": {
+    "item": "minecraft:iron_block"
+  },
+  "show_notification": true
+}

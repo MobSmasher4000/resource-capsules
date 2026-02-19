@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dimensional": {
+    "has_overworld_capsule": {
       "conditions": {
         "items": [
           {
             "items": [
-              "resource_capsules:dimensional_resource_gen"
+              "resource_capsules:overworld_capsule"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "resource_capsules:catalytic_converter"
+        "recipe": "resource_capsules:spider_eye_from_overworld_capsule"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dimensional",
+      "has_overworld_capsule",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "resource_capsules:catalytic_converter"
+      "resource_capsules:spider_eye_from_overworld_capsule"
     ]
   },
   "sends_telemetry_event": false

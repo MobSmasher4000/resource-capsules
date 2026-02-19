@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dimensional": {
+    "has_item": {
       "conditions": {
         "items": [
           {
             "items": [
-              "resource_capsules:dimensional_resource_gen"
+              "resource_capsules:tier_1_mini_capsule"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "resource_capsules:catalytic_converter"
+        "recipe": "resource_capsules:tin_from_mini_capsule"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dimensional",
+      "has_item",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "resource_capsules:catalytic_converter"
+      "resource_capsules:tin_from_mini_capsule"
     ]
   },
   "sends_telemetry_event": false

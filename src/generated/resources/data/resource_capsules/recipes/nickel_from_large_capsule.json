@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "nickel",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_large_capsule"
+    }
+  },
+  "pattern": [
+    "  C",
+    "CC ",
+    "   "
+  ],
+  "result": {
+    "item": "alltheores:nickel_block"
+  },
+  "show_notification": true
+}

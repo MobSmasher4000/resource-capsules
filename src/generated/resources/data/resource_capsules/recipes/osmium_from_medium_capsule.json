@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "osmium",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_3_medium_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "alltheores:osmium_ingot"
+  },
+  "show_notification": true
+}

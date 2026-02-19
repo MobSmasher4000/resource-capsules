@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:end_capsule"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "minecraft:chorus_fruit"
+  },
+  "show_notification": true
+}

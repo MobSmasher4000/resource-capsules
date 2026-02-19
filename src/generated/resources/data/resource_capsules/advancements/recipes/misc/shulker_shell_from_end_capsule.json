@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dimensional": {
+    "has_end_capsule": {
       "conditions": {
         "items": [
           {
             "items": [
-              "resource_capsules:dimensional_resource_gen"
+              "resource_capsules:end_capsule"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "resource_capsules:catalytic_converter"
+        "recipe": "resource_capsules:shulker_shell_from_end_capsule"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dimensional",
+      "has_end_capsule",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "resource_capsules:catalytic_converter"
+      "resource_capsules:shulker_shell_from_end_capsule"
     ]
   },
   "sends_telemetry_event": false

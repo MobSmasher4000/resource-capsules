@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tin",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_medium_capsule"
+    }
+  },
+  "pattern": [
+    "C  ",
+    "C  ",
+    "C  "
+  ],
+  "result": {
+    "item": "alltheores:tin_ingot"
+  },
+  "show_notification": true
+}

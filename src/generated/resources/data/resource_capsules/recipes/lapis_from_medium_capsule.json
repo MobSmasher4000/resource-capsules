@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "lapis",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_medium_capsule"
+    }
+  },
+  "pattern": [
+    "C C",
+    "   ",
+    "C C"
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:lapis_lazuli"
+  },
+  "show_notification": true
+}
