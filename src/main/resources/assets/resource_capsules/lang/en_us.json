@@ -49,11 +49,13 @@
   "block.resource_capsules.resource_gen_tier_1": "Resource Generator Tier 1",
   "block.resource_capsules.resource_gen_tier_2": "Resource Generator Tier 2",
   "block.resource_capsules.resource_gen_tier_3": "Resource Generator Tier 3",
+  "block.resource_capsules.resource_gen_multiblock": "Resource Generator Multiblock",
   "block.resource_capsules.dimensional_resource_gen": "Dimensional Resource Generator",
   "block.resource_capsules.tier_9001": "Tier 9001 Gen",
   "tooltip.resource_capsules.tier_9001": "Ultimate duper",
   "block.resource_capsules.encapsulating_transmutator":"Encapsulating Transmutator",
   "block.resource_capsules.bio_resource_gen":"Biological Resource Generator",
+  "block.resource_capsules.machine_casing":"Machine Casing",
 
   "block.resource_capsules.catalytic_converter":"Catalytic Convertor",
   "tooltip.resource_capsules.catalytic_converter":"Convert mini to medium to large catalysts"

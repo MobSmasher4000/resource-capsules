@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
+import org.mob.resource_capsules.block.entity.dummy.ResourceGenMultiblockDummyBlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier2BlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier3BlockEntity;
@@ -54,6 +55,16 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("bio_resource_gen_be", () ->
                     BlockEntityType.Builder.of(BioResourceGenBlockEntity::new,
                             ModBlocks.BIO_RESOURCE_GEN.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ResourceGenMultiblockBlockEntity>> RESOURCE_GEN_MULTIBLOCK_BE =
+            BLOCK_ENTITIES.register("resource_gen_multiblock_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenMultiblockBlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_MULTIBLOCK.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ResourceGenMultiblockDummyBlockEntity>> RESOURCE_GEN_DUMMY_BE =
+            BLOCK_ENTITIES.register("resource_gen_dummy_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenMultiblockDummyBlockEntity::new,
+                            ModBlocks.MACHINE_CASING.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

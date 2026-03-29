@@ -6,10 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
-import org.mob.resource_capsules.block.entity.renderer.DimensionalResourceGenBlockEntityRenderer;
-import org.mob.resource_capsules.block.entity.renderer.ResourceGenTier1BlockEntityRenderer;
-import org.mob.resource_capsules.block.entity.renderer.ResourceGenTier2BlockEntityRenderer;
-import org.mob.resource_capsules.block.entity.renderer.ResourceGenTier3BlockEntityRenderer;
+import org.mob.resource_capsules.block.entity.renderer.*;
 
 @Mod.EventBusSubscriber(modid = ResourceCapsules.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventBusClientEvents {
@@ -23,5 +20,6 @@ public class ModEventBusClientEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_TIER_2_BE.get(), ResourceGenTier2BlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_TIER_3_BE.get(), ResourceGenTier3BlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.DIMENSIONAL_RESOURCE_GEN_BE.get(), DimensionalResourceGenBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_MULTIBLOCK_BE.get(), ResourceGenMultiblockPreviewRenderer::new);
     }
 }

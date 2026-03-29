@@ -35,6 +35,8 @@ public class ModBlocks {
             () -> new ResourceGenTier2Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_TIER_3 = registerBlock("resource_gen_tier_3",
             () -> new ResourceGenTier3Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> RESOURCE_GEN_MULTIBLOCK = registerBlock("resource_gen_multiblock",
+            () -> new ResourceGenMultiblockBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
 //   Duper tier 9001
     public static final RegistryObject<Block> TIER_9001 = registerBlock("tier_9001",
@@ -67,6 +69,9 @@ public class ModBlocks {
 //    Bio resource gen
     public static final RegistryObject<Block> BIO_RESOURCE_GEN = registerBlock("bio_resource_gen",
         () -> new BioResourceGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> MACHINE_CASING = registerBlock("machine_casing",
+            () -> new ResourceGenMultiblockDummyBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

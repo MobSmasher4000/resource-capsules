@@ -56,6 +56,43 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_end_catalyst", has(ModItems.END_CATALYST.get()))
                 .save(consumer);
 
+//      Machine Casing
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MACHINE_CASING.get(), 4)
+                .pattern(" I ")
+                .pattern("ICI")
+                .pattern(" I ")
+                .define('I', Items.IRON_BLOCK)
+                .define('C', Items.COPPER_BLOCK)
+                .unlockedBy(getHasName(Items.IRON_BLOCK), has(Items.IRON_BLOCK))
+                .save(consumer);
+
+//      Resource Gen Multiblock
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
+                .pattern(" I ")
+                .pattern("ICI")
+                .pattern(" I ")
+                .define('C', ModBlocks.MACHINE_CASING.get())
+                .define('I', ModBlocks.RESOURCE_GEN_TIER_3.get())
+                .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
+                .pattern(" I ")
+                .pattern("ICI")
+                .pattern(" I ")
+                .define('C', ModBlocks.MACHINE_CASING.get())
+                .define('I', ModBlocks.RESOURCE_GEN_TIER_1.get())
+                .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "resource_gen_multiblock_from_tier_1"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
+                .pattern(" I ")
+                .pattern("ICI")
+                .pattern(" I ")
+                .define('C', ModBlocks.MACHINE_CASING.get())
+                .define('I', ModBlocks.RESOURCE_GEN_TIER_2.get())
+                .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "resource_gen_multiblock_from_tier_2"));
 
 //      Encapsulating Transmutator
         EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()

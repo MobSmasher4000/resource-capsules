@@ -2,6 +2,7 @@ package org.mob.resource_capsules;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -65,11 +66,16 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_1_MENU.get(), ResourceGenTier1Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), ResourceGenTier2Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_MULTIBLOCK_MENU.get(), ResourceGenMultiblockScreen::new);
             MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
             MenuScreens.register(ModMenuTypes.DIMENSIONAL_RESOURCE_GEN_MENU.get(), DimensionalResourceGenScreen::new);
             MenuScreens.register(ModMenuTypes.ENCAPSULATING_TRANSMUTATOR_MENU.get(), EncapsulatingTransmutatorScreen::new);
             MenuScreens.register(ModMenuTypes.CATALYTIC_CONVERTER_MENU.get(), CatalyticConverterScreen::new);
             MenuScreens.register(ModMenuTypes.BIO_RESOURCE_GEN_MENU.get(), BioResourceGenScreen::new);
         }
+    }
+
+    public static ResourceLocation resourceLocation(String name) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 }

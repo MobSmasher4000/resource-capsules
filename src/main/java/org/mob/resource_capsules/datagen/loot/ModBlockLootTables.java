@@ -18,11 +18,13 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_1.get());
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_2.get());
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_3.get());
+        dropSelf(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
         dropSelf(ModBlocks.TIER_9001.get());
         dropSelf(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
         dropSelf(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
         dropSelf(ModBlocks.CATALYTIC_CONVERTER.get());
         dropSelf(ModBlocks.BIO_RESOURCE_GEN.get());
+        dropSelf(ModBlocks.MACHINE_CASING.get());
     }
 
     @Override

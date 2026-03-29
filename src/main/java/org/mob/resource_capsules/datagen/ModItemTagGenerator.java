@@ -7,6 +7,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
+import org.mob.resource_capsules.block.ModBlocks;
+import org.mob.resource_capsules.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,6 +19,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-
+        tag(ModTags.Items.RESOURCE_GENERATOR)
+                .add(ModBlocks.RESOURCE_GEN_TIER_1.get().asItem())
+                .add(ModBlocks.RESOURCE_GEN_TIER_2.get().asItem())
+                .add(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem())
+        ;
     }
 }

@@ -76,9 +76,11 @@ public class ModCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RESOURCE_GEN_TIER_1.get()))
                     .title(Component.translatable("creative_tab.misc_tab"))
                     .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModBlocks.MACHINE_CASING.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_1.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_2.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
                         pOutput.accept(ModBlocks.TIER_9001.get());
                         pOutput.accept(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
                         pOutput.accept(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
