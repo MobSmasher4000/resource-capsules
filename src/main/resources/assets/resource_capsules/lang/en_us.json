@@ -58,6 +58,12 @@
   "block.resource_capsules.machine_casing":"Machine Casing",
 
   "block.resource_capsules.catalytic_converter":"Catalytic Convertor",
-  "tooltip.resource_capsules.catalytic_converter":"Convert mini to medium to large catalysts"
+  "tooltip.resource_capsules.catalytic_converter":"Convert mini to medium to large catalysts",
+  "block.resource_capsules.fluid_gen": "Fluid Generator",
+  "block.resource_capsules.fluid_gen_multiblock": "Fluid Generator Multiblock",
+  "block.resource_capsules.item_output_hatch": "Item Output Hatch",
+  "block.resource_capsules.fluid_output_hatch": "Fluid Output Hatch",
+  "tooltip.resource_capsules.resource_gen_multiblock": "A 3x3 cube hollow cube made of machine casing and upto 4 Item output hatches allowed",
+  "tooltip.resource_capsules.fluid_gen_multiblock": "A 3x3 cube hollow cube made of machine casing and upto 4 fluid output hatches allowed"
 
 }

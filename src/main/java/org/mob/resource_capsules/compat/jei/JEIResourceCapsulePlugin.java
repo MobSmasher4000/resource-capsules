@@ -46,6 +46,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCategories(new BioResourceGenCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new FluidGenCategory(
+                registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -72,6 +75,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         List<BioResouceGenRecipe> bioResouceGenRecipes = recipeManager.getAllRecipesFor(BioResouceGenRecipe.Type.INSTANCE);
         registration.addRecipes(BioResourceGenCategory.BIO_RESOUCE_GEN_RECIPE_TYPE, bioResouceGenRecipes);
+
+        List<FluidGenRecipe> fluidGenRecipes = recipeManager.getAllRecipesFor(FluidGenRecipe.Type.INSTANCE);
+        registration.addRecipes(FluidGenCategory.FLUID_GEN_RECIPE_TYPE, fluidGenRecipes);
 
     }
 
@@ -110,6 +116,15 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem()),
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
 
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier1Category.RESOURCE_GEN_TIER_1_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier2Category.RESOURCE_GEN_TIER_2_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
+
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get().asItem()),
                 DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
 
@@ -121,5 +136,11 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BIO_RESOURCE_GEN.get().asItem()),
                 BioResourceGenCategory.BIO_RESOUCE_GEN_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FLUID_GEN.get().asItem()),
+                FluidGenCategory.FLUID_GEN_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FLUID_GEN_MULTIBLOCK.get().asItem()),
+                FluidGenCategory.FLUID_GEN_RECIPE_TYPE);
     }
 }

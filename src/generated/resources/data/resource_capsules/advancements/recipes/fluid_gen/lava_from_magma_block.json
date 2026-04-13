@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "has_magma_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:magma_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "resource_capsules:lava_from_magma_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_magma_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "resource_capsules:lava_from_magma_block"
+    ]
+  },
+  "sends_telemetry_event": true
+}

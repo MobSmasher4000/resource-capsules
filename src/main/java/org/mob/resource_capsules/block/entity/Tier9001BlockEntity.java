@@ -26,10 +26,8 @@ import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.screen.menu.Tier9001Menu;
 
 public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
-
-    private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    public final ItemStackHandler itemHandler = new ItemStackHandler(1);
+    public final ItemStackHandler outputHandler = new ItemStackHandler(1);
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -77,7 +75,7 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyItemHandler = LazyOptional.of(() -> outputHandler);
     }
 
     @Override
@@ -87,10 +85,9 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
+        SimpleContainer inventory = new SimpleContainer(2);
+        inventory.setItem(0, itemHandler.getStackInSlot(0));
+        inventory.setItem(1, outputHandler.getStackInSlot(0));
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -107,6 +104,7 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag.put("inventory", outputHandler.serializeNBT());
         pTag.putInt("tier_9001.progress", progress);
 
         super.saveAdditional(pTag);
@@ -116,6 +114,7 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        outputHandler.deserializeNBT(pTag.getCompound("inventory"));
         progress = pTag.getInt("tier_9001.progress");
     }
 
@@ -138,12 +137,11 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemStack result = this.itemHandler.getStackInSlot(0).copy();
+        ItemStack result = this.itemHandler.getStackInSlot(0).copyWithCount(64);
 
-        this.itemHandler.extractItem(INPUT_SLOT, 1, true);
+        this.itemHandler.extractItem(0, 1, true);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                64));
+        this.outputHandler.setStackInSlot(0, result);
     }
 
     private boolean hasRecipe() {
@@ -156,11 +154,11 @@ public class Tier9001BlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+        return this.outputHandler.getStackInSlot(0).isEmpty() || this.outputHandler.getStackInSlot(0).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+        return this.outputHandler.getStackInSlot(0).getCount() + count <= this.outputHandler.getStackInSlot(0).getMaxStackSize();
     }
 
     private boolean hasProgressFinished() {

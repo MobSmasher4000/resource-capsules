@@ -46,16 +46,16 @@ public class ResourceGenStructure {
         // MIDDLE LAYER (Y = 0) The Walls
         // =========================================
         PARTS.add(new Part(-1,  0, 0, casing)); // Front Left
-        // (0, 0, 0) is the Controller, so we skip it!
-        PARTS.add(new Part( 1,  0, 0, casing)); // Front Right
+//        PARTS.add(new Part(0,0, 0, casing))               Controller
+        PARTS.add(new Part(1,  0, 0, casing)); // Front Right
 
         PARTS.add(new Part(-1,  0, 1, casing)); // Middle Left
-        // (0, 0, 1) is the Hollow Air Center, so we skip it!
-        PARTS.add(new Part( 1,  0, 1, casing)); // Middle Right
+        // (0, 0, 1) is the Hollow Air Center
+        PARTS.add(new Part(1, 0, 1, casing)); // Middle Right
 
-        PARTS.add(new Part(-1,  0, 2, casing)); // Back Left
-        PARTS.add(new Part( 0,  0, 2, casing)); // Back Center
-        PARTS.add(new Part( 1,  0, 2, casing)); // Back Right
+        PARTS.add(new Part(-1, 0, 2, casing)); // Back Left
+        PARTS.add(new Part(0, 0, 2, casing)); // Back Center
+        PARTS.add(new Part(1, 0, 2, casing)); // Back Right
 
         // =========================================
         // TOP LAYER (Y = 1) The Roof

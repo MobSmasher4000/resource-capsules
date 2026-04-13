@@ -6,7 +6,7 @@
       "item": "resource_capsules:machine_casing"
     },
     "I": {
-      "item": "resource_capsules:resource_gen_tier_3"
+      "tag": "resource_capsules:resource_gen"
     }
   },
   "pattern": [

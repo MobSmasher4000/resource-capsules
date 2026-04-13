@@ -25,6 +25,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mob.mob_lib.item.custom.UpgradeItem;
@@ -36,8 +37,6 @@ import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
 import org.mob.resource_capsules.screen.menu.ResourceGenMultiblockMenu;
 import org.mob.resource_capsules.util.ModTags;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class ResourceGenMultiblockBlockEntity extends BlockEntity implements MenuProvider {
@@ -45,37 +44,38 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
     public final ItemStackHandler inputHandler = new ItemStackHandler(4) {
         @Override protected void onContentsChanged(int slot) { setChanged(); }
     };
+
     public final ItemStackHandler machineHandler = new ItemStackHandler(1) {
         @Override protected void onContentsChanged(int slot) { setChanged(); }
-
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return stack.is(ModTags.Items.RESOURCE_GENERATOR);
         }
     };
-    public final ItemStackHandler outputHandler = new ItemStackHandler(1) {
+
+    public final ItemStackHandler outputHandler = new ItemStackHandler(4) {
         @Override
-        public int getSlotLimit(int slot) {
-            return 16384;
-        }
+        public int getSlotLimit(int slot) { return 2048; }
 
         @Override
-        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
-            return 16384;
-        }
+        protected int getStackLimit(int slot, @NotNull ItemStack stack) { return 2048; }
 
         @Override
         public CompoundTag serializeNBT() {
             CompoundTag nbt = super.serializeNBT();
-            nbt.putInt("RealCount", this.stacks.get(0).getCount());
+            for (int i = 0; i < this.getSlots(); i++) {
+                nbt.putInt("RealCount_" + i, this.stacks.get(i).getCount());
+            }
             return nbt;
         }
 
         @Override
         public void deserializeNBT(CompoundTag nbt) {
             super.deserializeNBT(nbt);
-            if(nbt.contains("RealCount")) {
-                this.stacks.get(0).setCount(nbt.getInt("RealCount"));
+            for (int i = 0; i < this.getSlots(); i++) {
+                if(nbt.contains("RealCount_" + i)) {
+                    this.stacks.get(i).setCount(nbt.getInt("RealCount_" + i));
+                }
             }
         }
 
@@ -88,37 +88,26 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         }
     };
 
-    private int maxProgress = 100;
-    private int processAmount = 1;
     public final ItemStackHandler upgradeHandler = new ItemStackHandler(1) {
         @Override protected void onContentsChanged(int slot) { setChanged(); upgrade();}
-        private void upgrade(){
-            ItemStack upgradeStack = getStackInSlot(0);
-            if (getStackInSlot(0).isEmpty()){
-                maxProgress = 100;
-                processAmount = 1;
-                return;
-            }
-            if (!upgradeStack.isEmpty() && upgradeStack.getItem() instanceof UpgradeItem upgradeItem){
-                maxProgress = upgradeItem.getSpeed();
-                processAmount = upgradeItem.getAmount();
-            }
-        }
-
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            return stack.is(org.mob.mob_lib.util.ModTags.Items.ORE_UPGRADES);
+            return stack.is(org.mob.mob_lib.util.ModTags.Items.MOB_UPGRADES);
         }
     };
 
-    private LazyOptional<IItemHandler> lazyOptionalHandler = LazyOptional.empty();
+    private LazyOptional<IItemHandler> lazyOutputHandler = LazyOptional.empty();
 
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier1Recipe> quickCheckTier1;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier2Recipe> quickCheckTier2;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier3Recipe> quickCheckTier3;
 
     protected final ContainerData data;
-    private int progress = 0;
+
+    private int tickCount = 0;
+    private final int[] progress = new int[]{0, 0, 0, 0};
+    private int maxProgress = 100;
+    private int processAmount = 1;
     private boolean showPreview = false;
 
     public ResourceGenMultiblockBlockEntity(BlockPos pPos, BlockState pBlockState) {
@@ -131,56 +120,129 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
-                return switch (pIndex) {
-                    case 0 -> ResourceGenMultiblockBlockEntity.this.progress;
-                    case 1 -> ResourceGenMultiblockBlockEntity.this.maxProgress;
-                    default -> 0;
-                };
+                if (pIndex < 4) return ResourceGenMultiblockBlockEntity.this.progress[pIndex];
+                if (pIndex == 4) return ResourceGenMultiblockBlockEntity.this.maxProgress;
+                return 0;
             }
 
             @Override
             public void set(int pIndex, int pValue) {
-                switch (pIndex) {
-                    case 0 -> ResourceGenMultiblockBlockEntity.this.progress = pValue;
-                    case 1 -> ResourceGenMultiblockBlockEntity.this.maxProgress = pValue;
-                }
+                if (pIndex < 4) ResourceGenMultiblockBlockEntity.this.progress[pIndex] = pValue;
+                else if (pIndex == 4) ResourceGenMultiblockBlockEntity.this.maxProgress = pValue;
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 5;
             }
         };
     }
 
-    private List<Integer> getParticipatingSlots() {
-        List<Integer> slots = new ArrayList<>();
-        ItemStack machineStack = this.machineHandler.getStackInSlot(0);
-        if (machineStack.isEmpty()) return slots;
+    public void upgrade(){
+        ItemStack upgradeStack = upgradeHandler.getStackInSlot(0);
+        if (upgradeStack.isEmpty()){
+            maxProgress = 100;
+            processAmount = 1;
+            return;
+        }
+        if (!upgradeStack.isEmpty() && upgradeStack.getItem() instanceof UpgradeItem upgradeItem){
+            maxProgress = upgradeItem.getSpeed();
+            processAmount = upgradeItem.getAmount();
+        }
+    }
 
-        ItemStack primaryCatalyst = ItemStack.EMPTY;
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+            return lazyOutputHandler.cast();
+        }
+        return super.getCapability(cap, side);
+    }
 
-        // Loop through all 4 input slots
-        for (int i = 0; i < this.inputHandler.getSlots(); i++) {
-            ItemStack inputStack = this.inputHandler.getStackInSlot(i);
-            if (inputStack.isEmpty()) continue;
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        lazyOutputHandler = LazyOptional.of(() -> outputHandler);
+        upgrade();
+    }
 
-            if (primaryCatalyst.isEmpty()) {
-                SimpleContainer inventory = new SimpleContainer(2);
-                inventory.setItem(0, inputStack);
-                inventory.setItem(1, machineStack);
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        lazyOutputHandler.invalidate();
+    }
 
-                if (checkRecipeCache(inventory, machineStack).isPresent()) {
-                    primaryCatalyst = inputStack;
-                    slots.add(i);
-                }
-            } else {
-                if (inputStack.is(primaryCatalyst.getItem())) {
-                    slots.add(i);
-                }
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+
+        tickCount++;
+        if (tickCount >= 20) {
+            tickCount = 0;
+            if (pState.getBlock() instanceof ResourceGenMultiblockBlock block) {
+                block.checkForMultiblock(pLevel, pPos);
             }
         }
-        return slots;
+
+        if (!pState.getValue(ResourceGenMultiblockBlock.FORMED)) {
+            for (int i = 0; i < 4; i++) progress[i] = 0;
+            return;
+        }
+
+        boolean isActive = false;
+
+        for (int i = 0; i < 4; i++) {
+            if (hasRecipe(i)) {
+                isActive = true;
+                progress[i]++;
+
+                if (progress[i] >= maxProgress) {
+                    craftItem(i);
+                    progress[i] = 0;
+                }
+            } else {
+                progress[i] = 0;
+            }
+        }
+
+        if (isActive) {
+            setChanged(pLevel, pPos, pState);
+        }
+    }
+
+    private void craftItem(int slotIndex) {
+        Optional<? extends Recipe<SimpleContainer>> recipe = getCurrentRecipe(slotIndex);
+
+        if(recipe.isPresent()) {
+            ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+            this.inputHandler.extractItem(slotIndex, 1, true);
+
+            this.outputHandler.setStackInSlot(slotIndex, new ItemStack(result.getItem(),
+                    this.outputHandler.getStackInSlot(slotIndex).getCount() + processAmount));
+        }
+    }
+
+    private boolean hasRecipe(int slotIndex) {
+        Optional<? extends Recipe<SimpleContainer>> recipe = getCurrentRecipe(slotIndex);
+        if(recipe.isEmpty()) return false;
+
+        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return this.outputHandler.getStackInSlot(slotIndex).isEmpty() ||
+                (this.outputHandler.getStackInSlot(slotIndex).is(result.getItem()) &&
+                        this.outputHandler.getStackInSlot(slotIndex).getCount() + processAmount <= this.outputHandler.getSlotLimit(slotIndex));
+    }
+
+    private Optional<? extends Recipe<SimpleContainer>> getCurrentRecipe(int slotIndex) {
+        ItemStack machineStack = this.machineHandler.getStackInSlot(0);
+        ItemStack inputStack = this.inputHandler.getStackInSlot(slotIndex);
+
+        if (machineStack.isEmpty() || inputStack.isEmpty()) return Optional.empty();
+
+        SimpleContainer inventory = new SimpleContainer(2);
+        inventory.setItem(0, inputStack);
+        inventory.setItem(1, machineStack);
+
+        return checkRecipeCache(inventory, machineStack);
     }
 
     private Optional<? extends Recipe<SimpleContainer>> checkRecipeCache(SimpleContainer inventory, ItemStack machineStack) {
@@ -195,32 +257,12 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
     }
 
     @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER) {
-            return lazyOptionalHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        lazyOptionalHandler = LazyOptional.of(() -> outputHandler);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        lazyOptionalHandler.invalidate();
-    }
-
-    @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("input", inputHandler.serializeNBT());
         pTag.put("machine", machineHandler.serializeNBT());
         pTag.put("output", outputHandler.serializeNBT());
         pTag.put("upgrade", upgradeHandler.serializeNBT());
-        pTag.putInt("progress", progress);
+        pTag.putIntArray("progresses", progress);
         pTag.putBoolean("showPreview", this.showPreview);
         super.saveAdditional(pTag);
     }
@@ -232,93 +274,21 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         machineHandler.deserializeNBT(pTag.getCompound("machine"));
         outputHandler.deserializeNBT(pTag.getCompound("output"));
         upgradeHandler.deserializeNBT(pTag.getCompound("upgrade"));
-        progress = pTag.getInt("progress");
+
+        int[] loadedProgress = pTag.getIntArray("progresses");
+        if (loadedProgress.length == 4) {
+            System.arraycopy(loadedProgress, 0, this.progress, 0, 4);
+        }
         this.showPreview = pTag.getBoolean("showPreview");
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(7);
-        inventory.setItem(0, inputHandler.getStackInSlot(0));
-        inventory.setItem(1, inputHandler.getStackInSlot(1));
-        inventory.setItem(2, inputHandler.getStackInSlot(2));
-        inventory.setItem(3, inputHandler.getStackInSlot(3));
+        SimpleContainer inventory = new SimpleContainer(10);
+        for (int i = 0; i < 4; i++) inventory.setItem(i, inputHandler.getStackInSlot(i));
         inventory.setItem(4, machineHandler.getStackInSlot(0));
         inventory.setItem(5, upgradeHandler.getStackInSlot(0));
-        inventory.setItem(6, outputHandler.getStackInSlot(0));
+        for (int i = 0; i < 4; i++) inventory.setItem(6 + i, outputHandler.getStackInSlot(i));
         Containers.dropContents(this.level, this.worldPosition, inventory);
-    }
-
-    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if (!pState.getValue(ResourceGenMultiblockBlock.FORMED)) {
-            this.progress = 0;
-            return;
-        }
-
-        if(hasRecipe()) {
-            progress++;
-            setChanged(pLevel, pPos, pState);
-
-            if(progress >= maxProgress) {
-                craftItem();
-                progress = 0;
-            }
-        } else {
-            progress = 0;
-        }
-    }
-
-    private void craftItem() {
-        Optional<? extends Recipe<SimpleContainer>> recipe = getCurrentRecipe();
-
-        List<Integer> participating = getParticipatingSlots();
-        int multiplier = participating.size();
-
-        if(recipe.isPresent()) {
-            ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
-
-            int totalOutput = processAmount * multiplier;
-
-            for (int slot : participating) {
-                this.inputHandler.extractItem(slot, 1, true);
-            }
-
-            this.outputHandler.setStackInSlot(0, new ItemStack(result.getItem(),
-                    this.outputHandler.getStackInSlot(0).getCount() + totalOutput));
-        }
-    }
-
-    private boolean hasRecipe() {
-        Optional<? extends Recipe<SimpleContainer>> recipe = getCurrentRecipe();
-
-        if(recipe.isEmpty()) {
-            return false;
-        }
-
-        List<Integer> participating = getParticipatingSlots();
-        int multiplier = participating.size();
-
-        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
-
-        int totalOutput = processAmount * multiplier;
-
-        // Ensure the output slot is either empty or holds the same item and won't exceed the max storage limit
-        return this.outputHandler.getStackInSlot(0).isEmpty() ||
-                (this.outputHandler.getStackInSlot(0).is(result.getItem()) &&
-                        this.outputHandler.getStackInSlot(0).getCount() + totalOutput <= this.outputHandler.getSlotLimit(0));
-    }
-
-    private Optional<? extends Recipe<SimpleContainer>> getCurrentRecipe() {
-        List<Integer> participating = getParticipatingSlots();
-        if (participating.isEmpty()) return Optional.empty();
-
-        ItemStack machineStack = this.machineHandler.getStackInSlot(0);
-        ItemStack inputStack = this.inputHandler.getStackInSlot(participating.get(0));
-
-        SimpleContainer inventory = new SimpleContainer(2);
-        inventory.setItem(0, inputStack);
-        inventory.setItem(1, machineStack);
-
-        return checkRecipeCache(inventory, machineStack);
     }
 
     @Override
@@ -331,14 +301,11 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         return new ResourceGenMultiblockMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
-    public boolean isShowPreview() {
-        return this.showPreview;
-    }
+    public boolean isShowPreview() { return this.showPreview; }
 
     public void togglePreview() {
         this.showPreview = !this.showPreview;
         this.setChanged();
-
         if (level != null && !level.isClientSide()) {
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         }

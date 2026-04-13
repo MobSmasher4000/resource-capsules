@@ -1,0 +1,13 @@
+{
+  "type": "resource_capsules:dimensional_resource_gen",
+  "dimension": "minecraft:overworld",
+  "ingredients": [
+    {
+      "item": "resource_capsules:overworld_catalyst"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "resource_capsules:overworld_capsule"
+  }
+}

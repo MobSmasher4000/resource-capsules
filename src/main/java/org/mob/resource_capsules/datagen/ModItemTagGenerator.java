@@ -6,6 +6,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
+import org.mob.mob_lib.item.ModItems;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.util.ModTags;
@@ -23,6 +24,23 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(ModBlocks.RESOURCE_GEN_TIER_1.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_2.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem())
+        ;
+
+        tag(ModTags.Items.FLUID_GENERATOR)
+                .add(ModBlocks.FLUID_GEN.get().asItem())
+        ;
+
+        tag(ModTags.Items.FLUID_GENERATOR_UPGRADES)
+                .add(ModItems.UPGRADE_SPEED_TIER_1.get())
+                .add(ModItems.UPGRADE_SPEED_TIER_2.get())
+                .add(ModItems.UPGRADE_SPEED_TIER_3.get())
+                .add(ModItems.UPGRADE_SPEED_TIER_4.get())
+                .add(ModItems.UPGRADE_TIER_1.get())
+                .add(ModItems.UPGRADE_TIER_2.get())
+                .add(ModItems.UPGRADE_TIER_3.get())
+                .add(ModItems.UPGRADE_AMOUNT_TIER_1.get())
+                .add(ModItems.UPGRADE_AMOUNT_TIER_2.get())
+                .add(ModItems.UPGRADE_AMOUNT_TIER_3.get())
         ;
     }
 }

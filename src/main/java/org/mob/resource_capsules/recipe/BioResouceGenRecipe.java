@@ -43,7 +43,6 @@ public class BioResouceGenRecipe implements Recipe<SimpleContainer> {
         boolean itemMatches = inputItems.get(0).test(container.getItem(1));
 
         // Check fluid match (if recipe requires fluid)
-        // We will cast the container to our custom wrapper to access the fluid
         boolean fluidMatches = true;
         if (!inputFluid.isEmpty() && container instanceof BioContainer bioContainer) {
             FluidStack tankFluid = bioContainer.getFluidStack();
@@ -163,7 +162,6 @@ public class BioResouceGenRecipe implements Recipe<SimpleContainer> {
                 ingredient.toNetwork(buffer);
             }
 
-            // ✅ Write fluid stack
             recipe.inputFluid.writeToPacket(buffer);
 
             buffer.writeItem(recipe.getResultItem(null));

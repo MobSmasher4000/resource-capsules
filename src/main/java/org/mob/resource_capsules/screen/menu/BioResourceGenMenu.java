@@ -13,7 +13,6 @@ import org.mob.mob_lib.inventory.slot.OutputSlot;
 import org.mob.mob_lib.inventory.slot.SingleSlot;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.entity.BioResourceGenBlockEntity;
-import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 
 public class BioResourceGenMenu extends AbstractContainerMenu {

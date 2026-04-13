@@ -16,6 +16,8 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.custom.*;
+import org.mob.resource_capsules.block.custom.hatch.FluidOutputHatchBlock;
+import org.mob.resource_capsules.block.custom.hatch.ItemOutputHatchBlock;
 import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier1Block;
 import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier2Block;
 import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier3Block;
@@ -37,6 +39,10 @@ public class ModBlocks {
             () -> new ResourceGenTier3Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_MULTIBLOCK = registerBlock("resource_gen_multiblock",
             () -> new ResourceGenMultiblockBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FLUID_GEN = registerBlock("fluid_gen",
+            () -> new FluidGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FLUID_GEN_MULTIBLOCK = registerBlock("fluid_gen_multiblock",
+            () -> new FluidGenMultiblockBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
 //   Duper tier 9001
     public static final RegistryObject<Block> TIER_9001 = registerBlock("tier_9001",
@@ -71,7 +77,14 @@ public class ModBlocks {
         () -> new BioResourceGenBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> MACHINE_CASING = registerBlock("machine_casing",
-            () -> new ResourceGenMultiblockDummyBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> ITEM_OUTPUT_HATCH = registerBlock("item_output_hatch",
+            () -> new ItemOutputHatchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> FLUID_OUTPUT_HATCH = registerBlock("fluid_output_hatch",
+            () -> new FluidOutputHatchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

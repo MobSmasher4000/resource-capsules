@@ -32,6 +32,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<BioResouceGenRecipe>> BIO_RESOURCE_GEN_SERIALIZER =
             SERIALIZERS.register("bio_resource_gen", () -> BioResouceGenRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<FluidGenRecipe>> FLUID_GEN_SERIALIZER =
+            SERIALIZERS.register("fluid_gen", () -> FluidGenRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

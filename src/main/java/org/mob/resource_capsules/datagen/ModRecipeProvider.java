@@ -8,12 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.datagen.builder.*;
 import org.mob.resource_capsules.item.ModItems;
+import org.mob.resource_capsules.util.ModTags;
 
 import java.util.function.Consumer;
 
@@ -66,33 +68,42 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_BLOCK), has(Items.IRON_BLOCK))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ITEM_OUTPUT_HATCH.get())
+                .pattern("CHC")
+                .pattern("HCH")
+                .pattern("CHC")
+                .define('H', Items.HOPPER)
+                .define('C', Items.CHEST)
+                .unlockedBy(getHasName(Items.HOPPER), has(Items.HOPPER))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FLUID_OUTPUT_HATCH.get())
+                .pattern("CHC")
+                .pattern("HCH")
+                .pattern("CHC")
+                .define('H', Items.HOPPER)
+                .define('C', Items.BUCKET)
+                .unlockedBy(getHasName(Items.HOPPER), has(Items.HOPPER))
+                .save(consumer);
+
 //      Resource Gen Multiblock
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
                 .pattern(" I ")
                 .pattern("ICI")
                 .pattern(" I ")
                 .define('C', ModBlocks.MACHINE_CASING.get())
-                .define('I', ModBlocks.RESOURCE_GEN_TIER_3.get())
+                .define('I', ModTags.Items.RESOURCE_GENERATOR)
                 .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FLUID_GEN_MULTIBLOCK.get())
                 .pattern(" I ")
                 .pattern("ICI")
                 .pattern(" I ")
                 .define('C', ModBlocks.MACHINE_CASING.get())
-                .define('I', ModBlocks.RESOURCE_GEN_TIER_1.get())
+                .define('I', ModBlocks.FLUID_GEN.get())
                 .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "resource_gen_multiblock_from_tier_1"));
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_GEN_MULTIBLOCK.get())
-                .pattern(" I ")
-                .pattern("ICI")
-                .pattern(" I ")
-                .define('C', ModBlocks.MACHINE_CASING.get())
-                .define('I', ModBlocks.RESOURCE_GEN_TIER_2.get())
-                .unlockedBy(getHasName(ModBlocks.MACHINE_CASING.get()), has(ModBlocks.MACHINE_CASING.get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "resource_gen_multiblock_from_tier_2"));
+                .save(consumer);
 
 //      Encapsulating Transmutator
         EncapsulatingTransmutatorRecipeBuilder.encapsulatingTransmutatorRecipe()
@@ -359,6 +370,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_tier_2_mini_catalyst", has(ModItems.TIER_2_MINI_CATALYST.get()))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FLUID_GEN.get())
+                .pattern("III")
+                .pattern("IBI")
+                .pattern("III")
+                .define('I', Items.IRON_INGOT)
+                .define('B', Items.BUCKET)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
 //        Bio Capsule Recipes
         // Cactus
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CACTUS)
@@ -577,6 +597,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 new Item[]{BlockList.ALUMINUM_NUGGET.get(), BlockList.ALUMINUM_INGOT.get(), BlockList.ALUMINUM_BLOCK.get().asItem()},
                 new int[]{3, 1, 1}, new String[]{"C C", " C ", "   "});
 
+        FluidGenRecipeBuilder.fluidGenRecipe()
+                .addIngredient(Ingredient.of(Items.MUD))
+                .addOutputFluid(new FluidStack(Fluids.WATER, 100))
+                .unlockedBy(getHasName(Items.MUD), has(Items.MUD))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "water_from_mud"));
+
+        FluidGenRecipeBuilder.fluidGenRecipe()
+                .addIngredient(Ingredient.of(Items.MAGMA_BLOCK))
+                .addOutputFluid(new FluidStack(Fluids.LAVA, 100))
+                .unlockedBy(getHasName(Items.MAGMA_BLOCK), has(Items.MAGMA_BLOCK))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(ResourceCapsules.MOD_ID, "lava_from_magma_block"));
     }
 
     private void registerOverworldRecipes(Consumer<FinishedRecipe> consumer) {

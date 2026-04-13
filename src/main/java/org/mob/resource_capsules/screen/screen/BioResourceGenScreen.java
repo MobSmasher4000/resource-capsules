@@ -72,22 +72,22 @@ public class BioResourceGenScreen extends AbstractContainerScreen<BioResourceGen
         FluidStack fluidStack = menu.getFluidStack();
         if (fluidStack.isEmpty()) return;
 
-        // 1. Get Fluid Extensions & Sprite
+        // Get Fluid Extensions & Sprite
         var fluid = fluidStack.getFluid();
         var extensions = net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions.of(fluid);
         ResourceLocation stillTexture = extensions.getStillTexture(fluidStack);
 
-        // 2. Fetch the actual sprite from the Atlas
+        // Fetch the actual sprite from the Atlas
         var sprite = net.minecraft.client.Minecraft.getInstance()
                 .getTextureAtlas(net.minecraft.world.inventory.InventoryMenu.BLOCK_ATLAS)
                 .apply(stillTexture);
 
-        // 3. Calculate Height (Tank height is 60px, Capacity is 16000)
+        // Calculate Height (Tank height is 62px, Capacity is 16000)
         int tankHeight = 62;
         int fluidHeight = (int) (tankHeight * ((float) fluidStack.getAmount() / 16000));
         if (fluidHeight < 1 && fluidStack.getAmount() > 0) fluidHeight = 1; // Show at least a sliver
 
-        // 4. Set Fluid Tint (Crucial for Water/Lava)
+        // Set Fluid Tint
         int color = extensions.getTintColor(fluidStack);
         float r = ((color >> 16) & 0xFF) / 255f;
         float g = ((color >> 8) & 0xFF) / 255f;
@@ -98,13 +98,12 @@ public class BioResourceGenScreen extends AbstractContainerScreen<BioResourceGen
         RenderSystem.setShaderColor(r, g, b, a);
         RenderSystem.setShaderTexture(0, net.minecraft.world.inventory.InventoryMenu.BLOCK_ATLAS);
 
-        // 5. Blit the texture
-        // Parameters: x, y (top-left), z, width, height, sprite
+        // Blit the texture
         // We draw from the bottom of the tank upwards
         int renderY = y + (tankHeight - fluidHeight);
         guiGraphics.blit(x, renderY, 0, 16, fluidHeight, sprite);
 
-        // 6. Reset Shader Color so other GUI elements aren't tinted
+        // Reset Shader Color so other GUI elements aren't tinted
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
@@ -112,7 +111,7 @@ public class BioResourceGenScreen extends AbstractContainerScreen<BioResourceGen
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        // Check if mouse is over the tank area (x+26 to x+42, y+11 to y+61)
+        // Check if mouse is over the tank area (x+55 to x+70, y+15 to y+75)
         if (mouseX >= x + 55 && mouseX <= x + 70 && mouseY >= y + 15 && mouseY <= y + 75) {
             FluidStack fluid = menu.getFluidStack();
             Component text = fluid.isEmpty() ? Component.literal("Empty") :

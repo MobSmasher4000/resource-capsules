@@ -5,7 +5,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeBlockTagsProvider;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
@@ -30,6 +29,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.CATALYTIC_CONVERTER.get())
                 .add(ModBlocks.BIO_RESOURCE_GEN.get())
                 .add(ModBlocks.MACHINE_CASING.get())
+                .add(ModBlocks.FLUID_GEN.get())
+                .add(ModBlocks.ITEM_OUTPUT_HATCH.get())
+                .add(ModBlocks.FLUID_OUTPUT_HATCH.get())
+                .add(ModBlocks.FLUID_GEN_MULTIBLOCK.get())
         ;
     }
 }

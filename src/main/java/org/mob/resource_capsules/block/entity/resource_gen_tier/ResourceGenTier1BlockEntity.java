@@ -26,6 +26,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mob.mob_lib.item.custom.UpgradeItem;
+import org.mob.mob_lib.util.ModTags;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
 import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
@@ -33,7 +35,7 @@ import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
 import java.util.Optional;
 
 public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2){
+    public final ItemStackHandler itemHandler = new ItemStackHandler(1){
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -43,8 +45,28 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
         }
     };
 
-    private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    public final ItemStackHandler outputhandler = new ItemStackHandler(1){
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if(!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
+
+    public final ItemStackHandler upgradeHandler = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            upgrade();
+        }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return stack.is(ModTags.Items.MOB_UPGRADES_SPEED);
+        }
+    };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -80,11 +102,14 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
         };
     }
 
-    public ItemStack getRenderStack() {
-        if(itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
-            return itemHandler.getStackInSlot(INPUT_SLOT);
-        } else {
-            return itemHandler.getStackInSlot(OUTPUT_SLOT);
+    private void upgrade(){
+        ItemStack upgradeStack = upgradeHandler.getStackInSlot(0);
+        if (upgradeStack.isEmpty()){
+            maxProgress = 100;
+            return;
+        }
+        if (!upgradeStack.isEmpty() && upgradeStack.getItem() instanceof UpgradeItem upgradeItem){
+            maxProgress = upgradeItem.getSpeed();
         }
     }
 
@@ -100,7 +125,8 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyItemHandler = LazyOptional.of(() -> outputhandler);
+        upgrade();
     }
 
     @Override
@@ -110,10 +136,10 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
+        SimpleContainer inventory = new SimpleContainer(3);
+        inventory.setItem(0, itemHandler.getStackInSlot(0));
+        inventory.setItem(1, outputhandler.getStackInSlot(0));
+        inventory.setItem(2, upgradeHandler.getStackInSlot(0));
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -130,6 +156,8 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag.put("output", outputhandler.serializeNBT());
+        pTag.put("upgrade", upgradeHandler.serializeNBT());
         pTag.putInt("resource_gen_tier_1.progress", progress);
 
         super.saveAdditional(pTag);
@@ -139,6 +167,8 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        outputhandler.deserializeNBT(pTag.getCompound("output"));
+        upgradeHandler.deserializeNBT(pTag.getCompound("upgrade"));
         progress = pTag.getInt("resource_gen_tier_1.progress");
     }
 
@@ -164,10 +194,10 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
         Optional<ResourceGenTier1Recipe> recipe = getCurrentRecipe();
         ItemStack result = recipe.get().getResultItem(null);
 
-        this.itemHandler.extractItem(INPUT_SLOT, 1, true);
+        this.itemHandler.extractItem(0, 1, true);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.outputhandler.setStackInSlot(0, new ItemStack(result.getItem(),
+                this.outputhandler.getStackInSlot(0).getCount() + result.getCount()));
     }
 
     private boolean hasRecipe() {
@@ -191,11 +221,11 @@ public class ResourceGenTier1BlockEntity extends BlockEntity implements MenuProv
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+        return this.outputhandler.getStackInSlot(0).isEmpty() || this.outputhandler.getStackInSlot(0).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+        return this.outputhandler.getStackInSlot(0).getCount() + count <= this.outputhandler.getStackInSlot(0).getMaxStackSize();
     }
 
     private boolean hasProgressFinished() {

@@ -33,10 +33,9 @@ public class ResourceGenTier2Menu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SingleSlot(iItemHandler, 0, 54, 34));
-            this.addSlot(new OutputSlot(iItemHandler, 1, 104, 34));
-        });
+        this.addSlot(new SingleSlot(blockEntity.upgradeHandler, 0, 6, 6)); // slot 36
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 0, 54, 34));
+        this.addSlot(new OutputSlot(blockEntity.outputhandler, 0, 104, 34));
 
         addDataSlots(data);
     }
@@ -69,7 +68,7 @@ public class ResourceGenTier2Menu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

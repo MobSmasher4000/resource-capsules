@@ -25,6 +25,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.CATALYTIC_CONVERTER.get());
         dropSelf(ModBlocks.BIO_RESOURCE_GEN.get());
         dropSelf(ModBlocks.MACHINE_CASING.get());
+        dropSelf(ModBlocks.FLUID_GEN.get());
+        dropSelf(ModBlocks.ITEM_OUTPUT_HATCH.get());
+        dropSelf(ModBlocks.FLUID_OUTPUT_HATCH.get());
+        dropSelf(ModBlocks.FLUID_GEN_MULTIBLOCK.get());
     }
 
     @Override

@@ -81,14 +81,6 @@ public class DimensionalResourceGenBlockEntity extends BlockEntity implements Me
         };
     }
 
-    public ItemStack getRenderStack() {
-        if(itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
-            return itemHandler.getStackInSlot(INPUT_SLOT);
-        } else {
-            return itemHandler.getStackInSlot(OUTPUT_SLOT);
-        }
-    }
-
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == ForgeCapabilities.ITEM_HANDLER) {

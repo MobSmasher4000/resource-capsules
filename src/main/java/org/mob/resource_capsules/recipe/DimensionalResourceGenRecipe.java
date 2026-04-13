@@ -19,7 +19,7 @@ public class DimensionalResourceGenRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
     private final ItemStack output;
     private final ResourceLocation id;
-    private final String allowedDimension; // single string
+    private final String allowedDimension;
 
     public DimensionalResourceGenRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id, String allowedDimension) {
         this.inputItems = inputItems;

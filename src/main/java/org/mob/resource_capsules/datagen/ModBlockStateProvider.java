@@ -32,9 +32,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         customBlockStatesWithoutTopSlot(ModBlocks.TIER_9001.get());
         customBlockStatesWithoutTopSlot(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
         customBlockStatesWithoutTopSlot(ModBlocks.CATALYTIC_CONVERTER.get());
+        customBlockStatesWithoutTopSlot(ModBlocks.FLUID_GEN.get());
 
         machineCasingTexture(ModBlocks.MACHINE_CASING.get());
         resourceGenMultiblockTexture(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
+        resourceGenMultiblockTexture(ModBlocks.FLUID_GEN_MULTIBLOCK.get());
+        hatchBlock(ModBlocks.ITEM_OUTPUT_HATCH.get());
+        hatchBlock(ModBlocks.FLUID_OUTPUT_HATCH.get());
     }
 
     private void customBlockStatesWithTopSlot(Block block) {
@@ -162,6 +166,36 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         // 6. Generate the Item Model (Uses the OFF state so it looks unformed in your hand)
         simpleBlockItem(block, modelOff);
+    }
+
+    private void hatchBlock(Block block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
+
+        ModelFile model = models().getExistingFile(modLoc("block/" + name));
+
+        getVariantBuilder(block).forAllStates(state -> {
+            Direction dir = state.getValue(BlockStateProperties.FACING);
+
+            int xRot = 0;
+            int yRot = 0;
+
+            switch (dir) {
+                case UP -> xRot = 270;
+                case DOWN -> xRot = 90;
+                case SOUTH -> yRot = 180;
+                case WEST -> yRot = 270;
+                case EAST -> yRot = 90;
+                default -> {  }
+            }
+
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .rotationX(xRot)
+                    .rotationY(yRot)
+                    .build();
+        });
+
+        simpleBlockItem(block, model);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject){

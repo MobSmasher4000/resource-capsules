@@ -49,7 +49,7 @@ public class BioResourceGenRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    // 🔹 Add fluid input method (amount in millibuckets)
+    //  Add fluid input method (amount in millibuckets)
     public BioResourceGenRecipeBuilder addFluidInput(FluidStack fluid) {
         this.inputFluid = fluid;
         return this;
@@ -119,7 +119,7 @@ public class BioResourceGenRecipeBuilder implements RecipeBuilder {
     public static class Result implements FinishedRecipe {
         private final ResourceLocation id;
         private final Ingredient ingredient;
-        private final FluidStack inputFluid; // 🔹 Added fluid input
+        private final FluidStack inputFluid;
         private final ItemStack output;
         private final int count;
         private final String group;
@@ -148,7 +148,7 @@ public class BioResourceGenRecipeBuilder implements RecipeBuilder {
             ingredientsArray.add(ingredient.toJson());
             json.add("ingredients", ingredientsArray);
 
-            // 🔹 Add fluid input if present
+            // Add fluid input if present
             if (!inputFluid.isEmpty()) {
                 JsonObject fluidJson = new JsonObject();
                 fluidJson.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(inputFluid.getFluid()).toString());

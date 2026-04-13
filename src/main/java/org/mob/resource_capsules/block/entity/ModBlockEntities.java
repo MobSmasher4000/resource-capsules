@@ -7,7 +7,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
-import org.mob.resource_capsules.block.entity.dummy.ResourceGenMultiblockDummyBlockEntity;
+import org.mob.resource_capsules.block.entity.hatch.FluidOutputHatchBlockEntity;
+import org.mob.resource_capsules.block.entity.hatch.ItemOutputHatchBlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier2BlockEntity;
 import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier3BlockEntity;
@@ -30,6 +31,21 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("resource_gen_tier_3_be", () ->
                     BlockEntityType.Builder.of(ResourceGenTier3BlockEntity::new,
                             ModBlocks.RESOURCE_GEN_TIER_3.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<FluidGenBlockEntity>> FLUID_GEN_BE =
+            BLOCK_ENTITIES.register("fluid_gen_be", () ->
+                    BlockEntityType.Builder.of(FluidGenBlockEntity::new,
+                            ModBlocks.FLUID_GEN.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ItemOutputHatchBlockEntity>> ITEM_OUTPUT_HATCH_BE =
+            BLOCK_ENTITIES.register("item_output_hatch_be", () ->
+                    BlockEntityType.Builder.of(ItemOutputHatchBlockEntity::new,
+                            ModBlocks.ITEM_OUTPUT_HATCH.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<FluidOutputHatchBlockEntity>> FLUID_OUTPUT_HATCH_BE =
+            BLOCK_ENTITIES.register("fluid_output_hatch_be", () ->
+                    BlockEntityType.Builder.of(FluidOutputHatchBlockEntity::new,
+                            ModBlocks.FLUID_OUTPUT_HATCH.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<Tier9001BlockEntity>> TIER_9001_BE =
             BLOCK_ENTITIES.register("tier_9001_be", () ->
@@ -61,10 +77,10 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ResourceGenMultiblockBlockEntity::new,
                             ModBlocks.RESOURCE_GEN_MULTIBLOCK.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<ResourceGenMultiblockDummyBlockEntity>> RESOURCE_GEN_DUMMY_BE =
-            BLOCK_ENTITIES.register("resource_gen_dummy_be", () ->
-                    BlockEntityType.Builder.of(ResourceGenMultiblockDummyBlockEntity::new,
-                            ModBlocks.MACHINE_CASING.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FluidGenMultiblockBlockEntity>> FLUID_GEN_MULTIBLOCK_BE =
+            BLOCK_ENTITIES.register("fluid_gen_multiblock_be", () ->
+                    BlockEntityType.Builder.of(FluidGenMultiblockBlockEntity::new,
+                            ModBlocks.FLUID_GEN_MULTIBLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

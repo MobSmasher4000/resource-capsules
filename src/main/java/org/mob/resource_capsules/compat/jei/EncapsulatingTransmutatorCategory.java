@@ -34,7 +34,6 @@ public class EncapsulatingTransmutatorCategory implements IRecipeCategory<Encaps
     private final IDrawable icon;
 
     public EncapsulatingTransmutatorCategory(IGuiHelper helper) {
-        // Background as it appears in-game
         this.background = helper.createDrawable(TEXTURE, 0, 0, 129, 64);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get()));
     }
@@ -61,8 +60,7 @@ public class EncapsulatingTransmutatorCategory implements IRecipeCategory<Encaps
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, EncapsulatingTransmutatorRecipe recipe, IFocusGroup focuses) {
-        // Match in-game GUI alignment
-        int baseX = 9;  // shifted to center within the JEI panel
+        int baseX = 9;
         int baseY = 8;
         int slotSize = 18;
 
@@ -78,11 +76,10 @@ public class EncapsulatingTransmutatorCategory implements IRecipeCategory<Encaps
             Ingredient ing = inputs.get(i);
             int count = counts.get(i);
 
-            // Use the first matching ItemStack from the Ingredient and set its count
             ItemStack[] matching = ing.getItems();
             if (matching.length > 0) {
                 ItemStack stack = matching[0].copy();
-                stack.setCount(count); // JEI will render this count on the slot
+                stack.setCount(count);
                 builder.addSlot(RecipeIngredientRole.INPUT, x, y)
                         .addItemStack(stack);
             } else {
@@ -92,7 +89,7 @@ public class EncapsulatingTransmutatorCategory implements IRecipeCategory<Encaps
             }
         }
 
-        // Output slot - aligned with the right-side slot in GUI
+        // Output slot
         builder.addSlot(RecipeIngredientRole.OUTPUT, 103, 25)
                 .addItemStack(recipe.getResultItem(null));
     }

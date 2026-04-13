@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "resource_capsules:block/item_output_hatch",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "resource_capsules:block/item_output_hatch",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "resource_capsules:block/item_output_hatch"
+    },
+    "facing=south": {
+      "model": "resource_capsules:block/item_output_hatch",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "resource_capsules:block/item_output_hatch",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "resource_capsules:block/item_output_hatch",
+      "y": 270
+    }
+  }
+}

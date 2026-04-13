@@ -19,10 +19,10 @@ import java.util.List;
 public class ResourceGenMultiblockScreen extends AbstractContainerScreen<ResourceGenMultiblockMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(ResourceCapsules.MOD_ID, "textures/gui/resource_gen_tier/resource_gen_multiblock_gui.png");
+
     private static final ResourceLocation ARROW_TEXTURE =
             new ResourceLocation(ResourceCapsules.MOD_ID, "textures/gui/arrow_progress_multiblock.png");
 
-    // 1. The list of items to flash in the empty slot
     private final List<ItemStack> validMachines = List.of(
             new ItemStack(ModBlocks.RESOURCE_GEN_TIER_1.get()),
             new ItemStack(ModBlocks.RESOURCE_GEN_TIER_2.get()),
@@ -49,28 +49,30 @@ public class ResourceGenMultiblockScreen extends AbstractContainerScreen<Resourc
 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-        renderProgressArrow(guiGraphics, x, y);
+        renderProgressArrows(guiGraphics, x, y);
     }
 
-    private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        if (menu.isCrafting()) {
-            int progress = menu.getScaledProgress();
+    private void renderProgressArrows(GuiGraphics guiGraphics, int x, int y) {
+        for (int i = 0; i < 4; i++) {
+            if (menu.isCrafting(i)) {
+                int progress = menu.getScaledProgress(i);
 
-            int arrowWidth = 79;
-            int arrowHeight = 24;
+                int arrowWidth = 16;
+                int arrowHeight = 24;
 
-            int screenX = x + 60;
-            int screenY = y + 26;
+                int screenX = x + 56 + (i * 24);
+                int screenY = y + 28;
 
-            guiGraphics.blit(ARROW_TEXTURE,
-                    screenX,
-                    screenY,              // Pushes the start position down to the bottom
-                    0,                    // Texture U (X offset on png)
-                    0,                    // Texture V (Y offset on png)
-                    79,                   // Width to draw
-                    progress,             // Height to draw (grows larger over time)
-                    79, 24                // Total dimensions of the ARROW_TEXTURE png file
-            );
+                guiGraphics.blit(ARROW_TEXTURE,
+                        screenX,
+                        screenY,
+                        0,              // Texture U
+                        0,                      // Texture V (Y offset on png)
+                        arrowWidth,             // Width to draw
+                        progress,               // Height to draw (grows larger over time)
+                        arrowWidth, arrowHeight // Total dimensions of the ARROW_TEXTURE png file
+                );
+            }
         }
     }
 
@@ -81,7 +83,7 @@ public class ResourceGenMultiblockScreen extends AbstractContainerScreen<Resourc
         renderTooltip(guiGraphics, mouseX, mouseY);
 
         renderGhostMachineItems(guiGraphics);
-        renderGhostTooltip(guiGraphics, mouseX, mouseY);
+        renderGhostMachineTooltip(guiGraphics, mouseX, mouseY);
         renderGhostUpgradeTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -101,7 +103,7 @@ public class ResourceGenMultiblockScreen extends AbstractContainerScreen<Resourc
         }
     }
 
-    private void renderGhostTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+    private void renderGhostMachineTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         Slot machineSlot = this.menu.slots.get(37);
 
         // Only show text if slot is empty AND the mouse is currently over it

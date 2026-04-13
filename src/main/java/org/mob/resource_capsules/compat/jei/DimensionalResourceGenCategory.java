@@ -19,7 +19,7 @@ import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
 public class DimensionalResourceGenCategory implements IRecipeCategory<DimensionalResourceGenRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(ResourceCapsules.MOD_ID, "dimensional_resource_gen");
     public static final ResourceLocation TEXTURE = new ResourceLocation(ResourceCapsules.MOD_ID,
-            "textures/gui/resource_gen_tier/resource_gen_tier_gui.png");
+            "textures/gui/jei/resource_gen_tier_gui.png");
 
     public static final RecipeType<DimensionalResourceGenRecipe> DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE =
             new RecipeType<>(UID, DimensionalResourceGenRecipe.class);

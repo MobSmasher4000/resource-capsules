@@ -37,7 +37,6 @@ import java.util.Optional;
 
 public class BioResourceGenBlockEntity extends BlockEntity implements MenuProvider {
 
-    // INVENTORY HANDLER
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -54,7 +53,6 @@ public class BioResourceGenBlockEntity extends BlockEntity implements MenuProvid
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-    // FLUID HANDLER
     private final FluidTank fluidTank = new FluidTank(16000) {
         @Override
         protected void onContentsChanged() {
@@ -213,14 +211,11 @@ public class BioResourceGenBlockEntity extends BlockEntity implements MenuProvid
         BioResouceGenRecipe rec = recipe.get();
         ItemStack result = rec.getResultItem(getLevel().registryAccess());
 
-        // Matches() already checked fluid and input items,
-        // so we only check output space here.
         return canInsertAmountIntoOutputSlot(result.getCount()) &&
                 canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private Optional<BioResouceGenRecipe> getCurrentRecipe() {
-        // Use our custom container that holds both items AND fluid data
         BioResouceGenRecipe.BioContainer inventory = new BioResouceGenRecipe.BioContainer(
                 itemHandler.getSlots(),
                 fluidTank.getFluid()
@@ -251,19 +246,16 @@ public class BioResourceGenBlockEntity extends BlockEntity implements MenuProvid
         progress++;
     }
 
-    // FLUID CONTAINER HANDLING
     private void handleFluidContainer() {
         ItemStack inputStack = itemHandler.getStackInSlot(FLUID_CONTAINER_SLOT);
         if (inputStack.isEmpty()) return;
 
         // Try to fill the tank from container
-        // Use FluidUtil to try and move fluid from the item into the internal tank
         FluidUtil.getFluidHandler(inputStack).ifPresent(containerHandler -> {
-            // Try to empty the container into our tank
+            // Try to empty the container into tank
             var result = FluidUtil.tryEmptyContainer(inputStack, fluidTank, 1000, null, true);
 
             if (result.isSuccess()) {
-                // result.getResult() gives you the EMPTY container (e.g., empty bucket)
                 itemHandler.setStackInSlot(FLUID_CONTAINER_SLOT, result.getResult());
                 setChanged();
             }

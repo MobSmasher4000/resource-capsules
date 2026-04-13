@@ -175,7 +175,6 @@ public class CatalyticConverterBlockEntity extends BlockEntity implements MenuPr
         if (recipeOpt.isEmpty()) return false;
 
         ItemStack result = recipeOpt.get().getResultItem(level.registryAccess());
-        // Only need to check output slot capacity
         return canInsertAmountIntoOutputSlot(result.getCount()) &&
                 canInsertItemIntoOutputSlot(result.getItem());
     }

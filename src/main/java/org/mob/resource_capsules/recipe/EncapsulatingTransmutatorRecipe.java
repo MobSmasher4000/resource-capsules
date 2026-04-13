@@ -33,7 +33,6 @@ public class EncapsulatingTransmutatorRecipe implements Recipe<SimpleContainer> 
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
-        // Shaped logic: each input index corresponds directly to a slot.
         for (int i = 0; i < inputs.size(); i++) {
             Ingredient ingredient = inputs.get(i);
             int requiredCount = inputCounts.get(i);

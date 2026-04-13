@@ -20,7 +20,7 @@ import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
 public class ResourceGenTier3Category implements IRecipeCategory<ResourceGenTier3Recipe> {
     public static final ResourceLocation UID = new ResourceLocation(ResourceCapsules.MOD_ID, "resource_gen_tier_3");
     public static final ResourceLocation TEXTURE = new ResourceLocation(ResourceCapsules.MOD_ID,
-            "textures/gui/resource_gen_tier/resource_gen_tier_gui.png");
+            "textures/gui/jei/resource_gen_tier_gui.png");
 
     public static final RecipeType<ResourceGenTier3Recipe> RESOURCE_GEN_TIER_3_RECIPE_TYPE =
             new RecipeType<>(UID, ResourceGenTier3Recipe.class);

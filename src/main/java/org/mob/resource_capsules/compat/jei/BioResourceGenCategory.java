@@ -28,7 +28,6 @@ public class BioResourceGenCategory implements IRecipeCategory<BioResouceGenReci
     private final IDrawable icon;
 
     public BioResourceGenCategory(IGuiHelper helper) {
-        // Use your GUI texture here (pointing to the slots/progress bar area)
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(ModBlocks.BIO_RESOURCE_GEN.get()));
     }
@@ -53,7 +52,7 @@ public class BioResourceGenCategory implements IRecipeCategory<BioResouceGenReci
         // Output Item Slot
         builder.addSlot(RecipeIngredientRole.OUTPUT, 86, 60).addItemStack(recipe.getResultItem(null));
 
-        // Fluid Slot (Matching your tank)
+        // Fluid Slot
         if (!recipe.getInputFluid().isEmpty()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 55, 15)
                     .addIngredient(ForgeTypes.FLUID_STACK, recipe.getInputFluid())

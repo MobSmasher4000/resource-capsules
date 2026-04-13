@@ -33,10 +33,8 @@ public class Tier9001Menu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SingleSlot(iItemHandler, 0, 54, 34));
-            this.addSlot(new OutputSlot(iItemHandler, 1, 104, 34));
-        });
+        this.addSlot(new SingleSlot(this.blockEntity.itemHandler, 0, 54, 34));
+        this.addSlot(new OutputSlot(this.blockEntity.outputHandler, 0, 104, 34));
 
         addDataSlots(data);
     }

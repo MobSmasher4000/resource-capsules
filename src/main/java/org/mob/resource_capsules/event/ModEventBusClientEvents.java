@@ -16,10 +16,7 @@ public class ModEventBusClientEvents {
 
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_TIER_1_BE.get(), ResourceGenTier1BlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_TIER_2_BE.get(), ResourceGenTier2BlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_TIER_3_BE.get(), ResourceGenTier3BlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.DIMENSIONAL_RESOURCE_GEN_BE.get(), DimensionalResourceGenBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.RESOURCE_GEN_MULTIBLOCK_BE.get(), ResourceGenMultiblockPreviewRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.FLUID_GEN_MULTIBLOCK_BE.get(), FluidGenMultiblockPreviewRenderer::new);
     }
 }

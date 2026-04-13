@@ -19,7 +19,6 @@ import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.custom.multiblock.ResourceGenStructure;
 
-// MUST be client-side only!
 @Mod.EventBusSubscriber(modid = ResourceCapsules.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ResourceGenMultiblockPlacementPreviewRenderer {
 

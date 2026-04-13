@@ -1,0 +1,14 @@
+{
+  "values": [
+    "mob_lib:upgrade_speed_tier_1",
+    "mob_lib:upgrade_speed_tier_2",
+    "mob_lib:upgrade_speed_tier_3",
+    "mob_lib:upgrade_speed_tier_4",
+    "mob_lib:upgrade_tier_1",
+    "mob_lib:upgrade_tier_2",
+    "mob_lib:upgrade_tier_3",
+    "mob_lib:upgrade_amount_tier_1",
+    "mob_lib:upgrade_amount_tier_2",
+    "mob_lib:upgrade_amount_tier_3"
+  ]
+}

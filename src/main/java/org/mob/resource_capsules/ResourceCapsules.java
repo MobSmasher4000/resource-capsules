@@ -18,6 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.item.ModItems;
+import org.mob.resource_capsules.network.ModMessages;
 import org.mob.resource_capsules.recipe.ModRecipes;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 import org.mob.resource_capsules.screen.screen.*;
@@ -52,6 +53,7 @@ public class ResourceCapsules {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        ModMessages.register();
     }
 
     @SubscribeEvent
@@ -72,6 +74,10 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.ENCAPSULATING_TRANSMUTATOR_MENU.get(), EncapsulatingTransmutatorScreen::new);
             MenuScreens.register(ModMenuTypes.CATALYTIC_CONVERTER_MENU.get(), CatalyticConverterScreen::new);
             MenuScreens.register(ModMenuTypes.BIO_RESOURCE_GEN_MENU.get(), BioResourceGenScreen::new);
+            MenuScreens.register(ModMenuTypes.FLUID_GEN_MENU.get(), FluidGenScreen::new);
+            MenuScreens.register(ModMenuTypes.ITEM_OUTPUT_HATCH_MENU.get(), ItemOutputHatchScreen::new);
+            MenuScreens.register(ModMenuTypes.FLUID_OUTPUT_HATCH_MENU.get(), FluidOutputHatchScreen::new);
+            MenuScreens.register(ModMenuTypes.FLUID_GEN_MULTIBLOCK_MENU.get(), FluidGenMultiblockScreen::new);
         }
     }
 

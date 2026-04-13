@@ -80,12 +80,16 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_1.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_2.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
+                        pOutput.accept(ModBlocks.FLUID_GEN.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
+                        pOutput.accept(ModBlocks.FLUID_GEN_MULTIBLOCK.get());
                         pOutput.accept(ModBlocks.TIER_9001.get());
                         pOutput.accept(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());
                         pOutput.accept(ModBlocks.ENCAPSULATING_TRANSMUTATOR.get());
                         pOutput.accept(ModBlocks.CATALYTIC_CONVERTER.get());
                         pOutput.accept(ModBlocks.BIO_RESOURCE_GEN.get());
+                        pOutput.accept(ModBlocks.ITEM_OUTPUT_HATCH.get());
+                        pOutput.accept(ModBlocks.FLUID_OUTPUT_HATCH.get());
 
                     })
                     .build());

@@ -1,15 +1,19 @@
 package org.mob.resource_capsules.screen.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
 import org.mob.resource_capsules.screen.menu.ResourceGenTier2Menu;
+
+import java.util.List;
 
 public class ResourceGenTier2Screen extends AbstractContainerScreen<ResourceGenTier2Menu> {
     private static final ResourceLocation TEXTURE =
@@ -49,12 +53,12 @@ public class ResourceGenTier2Screen extends AbstractContainerScreen<ResourceGenT
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, delta);
+        renderGhostUpgradeTooltip(guiGraphics, mouseX, mouseY);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, this.title, 8, 6, 4210752, false);
 
         // --- draw progress text  ---
         int progress = menu.getProgress();
@@ -65,6 +69,22 @@ public class ResourceGenTier2Screen extends AbstractContainerScreen<ResourceGenT
         int textY = 58;
 
         guiGraphics.drawString(this.font, progressText, textX, textY, 4210752, false);
+    }
+
+    private void renderGhostUpgradeTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        Slot machineSlot = this.menu.slots.get(36);
+
+        // Only show text if slot is empty AND the mouse is currently over it
+        if (!machineSlot.hasItem() && this.isHovering(machineSlot.x, machineSlot.y, 16, 16, mouseX, mouseY)) {
+            List<Component> tooltipText = List.of(
+                    Component.literal("Upgrade Slot").withStyle(ChatFormatting.GOLD),
+                    Component.literal("place speed upgrade").withStyle(ChatFormatting.GRAY),
+                    Component.literal("here to determine").withStyle(ChatFormatting.GRAY),
+                    Component.literal("the processing speed").withStyle(ChatFormatting.GRAY)
+            );
+
+            guiGraphics.renderComponentTooltip(this.font, tooltipText, mouseX, mouseY);
+        }
     }
 
 }

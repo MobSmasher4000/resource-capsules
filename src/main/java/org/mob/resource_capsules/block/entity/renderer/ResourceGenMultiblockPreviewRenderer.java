@@ -1,8 +1,11 @@
 package org.mob.resource_capsules.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -10,6 +13,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
+import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.custom.ResourceGenMultiblockBlock;
 import org.mob.resource_capsules.block.custom.multiblock.ResourceGenStructure;
 import org.mob.resource_capsules.block.entity.ResourceGenMultiblockBlockEntity;
@@ -23,7 +28,6 @@ public class ResourceGenMultiblockPreviewRenderer implements BlockEntityRenderer
     public void render(ResourceGenMultiblockBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         BlockState controllerState = pBlockEntity.getBlockState();
 
-        // ONLY render if it is an unformed controller AND the player toggled the preview ON!
         if (controllerState.getBlock() instanceof ResourceGenMultiblockBlock &&
                 !controllerState.getValue(ResourceGenMultiblockBlock.FORMED) &&
                 pBlockEntity.isShowPreview()) {
@@ -37,28 +41,44 @@ public class ResourceGenMultiblockPreviewRenderer implements BlockEntityRenderer
                 BlockPos rotatedOffset = rotateOffset(part.offset, facing);
                 BlockPos renderPos = pBlockEntity.getBlockPos().offset(rotatedOffset);
 
-                // Check if the world space is empty before drawing the ghost block
-                if (pBlockEntity.getLevel() != null && pBlockEntity.getLevel().getBlockState(renderPos).canBeReplaced()) {
+                BlockState stateInWorld = pBlockEntity.getLevel() != null ? pBlockEntity.getLevel().getBlockState(renderPos) : null;
 
-                    pPoseStack.pushPose();
+                if (stateInWorld != null) {
 
-                    // Move out to the specific coordinate
-                    pPoseStack.translate(rotatedOffset.getX(), rotatedOffset.getY(), rotatedOffset.getZ());
+                    // Is it a valid block? (Casing or Hatch)
+                    boolean isValid = stateInWorld.is(ModBlocks.MACHINE_CASING.get()) || stateInWorld.is(ModBlocks.ITEM_OUTPUT_HATCH.get());
 
-                    // Shrink it to 80% size so it looks like a hologram
-                    pPoseStack.translate(0.1, 0.1, 0.1);
-                    pPoseStack.scale(0.8f, 0.8f, 0.8f);
+                    // Only render if the block is WRONG (or empty)
+                    if (!isValid) {
+                        pPoseStack.pushPose();
+                        pPoseStack.translate(rotatedOffset.getX(), rotatedOffset.getY(), rotatedOffset.getZ());
 
-                    // Draw the block!
-                    blockRenderer.renderSingleBlock(
-                            part.expectedBlock.get().defaultBlockState(),
-                            pPoseStack,
-                            pBufferSource,
-                            15728880, // Full bright lighting
-                            net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY
-                    );
+                        if (!stateInWorld.canBeReplaced()) {
+                            // SCENARIO A: The space is occupied by the WRONG block (e.g., Dirt)
+                            // Draw a thick RED error bounding box around it!
+                            VertexConsumer vertexConsumer = pBufferSource.getBuffer(RenderType.lines());
 
-                    pPoseStack.popPose();
+                            AABB errorBox = new AABB(0, 0, 0, 1, 1, 1).inflate(0.02D);
+
+                            LevelRenderer.renderLineBox(pPoseStack, vertexConsumer, errorBox, 1.0F, 0.0F, 0.0F, 1.0F);
+
+                        } else {
+                            // SCENARIO B: The space is EMPTY air.
+                            // Draw the normal 80% ghost block.
+                            pPoseStack.translate(0.1, 0.1, 0.1);
+                            pPoseStack.scale(0.8f, 0.8f, 0.8f);
+
+                            blockRenderer.renderSingleBlock(
+                                    part.expectedBlock.get().defaultBlockState(),
+                                    pPoseStack,
+                                    pBufferSource,
+                                    15728880, // Full bright lighting
+                                    net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY
+                            );
+                        }
+
+                        pPoseStack.popPose();
+                    }
                 }
             }
             pPoseStack.popPose();

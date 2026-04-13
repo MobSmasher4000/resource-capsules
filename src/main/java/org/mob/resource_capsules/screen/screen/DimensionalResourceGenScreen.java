@@ -13,7 +13,7 @@ import org.mob.resource_capsules.screen.menu.ResourceGenTier1Menu;
 
 public class DimensionalResourceGenScreen extends AbstractContainerScreen<DimensionalResourceGenMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(ResourceCapsules.MOD_ID, "textures/gui/resource_gen_tier/resource_gen_tier_gui.png");
+            new ResourceLocation(ResourceCapsules.MOD_ID, "textures/gui/jei/resource_gen_tier_gui.png");
     private static final ResourceLocation ARROW_TEXTURE =
             new ResourceLocation(ResourceCapsules.MOD_ID, "textures/gui/arrow_progress.png");
 

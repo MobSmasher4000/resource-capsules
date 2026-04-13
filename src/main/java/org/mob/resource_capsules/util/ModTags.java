@@ -19,6 +19,8 @@ public class ModTags {
 
     public static class Items{
         public static final TagKey<Item> RESOURCE_GENERATOR = createTag("resource_gen");
+        public static final TagKey<Item> FLUID_GENERATOR = createTag("fluid_gen");
+        public static final TagKey<Item> FLUID_GENERATOR_UPGRADES = createTag("fluid_gen_upgrade");
 
         public static TagKey<Item> createTag(String name){
             return ItemTags.create(resourceLocation(name));

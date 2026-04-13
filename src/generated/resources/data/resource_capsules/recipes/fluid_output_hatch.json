@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:bucket"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "pattern": [
+    "CHC",
+    "HCH",
+    "CHC"
+  ],
+  "result": {
+    "item": "resource_capsules:fluid_output_hatch"
+  },
+  "show_notification": true
+}
