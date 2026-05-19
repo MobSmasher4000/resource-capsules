@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"particle": "resource_capsules:block/side",
+		"down": "resource_capsules:block/side",
+		"north": "resource_capsules:block/item_output_hatch"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#north"},
+				"east": {"uv": [0, 16, 16, 0], "rotation": 270, "texture": "#down"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#down"},
+				"west": {"uv": [16, 0, 0, 16], "rotation": 270, "texture": "#down"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#down"},
+				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#down"}
+			}
+		}
+	]
+}

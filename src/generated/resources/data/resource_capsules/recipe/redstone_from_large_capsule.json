@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "redstone",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_large_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:redstone_block"
+  }
+}

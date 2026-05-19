@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_block"
+    },
+    "B": {
+      "item": "minecraft:copper_block"
+    },
+    "C": {
+      "item": "minecraft:coal_block"
+    },
+    "D": {
+      "item": "minecraft:sand"
+    },
+    "E": {
+      "item": "resource_capsules:resource_gen_tier_1"
+    },
+    "F": {
+      "item": "minecraft:iron_block"
+    },
+    "G": {
+      "item": "minecraft:bone_block"
+    },
+    "H": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DED",
+    "FGH"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:resource_gen_tier_2"
+  }
+}

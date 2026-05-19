@@ -1,0 +1,16 @@
+{
+  "type": "resource_capsules:bio_resource_gen",
+  "fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "resource_capsules:bio_catalyst"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:bio_capsule"
+  }
+}

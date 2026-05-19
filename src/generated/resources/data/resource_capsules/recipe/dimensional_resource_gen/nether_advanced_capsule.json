@@ -1,0 +1,13 @@
+{
+  "type": "resource_capsules:dimensional_resource_gen",
+  "dimension": "minecraft:the_nether",
+  "ingredients": [
+    {
+      "item": "resource_capsules:nether_advanced_catalyst"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:nether_advanced_capsule"
+  }
+}

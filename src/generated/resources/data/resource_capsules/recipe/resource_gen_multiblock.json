@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "resource_capsules:machine_casing"
+    },
+    "I": {
+      "tag": "resource_capsules:resource_gen"
+    }
+  },
+  "pattern": [
+    " I ",
+    "ICI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:resource_gen_multiblock"
+  }
+}

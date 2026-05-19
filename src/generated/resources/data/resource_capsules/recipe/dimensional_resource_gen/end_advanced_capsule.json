@@ -1,0 +1,13 @@
+{
+  "type": "resource_capsules:dimensional_resource_gen",
+  "dimension": "minecraft:the_end",
+  "ingredients": [
+    {
+      "item": "resource_capsules:end_advanced_catalyst"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:end_advanced_capsule"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "diamond",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_mini_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  }
+}

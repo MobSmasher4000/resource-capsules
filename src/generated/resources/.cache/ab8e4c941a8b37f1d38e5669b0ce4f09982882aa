@@ -1,0 +1,4 @@
+// 1.21.1	2026-05-18T21:09:43.6992009	Tags for minecraft:item mod id resource_capsules
+10d0352d7c390d7e8c5122cbc5ad47ec702fa9da data/resource_capsules/tags/item/fluid_gen.json
+411298b870c8e20663b7e2704ecbe8edb857d054 data/resource_capsules/tags/item/fluid_gen_upgrade.json
+3dd72d8b39c12d6d52ce19b20e740cb2247244e9 data/resource_capsules/tags/item/resource_gen.json

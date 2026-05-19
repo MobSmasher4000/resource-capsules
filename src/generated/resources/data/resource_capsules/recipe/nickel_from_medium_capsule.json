@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "nickel",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_medium_capsule"
+    }
+  },
+  "pattern": [
+    "  C",
+    "CC ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "alltheores:nickel_ingot"
+  }
+}

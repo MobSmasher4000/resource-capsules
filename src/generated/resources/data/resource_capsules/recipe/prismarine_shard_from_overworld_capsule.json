@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:overworld_capsule"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "D D",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:prismarine_shard"
+  }
+}

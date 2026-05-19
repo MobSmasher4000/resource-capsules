@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dimensional_resource_gen": {
+      "conditions": {
+        "items": [
+          {
+            "items": "resource_capsules:dimensional_resource_gen"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "resource_capsules:encapsulating_transmutator"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dimensional_resource_gen"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "resource_capsules:encapsulating_transmutator"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:coal_block"
+    },
+    "B": {
+      "item": "minecraft:redstone_block"
+    },
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "D": {
+      "item": "minecraft:iron_block"
+    },
+    "E": {
+      "item": "resource_capsules:tier_1_mini_catalyst"
+    }
+  },
+  "pattern": [
+    "DBD",
+    "AEA",
+    "CBC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_2_mini_catalyst"
+  }
+}

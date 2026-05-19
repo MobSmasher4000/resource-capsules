@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:bio_capsule"
+    }
+  },
+  "pattern": [
+    "D  ",
+    " D ",
+    "  D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:wheat"
+  }
+}

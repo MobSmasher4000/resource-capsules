@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:nether_advanced_capsule"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "   ",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:ghast_tear"
+  }
+}

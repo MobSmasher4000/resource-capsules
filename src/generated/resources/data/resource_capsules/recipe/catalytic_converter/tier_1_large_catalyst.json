@@ -1,0 +1,44 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "resource_capsules:tier_1_medium_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:copper_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:iron_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:bone_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:coal_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:redstone_block"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_1_large_catalyst"
+  }
+}

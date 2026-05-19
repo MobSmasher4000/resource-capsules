@@ -1,0 +1,12 @@
+{
+  "type": "resource_capsules:fluid_gen",
+  "ingredients": [
+    {
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "result": {
+    "amount": 100,
+    "id": "minecraft:lava"
+  }
+}

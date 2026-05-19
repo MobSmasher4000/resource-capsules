@@ -1,0 +1,39 @@
+{
+  "type": "resource_capsules:encapsulating_transmutator",
+  "ingredients": [
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:feather"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:bio_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:bio_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:bio_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:bio_capsule"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:phantom_membrane"
+  }
+}

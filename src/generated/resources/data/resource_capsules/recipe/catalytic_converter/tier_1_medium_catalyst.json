@@ -1,0 +1,44 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "resource_capsules:tier_1_mini_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:bone_meal"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_1_medium_catalyst"
+  }
+}

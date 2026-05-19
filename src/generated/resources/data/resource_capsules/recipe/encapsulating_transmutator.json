@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "resource_capsules:bio_capsule"
+    },
+    "D": {
+      "item": "resource_capsules:dimensional_resource_gen"
+    },
+    "E": {
+      "item": "resource_capsules:end_advanced_capsule"
+    },
+    "N": {
+      "item": "resource_capsules:nether_advanced_capsule"
+    },
+    "V": {
+      "item": "minecraft:emerald_block"
+    },
+    "X": {
+      "item": "resource_capsules:bio_catalyst"
+    },
+    "Y": {
+      "item": "resource_capsules:end_catalyst"
+    },
+    "Z": {
+      "item": "resource_capsules:nether_catalyst"
+    }
+  },
+  "pattern": [
+    "DNZ",
+    "EXB",
+    "YBV"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:encapsulating_transmutator"
+  }
+}

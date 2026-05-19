@@ -1,0 +1,32 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "resource_capsules:tier_2_medium_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:lapis_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:diamond_block"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:gold_block"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_2_large_catalyst"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "resource_capsules:end_catalyst"
+    },
+    {
+      "item": "minecraft:dragon_head"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:end_advanced_catalyst"
+  }
+}

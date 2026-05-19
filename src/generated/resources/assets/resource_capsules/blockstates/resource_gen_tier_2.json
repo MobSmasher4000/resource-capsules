@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "resource_capsules:block/resource_gen_tier_2",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "resource_capsules:block/resource_gen_tier_2"
+    },
+    "facing=south": {
+      "model": "resource_capsules:block/resource_gen_tier_2",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "resource_capsules:block/resource_gen_tier_2",
+      "y": 270
+    }
+  }
+}

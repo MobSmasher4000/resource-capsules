@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:oak_log"
+    },
+    "B": {
+      "item": "minecraft:oak_sapling"
+    },
+    "C": {
+      "item": "minecraft:bone_meal"
+    },
+    "D": {
+      "item": "resource_capsules:tier_1_mini_catalyst"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:bio_catalyst"
+  }
+}

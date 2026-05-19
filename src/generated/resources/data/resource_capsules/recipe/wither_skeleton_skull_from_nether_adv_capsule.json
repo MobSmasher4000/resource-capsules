@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:nether_advanced_capsule"
+    },
+    "E": {
+      "item": "minecraft:bone_block"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DED",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:wither_skeleton_skull"
+  }
+}

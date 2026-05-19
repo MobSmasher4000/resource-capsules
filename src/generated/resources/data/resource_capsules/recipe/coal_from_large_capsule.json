@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "coal",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_large_capsule"
+    }
+  },
+  "pattern": [
+    "C C",
+    " C ",
+    "C C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:coal_block"
+  }
+}

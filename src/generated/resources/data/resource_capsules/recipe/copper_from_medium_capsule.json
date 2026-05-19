@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "copper",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_medium_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:copper_ingot"
+  }
+}

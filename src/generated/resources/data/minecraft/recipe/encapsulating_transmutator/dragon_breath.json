@@ -1,0 +1,38 @@
+{
+  "type": "resource_capsules:encapsulating_transmutator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:glass_bottle"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:end_advanced_capsule"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:dragon_breath"
+  }
+}

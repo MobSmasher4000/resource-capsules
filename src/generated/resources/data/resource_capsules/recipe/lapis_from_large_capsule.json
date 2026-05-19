@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "lapis",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_large_capsule"
+    }
+  },
+  "pattern": [
+    "C C",
+    "   ",
+    "C C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:lapis_block"
+  }
+}

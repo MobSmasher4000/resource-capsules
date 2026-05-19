@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mini_catalyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "resource_capsules:tier_3_mini_catalyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "resource_capsules:tier_3_medium_catalyst"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mini_catalyst"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "resource_capsules:tier_3_medium_catalyst"
+    ]
+  }
+}

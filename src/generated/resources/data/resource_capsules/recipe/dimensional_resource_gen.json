@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "B": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "resource_capsules:resource_gen_tier_2"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:dimensional_resource_gen"
+  }
+}

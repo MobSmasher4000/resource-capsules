@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "gold",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_2_medium_capsule"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:gold_ingot"
+  }
+}

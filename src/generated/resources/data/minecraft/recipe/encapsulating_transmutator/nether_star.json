@@ -1,0 +1,38 @@
+{
+  "type": "resource_capsules:encapsulating_transmutator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:nether_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:nether_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:nether_advanced_capsule"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "resource_capsules:nether_advanced_capsule"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:nether_star"
+  }
+}

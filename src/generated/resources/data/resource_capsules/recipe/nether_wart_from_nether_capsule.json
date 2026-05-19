@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "resource_capsules:nether_capsule"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:nether_wart"
+  }
+}

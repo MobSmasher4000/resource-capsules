@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "resource_capsules:tier_1_large_capsule"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bone_block"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "resource_capsules:block/bottom",
+    "east": "resource_capsules:block/side",
+    "north": "resource_capsules:block/encapsulating_transmutator",
+    "particle": "resource_capsules:block/side",
+    "south": "resource_capsules:block/side",
+    "up": "resource_capsules:block/top",
+    "west": "resource_capsules:block/side"
+  }
+}

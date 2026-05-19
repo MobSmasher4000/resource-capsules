@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    " I ",
+    "ICI",
+    " I "
+  ],
+  "result": {
+    "count": 4,
+    "id": "resource_capsules:machine_casing"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "resource_capsules:catalytic_converter",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "resource_capsules:tier_3_medium_catalyst"
+      }
+    },
+    {
+      "count": 64,
+      "ingredient": {
+        "item": "minecraft:emerald_block"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_3_large_catalyst"
+  }
+}

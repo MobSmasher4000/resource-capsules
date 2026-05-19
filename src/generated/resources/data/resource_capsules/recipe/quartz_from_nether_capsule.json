@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:nether_capsule"
+    }
+  },
+  "pattern": [
+    "D D",
+    " D ",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:quartz"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "D": {
+      "item": "resource_capsules:tier_1_mini_catalyst"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BDB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:overworld_catalyst"
+  }
+}

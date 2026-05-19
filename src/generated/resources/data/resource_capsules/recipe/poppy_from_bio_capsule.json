@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "resource_capsules:bio_capsule"
+    },
+    "E": {
+      "item": "minecraft:white_dye"
+    }
+  },
+  "pattern": [
+    " E ",
+    " D ",
+    "D  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:poppy"
+  }
+}

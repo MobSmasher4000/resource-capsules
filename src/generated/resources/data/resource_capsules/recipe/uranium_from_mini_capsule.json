@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "uranium",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_3_mini_capsule"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "  C",
+    "   "
+  ],
+  "result": {
+    "count": 3,
+    "id": "alltheores:uranium_nugget"
+  }
+}

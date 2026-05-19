@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "iron",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_medium_capsule"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "  C",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  }
+}

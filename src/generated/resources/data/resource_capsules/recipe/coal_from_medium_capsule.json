@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "coal",
+  "key": {
+    "C": {
+      "item": "resource_capsules:tier_1_medium_capsule"
+    }
+  },
+  "pattern": [
+    "C C",
+    " C ",
+    "C C"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minecraft:coal"
+  }
+}

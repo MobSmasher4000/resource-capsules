@@ -1,0 +1,18 @@
+{
+  "values": [
+    "resource_capsules:resource_gen_tier_1",
+    "resource_capsules:resource_gen_tier_2",
+    "resource_capsules:resource_gen_tier_3",
+    "resource_capsules:resource_gen_multiblock",
+    "resource_capsules:tier_9001",
+    "resource_capsules:dimensional_resource_gen",
+    "resource_capsules:encapsulating_transmutator",
+    "resource_capsules:catalytic_converter",
+    "resource_capsules:bio_resource_gen",
+    "resource_capsules:machine_casing",
+    "resource_capsules:fluid_gen",
+    "resource_capsules:item_output_hatch",
+    "resource_capsules:fluid_output_hatch",
+    "resource_capsules:fluid_gen_multiblock"
+  ]
+}

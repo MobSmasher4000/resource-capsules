@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_end_capsule": {
+      "conditions": {
+        "items": [
+          {
+            "items": "resource_capsules:end_capsule"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "resource_capsules:chorus_fruit_from_end_capsule"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_end_capsule"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "resource_capsules:chorus_fruit_from_end_capsule"
+    ]
+  }
+}

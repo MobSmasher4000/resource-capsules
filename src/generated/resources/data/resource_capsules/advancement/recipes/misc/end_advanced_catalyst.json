@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_end_catalyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "resource_capsules:end_catalyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "resource_capsules:end_advanced_catalyst"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_end_catalyst"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "resource_capsules:end_advanced_catalyst"
+    ]
+  }
+}

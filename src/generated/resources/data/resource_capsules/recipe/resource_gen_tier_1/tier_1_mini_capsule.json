@@ -1,0 +1,12 @@
+{
+  "type": "resource_capsules:resource_gen_tier_1",
+  "ingredients": [
+    {
+      "item": "resource_capsules:tier_1_mini_catalyst"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "resource_capsules:tier_1_mini_capsule"
+  }
+}

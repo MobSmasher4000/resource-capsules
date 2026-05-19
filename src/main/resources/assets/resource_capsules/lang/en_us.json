@@ -1,0 +1,69 @@
+{
+  "creative_tab.capsule_tab": "Resource Capsules's Capsule",
+  "creative_tab.catalyst_tab": "Resource Capsules's Catalyst",
+  "creative_tab.misc_tab": "Resource Capsules's Machines",
+
+  "item.resource_capsules.bio_catalyst": "Bio Catalyst",
+  "item.resource_capsules.bio_capsule": "Bio Capsule",
+
+  "item.resource_capsules.end_catalyst": "End Catalyst",
+  "item.resource_capsules.end_advanced_catalyst": "End Advanced Catalyst",
+  "tooltip.resource_capsules.end_catalyst": "Only works in End Dimension",
+  "item.resource_capsules.end_capsule": "End Capsule",
+  "item.resource_capsules.end_advanced_capsule": "End Advanced Capsule",
+
+  "item.resource_capsules.nether_catalyst": "Nether Catalyst",
+  "item.resource_capsules.nether_advanced_catalyst": "Nether Advanced Catalyst",
+  "tooltip.resource_capsules.nether_catalyst": "Only works in the Nether dimension",
+  "item.resource_capsules.nether_capsule": "Nether Capsule",
+  "item.resource_capsules.nether_advanced_capsule": "Nether Advanced Capsule",
+
+  "item.resource_capsules.overworld_catalyst": "Overworld Catalyst",
+  "tooltip.resource_capsules.overworld_catalyst": "Only works in Overworld Dimension",
+  "item.resource_capsules.overworld_capsule": "Overworld Capsule",
+
+  "item.resource_capsules.tier_1_mini_catalyst": "Tier 1 Mini Catalyst",
+  "item.resource_capsules.tier_2_mini_catalyst": "Tier 2 Mini Catalyst",
+  "item.resource_capsules.tier_3_mini_catalyst": "Tier 3 Mini Catalyst",
+
+  "item.resource_capsules.tier_1_medium_catalyst": "Tier 1 Medium Catalyst",
+  "item.resource_capsules.tier_2_medium_catalyst": "Tier 2 Medium Catalyst",
+  "item.resource_capsules.tier_3_medium_catalyst": "Tier 3 Medium Catalyst",
+
+  "item.resource_capsules.tier_1_large_catalyst": "Tier 1 Large Catalyst",
+  "item.resource_capsules.tier_2_large_catalyst": "Tier 2 Large Catalyst",
+  "item.resource_capsules.tier_3_large_catalyst": "Tier 3 Large Catalyst",
+
+  "item.resource_capsules.tier_1_mini_capsule": "Tier 1 Mini capsule",
+  "item.resource_capsules.tier_2_mini_capsule": "Tier 2 Mini capsule",
+  "item.resource_capsules.tier_3_mini_capsule": "Tier 3 Mini capsule",
+
+  "item.resource_capsules.tier_1_medium_capsule": "Tier 1 Medium capsule",
+  "item.resource_capsules.tier_2_medium_capsule": "Tier 2 Medium capsule",
+  "item.resource_capsules.tier_3_medium_capsule": "Tier 3 Medium capsule",
+
+  "item.resource_capsules.tier_1_large_capsule": "Tier 1 Large capsule",
+  "item.resource_capsules.tier_2_large_capsule": "Tier 2 Large capsule",
+  "item.resource_capsules.tier_3_large_capsule": "Tier 3 Large capsule",
+
+  "block.resource_capsules.resource_gen_tier_1": "Resource Generator Tier 1",
+  "block.resource_capsules.resource_gen_tier_2": "Resource Generator Tier 2",
+  "block.resource_capsules.resource_gen_tier_3": "Resource Generator Tier 3",
+  "block.resource_capsules.resource_gen_multiblock": "Resource Generator Multiblock",
+  "block.resource_capsules.dimensional_resource_gen": "Dimensional Resource Generator",
+  "block.resource_capsules.tier_9001": "Tier 9001 Gen",
+  "tooltip.resource_capsules.tier_9001": "Ultimate duper",
+  "block.resource_capsules.encapsulating_transmutator":"Encapsulating Transmutator",
+  "block.resource_capsules.bio_resource_gen":"Biological Resource Generator",
+  "block.resource_capsules.machine_casing":"Machine Casing",
+
+  "block.resource_capsules.catalytic_converter":"Catalytic Convertor",
+  "tooltip.resource_capsules.catalytic_converter":"Convert mini to medium to large catalysts",
+  "block.resource_capsules.fluid_gen": "Fluid Generator",
+  "block.resource_capsules.fluid_gen_multiblock": "Fluid Generator Multiblock",
+  "block.resource_capsules.item_output_hatch": "Item Output Hatch",
+  "block.resource_capsules.fluid_output_hatch": "Fluid Output Hatch",
+  "tooltip.resource_capsules.resource_gen_multiblock": "A 3x3 cube hollow cube made of machine casing and upto 4 Item output hatches allowed",
+  "tooltip.resource_capsules.fluid_gen_multiblock": "A 3x3 cube hollow cube made of machine casing and upto 4 fluid output hatches allowed"
+
+}
