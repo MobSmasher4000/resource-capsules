@@ -9,9 +9,7 @@ import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.entity.hatch.FluidOutputHatchBlockEntity;
 import org.mob.resource_capsules.block.entity.hatch.ItemOutputHatchBlockEntity;
-import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier1BlockEntity;
-import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier2BlockEntity;
-import org.mob.resource_capsules.block.entity.resource_gen_tier.ResourceGenTier3BlockEntity;
+import org.mob.resource_capsules.block.entity.resource_gen_tier.*;
 
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
@@ -31,6 +29,16 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("resource_gen_tier_3_be", () ->
                     BlockEntityType.Builder.of(ResourceGenTier3BlockEntity::new,
                             ModBlocks.RESOURCE_GEN_TIER_3.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ResourceGenTier4BlockEntity>> RESOURCE_GEN_TIER_4_BE =
+            BLOCK_ENTITIES.register("resource_gen_tier_4_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenTier4BlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_TIER_4.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ResourceGenTier5BlockEntity>> RESOURCE_GEN_TIER_5_BE =
+            BLOCK_ENTITIES.register("resource_gen_tier_5_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenTier5BlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_TIER_5.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<FluidGenBlockEntity>> FLUID_GEN_BE =
             BLOCK_ENTITIES.register("fluid_gen_be", () ->

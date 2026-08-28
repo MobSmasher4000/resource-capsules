@@ -68,6 +68,8 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_1_MENU.get(), ResourceGenTier1Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_2_MENU.get(), ResourceGenTier2Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_4_MENU.get(), ResourceGenTier4Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_5_MENU.get(), ResourceGenTier5Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_MULTIBLOCK_MENU.get(), ResourceGenMultiblockScreen::new);
             MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
             MenuScreens.register(ModMenuTypes.DIMENSIONAL_RESOURCE_GEN_MENU.get(), DimensionalResourceGenScreen::new);

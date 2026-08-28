@@ -24,6 +24,12 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<ResourceGenTier3Menu>> RESOURCE_GEN_TIER_3_MENU =
             registerMenuType("resource_gen_tier_3_menu", ResourceGenTier3Menu::new);
 
+    public static final RegistryObject<MenuType<ResourceGenTier4Menu>> RESOURCE_GEN_TIER_4_MENU =
+            registerMenuType("resource_gen_tier_4_menu", ResourceGenTier4Menu::new);
+
+    public static final RegistryObject<MenuType<ResourceGenTier5Menu>> RESOURCE_GEN_TIER_5_MENU =
+            registerMenuType("resource_gen_tier_5_menu", ResourceGenTier5Menu::new);
+
     public static final RegistryObject<MenuType<FluidGenMenu>> FLUID_GEN_MENU =
             registerMenuType("fluid_gen_menu", FluidGenMenu::new);
 

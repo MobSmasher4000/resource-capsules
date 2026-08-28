@@ -31,9 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import org.mob.mob_lib.item.custom.UpgradeItem;
 import org.mob.resource_capsules.block.ModBlocks;
 import org.mob.resource_capsules.block.custom.ResourceGenMultiblockBlock;
-import org.mob.resource_capsules.recipe.ResourceGenTier1Recipe;
-import org.mob.resource_capsules.recipe.ResourceGenTier2Recipe;
-import org.mob.resource_capsules.recipe.ResourceGenTier3Recipe;
+import org.mob.resource_capsules.recipe.*;
 import org.mob.resource_capsules.screen.menu.ResourceGenMultiblockMenu;
 import org.mob.resource_capsules.util.ModTags;
 
@@ -101,6 +99,8 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier1Recipe> quickCheckTier1;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier2Recipe> quickCheckTier2;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier3Recipe> quickCheckTier3;
+    private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier4Recipe> quickCheckTier4;
+    private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier5Recipe> quickCheckTier5;
 
     protected final ContainerData data;
 
@@ -116,6 +116,8 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         this.quickCheckTier1 = RecipeManager.createCheck(ResourceGenTier1Recipe.Type.INSTANCE);
         this.quickCheckTier2 = RecipeManager.createCheck(ResourceGenTier2Recipe.Type.INSTANCE);
         this.quickCheckTier3 = RecipeManager.createCheck(ResourceGenTier3Recipe.Type.INSTANCE);
+        this.quickCheckTier4 = RecipeManager.createCheck(ResourceGenTier4Recipe.Type.INSTANCE);
+        this.quickCheckTier5 = RecipeManager.createCheck(ResourceGenTier5Recipe.Type.INSTANCE);
 
         this.data = new ContainerData() {
             @Override
@@ -252,6 +254,10 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
             return this.quickCheckTier2.getRecipeFor(inventory, this.level);
         } else if (machineStack.is(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem())) {
             return this.quickCheckTier3.getRecipeFor(inventory, this.level);
+        } else if (machineStack.is(ModBlocks.RESOURCE_GEN_TIER_4.get().asItem())) {
+            return this.quickCheckTier4.getRecipeFor(inventory, this.level);
+        } else if (machineStack.is(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem())) {
+            return this.quickCheckTier5.getRecipeFor(inventory, this.level);
         }
         return Optional.empty();
     }

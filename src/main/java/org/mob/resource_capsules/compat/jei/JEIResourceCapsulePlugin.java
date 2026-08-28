@@ -35,6 +35,12 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCategories(new ResourceGenTier3Category(
                 registration.getJeiHelpers().getGuiHelper()));
 
+        registration.addRecipeCategories(new ResourceGenTier4Category(
+                registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new ResourceGenTier5Category(
+                registration.getJeiHelpers().getGuiHelper()));
+
         registration.addRecipeCategories(new DimensionalResourceGenCategory(
                 registration.getJeiHelpers().getGuiHelper()));
 
@@ -64,6 +70,12 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         List<ResourceGenTier3Recipe> resourceGenTier3Recipes = recipeManager.getAllRecipesFor(ResourceGenTier3Recipe.Type.INSTANCE);
         registration.addRecipes(ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE, resourceGenTier3Recipes);
 
+        List<ResourceGenTier4Recipe> resourceGenTier4Recipes = recipeManager.getAllRecipesFor(ResourceGenTier4Recipe.Type.INSTANCE);
+        registration.addRecipes(ResourceGenTier4Category.RESOURCE_GEN_TIER_4_RECIPE_TYPE, resourceGenTier4Recipes);
+
+        List<ResourceGenTier5Recipe> resourceGenTier5Recipes = recipeManager.getAllRecipesFor(ResourceGenTier5Recipe.Type.INSTANCE);
+        registration.addRecipes(ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE, resourceGenTier5Recipes);
+
         List<DimensionalResourceGenRecipe> dimensionalResourceGenRecipes = recipeManager.getAllRecipesFor(DimensionalResourceGenRecipe.Type.INSTANCE);
         registration.addRecipes(DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE, dimensionalResourceGenRecipes);
 
@@ -92,6 +104,12 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeClickArea(ResourceGenTier3Screen.class, 74, 30, 22, 20,
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(ResourceGenTier4Screen.class, 74, 30, 22, 20,
+                ResourceGenTier4Category.RESOURCE_GEN_TIER_4_RECIPE_TYPE);
+
+        registration.addRecipeClickArea(ResourceGenTier5Screen.class, 74, 30, 22, 20,
+                ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
+
         registration.addRecipeClickArea(DimensionalResourceGenScreen.class, 74, 30, 22, 20,
                 DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
 
@@ -116,6 +134,12 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem()),
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
 
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_4.get().asItem()),
+                ResourceGenTier4Category.RESOURCE_GEN_TIER_4_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem()),
+                ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
+
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
                 ResourceGenTier1Category.RESOURCE_GEN_TIER_1_RECIPE_TYPE);
 
@@ -124,6 +148,12 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
                 ResourceGenTier3Category.RESOURCE_GEN_TIER_3_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier4Category.RESOURCE_GEN_TIER_4_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get().asItem()),
                 DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
