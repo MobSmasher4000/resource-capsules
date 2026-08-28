@@ -80,6 +80,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_1.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_2.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_3.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_4.get());
+                        pOutput.accept(ModBlocks.RESOURCE_GEN_TIER_5.get());
                         pOutput.accept(ModBlocks.FLUID_GEN.get());
                         pOutput.accept(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
                         pOutput.accept(ModBlocks.FLUID_GEN_MULTIBLOCK.get());

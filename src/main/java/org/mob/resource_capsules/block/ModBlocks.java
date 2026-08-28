@@ -18,9 +18,7 @@ import org.mob.resource_capsules.ResourceCapsules;
 import org.mob.resource_capsules.block.custom.*;
 import org.mob.resource_capsules.block.custom.hatch.FluidOutputHatchBlock;
 import org.mob.resource_capsules.block.custom.hatch.ItemOutputHatchBlock;
-import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier1Block;
-import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier2Block;
-import org.mob.resource_capsules.block.custom.resource_gen_tier.ResourceGenTier3Block;
+import org.mob.resource_capsules.block.custom.resource_gen_tier.*;
 import org.mob.resource_capsules.item.ModItems;
 
 import java.util.List;
@@ -37,6 +35,10 @@ public class ModBlocks {
             () -> new ResourceGenTier2Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_TIER_3 = registerBlock("resource_gen_tier_3",
             () -> new ResourceGenTier3Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> RESOURCE_GEN_TIER_4 = registerBlock("resource_gen_tier_4",
+            () -> new ResourceGenTier4Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> RESOURCE_GEN_TIER_5 = registerBlock("resource_gen_tier_5",
+            () -> new ResourceGenTier5Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_MULTIBLOCK = registerBlock("resource_gen_multiblock",
             () -> new ResourceGenMultiblockBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> FLUID_GEN = registerBlock("fluid_gen",

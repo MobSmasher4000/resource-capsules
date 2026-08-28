@@ -24,6 +24,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(ModBlocks.RESOURCE_GEN_TIER_1.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_2.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem())
+                .add(ModBlocks.RESOURCE_GEN_TIER_4.get().asItem())
+                .add(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem())
         ;
 
         tag(ModTags.Items.FLUID_GENERATOR)

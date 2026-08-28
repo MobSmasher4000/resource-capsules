@@ -19,7 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mob.resource_capsules.block.entity.FluidGenMultiblockBlockEntity; // Make sure this imports the FLUID controller!
+import org.mob.resource_capsules.block.entity.FluidGenMultiblockBlockEntity;
 import org.mob.resource_capsules.block.entity.ModBlockEntities;
 import org.mob.resource_capsules.screen.menu.FluidOutputHatchMenu;
 
@@ -28,6 +28,8 @@ public class FluidOutputHatchBlockEntity extends BlockEntity implements MenuProv
     protected final ContainerData data;
     private int linkedTank = 0;
     private BlockPos controllerPos = null;
+
+    private LazyOptional<IFluidHandler> fluidCapability = LazyOptional.empty();
 
     public FluidOutputHatchBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.FLUID_OUTPUT_HATCH_BE.get(), pPos, pBlockState);
@@ -50,10 +52,16 @@ public class FluidOutputHatchBlockEntity extends BlockEntity implements MenuProv
     }
 
     public void setLinkedTank(int tankIndex) {
+        if (this.linkedTank == tankIndex) return;
+
         this.linkedTank = tankIndex;
         setChanged();
+
         if (level != null && !level.isClientSide()) {
+            fluidCapability.invalidate();
+            fluidCapability = LazyOptional.empty();
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            level.updateNeighborsAt(getBlockPos(), getBlockState().getBlock());
         }
     }
 
@@ -61,37 +69,83 @@ public class FluidOutputHatchBlockEntity extends BlockEntity implements MenuProv
         return this.linkedTank;
     }
 
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.FLUID_HANDLER && controllerPos != null && level != null) {
+    public void setControllerPos(BlockPos pos) {
+        this.controllerPos = pos;
+        setChanged();
+    }
 
-            BlockEntity controllerBe = level.getBlockEntity(controllerPos);
+    @Nullable
+    private IFluidHandler getTargetTank() {
+        if (level == null || controllerPos == null) return null;
 
-            if (controllerBe instanceof FluidGenMultiblockBlockEntity controller) {
-
-                // Grab the real tank from the controller
-                IFluidHandler realTank = controller.fluidTanks[linkedTank];
-
-                // "One-Way Valve" wrapper that prevents pipes from pushing fluids in
-                IFluidHandler extractOnlyWrapper = new IFluidHandler() {
-                    @Override public int getTanks() { return realTank.getTanks(); }
-                    @Override public @NotNull FluidStack getFluidInTank(int tank) { return realTank.getFluidInTank(tank); }
-                    @Override public int getTankCapacity(int tank) { return realTank.getTankCapacity(tank); }
-
-                    // Deny all insertion attempts
-                    @Override public boolean isFluidValid(int tank, @NotNull FluidStack stack) { return false; }
-                    @Override public int fill(FluidStack resource, FluidAction action) { return 0; }
-
-                    // Allow extraction
-                    @Override public @NotNull FluidStack drain(FluidStack resource, FluidAction action) { return realTank.drain(resource, action); }
-                    @Override public @NotNull FluidStack drain(int maxDrain, FluidAction action) { return realTank.drain(maxDrain, action); }
-                };
-
-                return LazyOptional.of(() -> extractOnlyWrapper).cast();
+        BlockEntity be = level.getBlockEntity(controllerPos);
+        if (be instanceof FluidGenMultiblockBlockEntity controller) {
+            if (linkedTank >= 0 && linkedTank < controller.fluidTanks.length) {
+                return controller.fluidTanks[linkedTank];
             }
         }
+        return null;
+    }
 
+    private IFluidHandler createFluidWrapper() {
+        return new IFluidHandler() {
+            @Override
+            public int getTanks() {
+                IFluidHandler tank = getTargetTank();
+                return tank != null ? tank.getTanks() : 0;
+            }
+
+            @Override
+            public @NotNull FluidStack getFluidInTank(int tankId) {
+                IFluidHandler tank = getTargetTank();
+                return tank != null ? tank.getFluidInTank(tankId) : FluidStack.EMPTY;
+            }
+
+            @Override
+            public int getTankCapacity(int tankId) {
+                IFluidHandler tank = getTargetTank();
+                return tank != null ? tank.getTankCapacity(tankId) : 0;
+            }
+
+            @Override
+            public boolean isFluidValid(int tankId, @NotNull FluidStack stack) {
+                return false; // Output only
+            }
+
+            @Override
+            public int fill(FluidStack resource, FluidAction action) {
+                return 0; // Output only
+            }
+
+            @Override
+            public @NotNull FluidStack drain(FluidStack resource, FluidAction action) {
+                IFluidHandler tank = getTargetTank();
+                return tank != null ? tank.drain(resource, action) : FluidStack.EMPTY;
+            }
+
+            @Override
+            public @NotNull FluidStack drain(int maxDrain, FluidAction action) {
+                IFluidHandler tank = getTargetTank();
+                return tank != null ? tank.drain(maxDrain, action) : FluidStack.EMPTY;
+            }
+        };
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.FLUID_HANDLER) {
+            if (!fluidCapability.isPresent()) {
+                fluidCapability = LazyOptional.of(this::createFluidWrapper);
+            }
+            return fluidCapability.cast();
+        }
         return super.getCapability(cap, side);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        fluidCapability.invalidate();
     }
 
     @Override
@@ -123,10 +177,5 @@ public class FluidOutputHatchBlockEntity extends BlockEntity implements MenuProv
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
         return new FluidOutputHatchMenu(pContainerId, pPlayerInventory, this, this.data);
-    }
-
-    public void setControllerPos(BlockPos pos) {
-        this.controllerPos = pos;
-        setChanged();
     }
 }

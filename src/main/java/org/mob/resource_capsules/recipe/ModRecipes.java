@@ -20,6 +20,12 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<ResourceGenTier3Recipe>> RESOURCE_GEN_TIER_3_SERIALIZER =
             SERIALIZERS.register("resource_gen_tier_3", () -> ResourceGenTier3Recipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<ResourceGenTier4Recipe>> RESOURCE_GEN_TIER_4_SERIALIZER =
+            SERIALIZERS.register("resource_gen_tier_4", () -> ResourceGenTier4Recipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<ResourceGenTier5Recipe>> RESOURCE_GEN_TIER_5_SERIALIZER =
+            SERIALIZERS.register("resource_gen_tier_5", () -> ResourceGenTier5Recipe.Serializer.INSTANCE);
+
     public static final RegistryObject<RecipeSerializer<DimensionalResourceGenRecipe>> DIMENSIONAL_RESOURCE_GEN_SERIALIZER =
             SERIALIZERS.register("dimensional_resource_gen", () -> DimensionalResourceGenRecipe.Serializer.INSTANCE);
 
