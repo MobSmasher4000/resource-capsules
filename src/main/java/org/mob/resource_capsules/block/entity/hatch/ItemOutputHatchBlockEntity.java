@@ -29,6 +29,7 @@ public class ItemOutputHatchBlockEntity extends BlockEntity implements MenuProvi
     private int linkedSlot = 0;
     private BlockPos controllerPos = null;
 
+
     private LazyOptional<IItemHandler> itemCapability = LazyOptional.empty();
 
     public ItemOutputHatchBlockEntity(BlockPos pPos, BlockState pBlockState) {
