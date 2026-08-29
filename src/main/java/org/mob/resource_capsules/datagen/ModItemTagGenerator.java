@@ -3,6 +3,7 @@ package org.mob.resource_capsules.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(ModBlocks.RESOURCE_GEN_TIER_3.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_4.get().asItem())
                 .add(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem())
+                .add(ModBlocks.RESOURCE_GEN_TIER_6.get().asItem())
         ;
 
         tag(ModTags.Items.FLUID_GENERATOR)
@@ -44,5 +46,11 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.UPGRADE_AMOUNT_TIER_2.get())
                 .add(ModItems.UPGRADE_AMOUNT_TIER_3.get())
         ;
+
+        this.tag(ItemTags.MUSIC_DISCS)
+                .add(org.mob.resource_capsules.item.ModItems.STELLAR_ODYSSEY_MUSIC_DISC.get());
+
+        this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS)
+                .add(org.mob.resource_capsules.item.ModItems.STELLAR_ODYSSEY_MUSIC_DISC.get());
     }
 }

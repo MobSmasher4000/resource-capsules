@@ -40,6 +40,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ResourceGenTier5BlockEntity::new,
                             ModBlocks.RESOURCE_GEN_TIER_5.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ResourceGenTier6BlockEntity>> RESOURCE_GEN_TIER_6_BE =
+            BLOCK_ENTITIES.register("resource_gen_tier_6_be", () ->
+                    BlockEntityType.Builder.of(ResourceGenTier6BlockEntity::new,
+                            ModBlocks.RESOURCE_GEN_TIER_6.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<FluidGenBlockEntity>> FLUID_GEN_BE =
             BLOCK_ENTITIES.register("fluid_gen_be", () ->
                     BlockEntityType.Builder.of(FluidGenBlockEntity::new,

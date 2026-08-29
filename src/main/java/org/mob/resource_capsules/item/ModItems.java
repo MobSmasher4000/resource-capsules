@@ -3,6 +3,7 @@ package org.mob.resource_capsules.item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,6 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import org.mob.resource_capsules.ResourceCapsules;
+import org.mob.resource_capsules.sound.ModSounds;
 
 import java.util.List;
 
@@ -145,6 +147,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> TIER_3_LARGE_CAPSULE = ITEMS.register("tier_3_large_capsule",
             () -> new Item(new Item.Properties()));
+
+    // music disc
+    public static final RegistryObject<Item> STELLAR_ODYSSEY_MUSIC_DISC = ITEMS.register("stellar_odyssey_music_disc",
+            () -> new RecordItem(6, ModSounds.STELLAR_ODYSSEY, new Item.Properties().stacksTo(1), 4480));
 
 
 

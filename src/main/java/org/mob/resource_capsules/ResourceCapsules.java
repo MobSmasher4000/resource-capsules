@@ -22,6 +22,7 @@ import org.mob.resource_capsules.network.ModMessages;
 import org.mob.resource_capsules.recipe.ModRecipes;
 import org.mob.resource_capsules.screen.ModMenuTypes;
 import org.mob.resource_capsules.screen.screen.*;
+import org.mob.resource_capsules.sound.ModSounds;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -43,6 +44,7 @@ public class ResourceCapsules {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModRecipes.register(modEventBus);
+        ModSounds.register(modEventBus);
         ModMenuTypes.register(modEventBus);
 
         ModCreativeModTabs.register(modEventBus);
@@ -70,6 +72,7 @@ public class ResourceCapsules {
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_3_MENU.get(), ResourceGenTier3Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_4_MENU.get(), ResourceGenTier4Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_5_MENU.get(), ResourceGenTier5Screen::new);
+            MenuScreens.register(ModMenuTypes.RESOURCE_GEN_TIER_6_MENU.get(), ResourceGenTier6Screen::new);
             MenuScreens.register(ModMenuTypes.RESOURCE_GEN_MULTIBLOCK_MENU.get(), ResourceGenMultiblockScreen::new);
             MenuScreens.register(ModMenuTypes.TIER_9001_MENU.get(), Tier9001Screen::new);
             MenuScreens.register(ModMenuTypes.DIMENSIONAL_RESOURCE_GEN_MENU.get(), DimensionalResourceGenScreen::new);

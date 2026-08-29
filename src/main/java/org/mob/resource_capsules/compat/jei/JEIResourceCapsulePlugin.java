@@ -41,6 +41,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCategories(new ResourceGenTier5Category(
                 registration.getJeiHelpers().getGuiHelper()));
 
+        registration.addRecipeCategories(new ResourceGenTier6Category(
+                registration.getJeiHelpers().getGuiHelper()));
+
         registration.addRecipeCategories(new DimensionalResourceGenCategory(
                 registration.getJeiHelpers().getGuiHelper()));
 
@@ -76,6 +79,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         List<ResourceGenTier5Recipe> resourceGenTier5Recipes = recipeManager.getAllRecipesFor(ResourceGenTier5Recipe.Type.INSTANCE);
         registration.addRecipes(ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE, resourceGenTier5Recipes);
 
+        List<ResourceGenTier6Recipe> resourceGenTier6Recipes = recipeManager.getAllRecipesFor(ResourceGenTier6Recipe.Type.INSTANCE);
+        registration.addRecipes(ResourceGenTier6Category.RESOURCE_GEN_TIER_6_RECIPE_TYPE, resourceGenTier6Recipes);
+
         List<DimensionalResourceGenRecipe> dimensionalResourceGenRecipes = recipeManager.getAllRecipesFor(DimensionalResourceGenRecipe.Type.INSTANCE);
         registration.addRecipes(DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE, dimensionalResourceGenRecipes);
 
@@ -110,6 +116,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeClickArea(ResourceGenTier5Screen.class, 74, 30, 22, 20,
                 ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(ResourceGenTier6Screen.class, 74, 30, 22, 20,
+                ResourceGenTier6Category.RESOURCE_GEN_TIER_6_RECIPE_TYPE);
+
         registration.addRecipeClickArea(DimensionalResourceGenScreen.class, 74, 30, 22, 20,
                 DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);
 
@@ -140,6 +149,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem()),
                 ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
 
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_TIER_6.get().asItem()),
+                ResourceGenTier6Category.RESOURCE_GEN_TIER_6_RECIPE_TYPE);
+
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
                 ResourceGenTier1Category.RESOURCE_GEN_TIER_1_RECIPE_TYPE);
 
@@ -154,6 +166,9 @@ public class JEIResourceCapsulePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
                 ResourceGenTier5Category.RESOURCE_GEN_TIER_5_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get().asItem()),
+                ResourceGenTier6Category.RESOURCE_GEN_TIER_6_RECIPE_TYPE);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get().asItem()),
                 DimensionalResourceGenCategory.DIMENSIONAL_RESOURCE_GEN_RECIPE_TYPE);

@@ -39,6 +39,8 @@ public class ModBlocks {
             () -> new ResourceGenTier4Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_TIER_5 = registerBlock("resource_gen_tier_5",
             () -> new ResourceGenTier5Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> RESOURCE_GEN_TIER_6 = registerBlock("resource_gen_tier_6",
+            () -> new ResourceGenTier6Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RESOURCE_GEN_MULTIBLOCK = registerBlock("resource_gen_multiblock",
             () -> new ResourceGenMultiblockBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> FLUID_GEN = registerBlock("fluid_gen",

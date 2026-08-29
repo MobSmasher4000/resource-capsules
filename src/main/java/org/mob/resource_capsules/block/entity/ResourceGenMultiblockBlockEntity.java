@@ -101,6 +101,7 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier3Recipe> quickCheckTier3;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier4Recipe> quickCheckTier4;
     private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier5Recipe> quickCheckTier5;
+    private final RecipeManager.CachedCheck<SimpleContainer, ResourceGenTier6Recipe> quickCheckTier6;
 
     protected final ContainerData data;
 
@@ -118,6 +119,7 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
         this.quickCheckTier3 = RecipeManager.createCheck(ResourceGenTier3Recipe.Type.INSTANCE);
         this.quickCheckTier4 = RecipeManager.createCheck(ResourceGenTier4Recipe.Type.INSTANCE);
         this.quickCheckTier5 = RecipeManager.createCheck(ResourceGenTier5Recipe.Type.INSTANCE);
+        this.quickCheckTier6 = RecipeManager.createCheck(ResourceGenTier6Recipe.Type.INSTANCE);
 
         this.data = new ContainerData() {
             @Override
@@ -258,6 +260,8 @@ public class ResourceGenMultiblockBlockEntity extends BlockEntity implements Men
             return this.quickCheckTier4.getRecipeFor(inventory, this.level);
         } else if (machineStack.is(ModBlocks.RESOURCE_GEN_TIER_5.get().asItem())) {
             return this.quickCheckTier5.getRecipeFor(inventory, this.level);
+        } else if (machineStack.is(ModBlocks.RESOURCE_GEN_TIER_6.get().asItem())) {
+            return this.quickCheckTier6.getRecipeFor(inventory, this.level);
         }
         return Optional.empty();
     }

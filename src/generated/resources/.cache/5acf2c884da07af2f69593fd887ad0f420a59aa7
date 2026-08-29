@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-22T13:41:53.8285962	Item Models: resource_capsules
+// 1.20.1	2026-08-28T21:23:26.7851895	Item Models: resource_capsules
 37edfe12798e54f7035c808010ad9e4354d9e21a assets/resource_capsules/models/item/bio_capsule.json
 01f115b030fbb3ae90b02e8fee070cb6e4fc6454 assets/resource_capsules/models/item/bio_catalyst.json
 6e98e44e50f32aa26db508c3d084547b5577402a assets/resource_capsules/models/item/end_advanced_capsule.json
@@ -11,6 +11,7 @@ cab2bb3a972ec14e68b2b4749feb96ae1fdb50e1 assets/resource_capsules/models/item/ne
 0f43dd8bf93764abdb2d4d8401909f8295ea22c7 assets/resource_capsules/models/item/nether_catalyst.json
 f58602805dbe661e436f85a40cdbbef420af5d98 assets/resource_capsules/models/item/overworld_capsule.json
 486dabe7269c185f13223297f744c208ddfb8aa4 assets/resource_capsules/models/item/overworld_catalyst.json
+d7865577c67d9462407500593de32c71d6f73755 assets/resource_capsules/models/item/stellar_odyssey_music_disc.json
 28ee1370b21dc43c19263e0736c5437e6669c1bb assets/resource_capsules/models/item/tier_1_large_capsule.json
 c7f0bcada7e62b291d0d2ecb4dc52b86af0cfc9a assets/resource_capsules/models/item/tier_1_large_catalyst.json
 a85e7ebfb7f0a8649ea6d4016c91581daccd5490 assets/resource_capsules/models/item/tier_1_medium_capsule.json

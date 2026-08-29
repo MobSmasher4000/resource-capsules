@@ -20,6 +20,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_3.get());
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_4.get());
         dropSelf(ModBlocks.RESOURCE_GEN_TIER_5.get());
+        dropSelf(ModBlocks.RESOURCE_GEN_TIER_6.get());
         dropSelf(ModBlocks.RESOURCE_GEN_MULTIBLOCK.get());
         dropSelf(ModBlocks.TIER_9001.get());
         dropSelf(ModBlocks.DIMENSIONAL_RESOURCE_GEN.get());

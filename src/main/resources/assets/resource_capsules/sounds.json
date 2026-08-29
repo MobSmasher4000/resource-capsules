@@ -1,0 +1,10 @@
+{
+  "stellar_odyssey": {
+    "sounds": [
+      {
+        "name": "resource_capsules:stellar_odyssey",
+        "stream": true
+      }
+    ]
+  }
+}

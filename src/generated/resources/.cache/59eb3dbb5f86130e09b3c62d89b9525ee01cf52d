@@ -1,4 +1,4 @@
-// 1.20.1	2026-08-28T17:00:12.9277511	Loot Tables
+// 1.20.1	2026-08-28T20:43:45.495243	Loot Tables
 1a36819bf8ff07101a915e03026fad0e444469c9 data/resource_capsules/loot_tables/blocks/bio_resource_gen.json
 ab69fac009cb31c90921d3114b79ca9fee3d4c04 data/resource_capsules/loot_tables/blocks/catalytic_converter.json
 3fae1b5702e24347bf1279d8874311bcc5e2e2b3 data/resource_capsules/loot_tables/blocks/dimensional_resource_gen.json
@@ -14,4 +14,5 @@ a5e1dec65f51d536ebfc00de701001bd02b8aced data/resource_capsules/loot_tables/bloc
 765b7f47f7de5577ffeda489f3f5942c5417486b data/resource_capsules/loot_tables/blocks/resource_gen_tier_3.json
 bc073c6cc8ca81684bab87ca2c35cf27e860048a data/resource_capsules/loot_tables/blocks/resource_gen_tier_4.json
 0053b3a9132bb70a29ca643dc4f09358f6c9d5e4 data/resource_capsules/loot_tables/blocks/resource_gen_tier_5.json
+38a4f3541744ecb636081f620784a1ded7e9ef09 data/resource_capsules/loot_tables/blocks/resource_gen_tier_6.json
 2e2d4798cbb1e04e7cbf740118ed4a68e0750d17 data/resource_capsules/loot_tables/blocks/tier_9001.json

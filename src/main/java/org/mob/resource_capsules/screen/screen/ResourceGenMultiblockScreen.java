@@ -28,7 +28,8 @@ public class ResourceGenMultiblockScreen extends AbstractContainerScreen<Resourc
             new ItemStack(ModBlocks.RESOURCE_GEN_TIER_2.get()),
             new ItemStack(ModBlocks.RESOURCE_GEN_TIER_3.get()),
             new ItemStack(ModBlocks.RESOURCE_GEN_TIER_4.get()),
-            new ItemStack(ModBlocks.RESOURCE_GEN_TIER_5.get())
+            new ItemStack(ModBlocks.RESOURCE_GEN_TIER_5.get()),
+            new ItemStack(ModBlocks.RESOURCE_GEN_TIER_6.get())
     );
 
     public ResourceGenMultiblockScreen(ResourceGenMultiblockMenu pMenu, Inventory pPlayerInventory, Component pTitle) {

@@ -1,4 +1,6 @@
-// 1.20.1	2026-08-28T17:00:12.9387212	Tags for minecraft:item mod id resource_capsules
+// 1.20.1	2026-08-28T21:44:51.5037141	Tags for minecraft:item mod id resource_capsules
+74a3e89745fb458e63b231d8d66e1fc31687705f data/minecraft/tags/items/creeper_drop_music_discs.json
+74a3e89745fb458e63b231d8d66e1fc31687705f data/minecraft/tags/items/music_discs.json
 10d0352d7c390d7e8c5122cbc5ad47ec702fa9da data/resource_capsules/tags/items/fluid_gen.json
 411298b870c8e20663b7e2704ecbe8edb857d054 data/resource_capsules/tags/items/fluid_gen_upgrade.json
-cf537b0334f84d0edefa3f6ff6188d01d83d5fb0 data/resource_capsules/tags/items/resource_gen.json
+6b01dd0c740d37cc7a85e91ed3baadb1f53e9a6b data/resource_capsules/tags/items/resource_gen.json

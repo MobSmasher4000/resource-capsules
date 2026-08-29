@@ -18,6 +18,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleItem(ModItems.STELLAR_ODYSSEY_MUSIC_DISC);
+
         simpleItem(ModItems.BIO_CATALYST);
         simpleItem(ModItems.BIO_CAPSULE);
 
