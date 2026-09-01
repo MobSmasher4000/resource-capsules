@@ -29,8 +29,7 @@ public class ItemOutputHatchBlockEntity extends BlockEntity implements MenuProvi
     private int linkedSlot = 0;
     private BlockPos controllerPos = null;
 
-
-    private LazyOptional<IItemHandler> itemCapability = LazyOptional.empty();
+    private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(this::createProxyHandler);
 
     public ItemOutputHatchBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ITEM_OUTPUT_HATCH_BE.get(), pPos, pBlockState);
@@ -47,22 +46,82 @@ public class ItemOutputHatchBlockEntity extends BlockEntity implements MenuProvi
                     default -> 0;
                 };
             }
-            @Override public void set(int pIndex, int pValue) {}
-            @Override public int getCount() { return 4; }
+            @Override
+            public void set(int pIndex, int pValue) {}
+            @Override
+            public int getCount() { return 4; }
         };
     }
 
-    public void setLinkedSlot(int slot) {
-        if (this.linkedSlot == slot) return;
+    // Proxy handler: Forwards requests directly to the controller's specific slot
+    private IItemHandler createProxyHandler() {
+        return new IItemHandler() {
 
+            @Nullable
+            private IItemHandler getControllerHandler() {
+                if (controllerPos != null && level != null) {
+                    BlockEntity be = level.getBlockEntity(controllerPos);
+                    if (be instanceof ResourceGenMultiblockBlockEntity controller) {
+                        return controller.outputHandler;
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            public int getSlots() {
+                return 1;
+            }
+
+            @Override
+            public @NotNull ItemStack getStackInSlot(int slot) {
+                IItemHandler target = getControllerHandler();
+                return target != null ? target.getStackInSlot(linkedSlot) : ItemStack.EMPTY;
+            }
+
+            @Override
+            public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+                return stack; // Deny insertion (Output only)
+            }
+
+            @Override
+            public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+                IItemHandler target = getControllerHandler();
+                return target != null ? target.extractItem(linkedSlot, amount, simulate) : ItemStack.EMPTY;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                IItemHandler target = getControllerHandler();
+                return target != null ? target.getSlotLimit(linkedSlot) : 0;
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                return false; // Deny insertion
+            }
+        };
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            return itemHandler.cast();
+        }
+        return super.getCapability(cap, side);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        itemHandler.invalidate();
+    }
+
+    public void setLinkedSlot(int slot) {
         this.linkedSlot = slot;
         setChanged();
-
         if (level != null && !level.isClientSide()) {
-            itemCapability.invalidate();
-            itemCapability = LazyOptional.empty();
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            level.updateNeighborsAt(getBlockPos(), getBlockState().getBlock());
         }
     }
 
@@ -73,87 +132,6 @@ public class ItemOutputHatchBlockEntity extends BlockEntity implements MenuProvi
     public void setControllerPos(BlockPos pos) {
         this.controllerPos = pos;
         setChanged();
-        if (level != null && !level.isClientSide()) {
-            itemCapability.invalidate();
-            itemCapability = LazyOptional.empty();
-            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            level.updateNeighborsAt(getBlockPos(), getBlockState().getBlock());
-        }
-    }
-
-    @Nullable
-    private IItemHandler getTargetHandler() {
-        if (level == null || controllerPos == null) return null;
-        BlockEntity be = level.getBlockEntity(controllerPos);
-        if (be instanceof ResourceGenMultiblockBlockEntity controller) {
-            return controller.outputHandler;
-        }
-        return null;
-    }
-
-    private IItemHandler createItemWrapper() {
-        return new IItemHandler() {
-            private boolean isValidTarget() {
-                IItemHandler handler = getTargetHandler();
-                return handler != null && linkedSlot >= 0 && linkedSlot < handler.getSlots();
-            }
-
-            @Override
-            public int getSlots() {
-                return 1;
-            }
-
-            @Override
-            public @NotNull ItemStack getStackInSlot(int slot) {
-                if (slot == 0 && isValidTarget()) {
-                    return getTargetHandler().getStackInSlot(linkedSlot);
-                }
-                return ItemStack.EMPTY;
-            }
-
-            @Override
-            public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-                return stack; // Output only
-            }
-
-            @Override
-            public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-                if (slot == 0 && isValidTarget()) {
-                    return getTargetHandler().extractItem(linkedSlot, amount, simulate);
-                }
-                return ItemStack.EMPTY;
-            }
-
-            @Override
-            public int getSlotLimit(int slot) {
-                if (slot == 0 && isValidTarget()) {
-                    return getTargetHandler().getSlotLimit(linkedSlot);
-                }
-                return 0;
-            }
-
-            @Override
-            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-                return false; // Output only
-            }
-        };
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            if (!itemCapability.isPresent()) {
-                itemCapability = LazyOptional.of(this::createItemWrapper);
-            }
-            return itemCapability.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        itemCapability.invalidate();
     }
 
     @Override
